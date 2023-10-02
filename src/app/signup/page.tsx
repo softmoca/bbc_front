@@ -19,9 +19,7 @@ export default function SignUp() {
       <form>
         <h1 className="text-mb-1 mb-1 font-bold ">대학교</h1>
         <select className="  border border-gray-300 rounded ">
-          <option disabled selected>
-            대학교 선택
-          </option>
+          <option disabled>대학교 선택</option>
 
           <option value="광운대학교">광운대학교</option>
           <option value="영철대학교">영철대학교</option>
