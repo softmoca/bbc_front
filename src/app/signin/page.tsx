@@ -51,7 +51,7 @@ export default function Signin() {
 
       <button className="w-11/12 py-1 mb-1 text-xs font-bold text-white bg-gray-300 border border-gray-300 rounded">
         <Link
-          href="/signup"
+          href="/signup/agreement"
           className=" text-xs  font-bold text-white  bg-gray-300 border border-gray-300 rounded"
         >
           회원가입
