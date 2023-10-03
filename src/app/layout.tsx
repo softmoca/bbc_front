@@ -1,5 +1,8 @@
 import "./globals.css";
 import { Open_Sans } from "next/font/google";
+import { Providers } from "../redux/provider";
+import ToastProvider from "./components/toast.provider";
+
 const OpenSans = Open_Sans({ subsets: ["latin"] });
 
 export const metadata = {
@@ -14,7 +17,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="{OpenSans.className}">
-      <body>{children}</body>
+      <body>
+        <ToastProvider>
+          {" "}
+          <Providers>{children}</Providers>
+        </ToastProvider>
+      </body>
     </html>
   );
 }
