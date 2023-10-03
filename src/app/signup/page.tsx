@@ -1,5 +1,6 @@
 "use client";
 import { registerUser } from "@/redux/features/userSlice";
+import Link from "next/link";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
@@ -14,14 +15,15 @@ export default function RegisterPage() {
 
   const dispatch = useDispatch();
 
-  const onSubmit = ({ email, password, nickName }) => {
+  const onSubmit = ({ email, password, nickName, university }) => {
     // 페이지에서 입력 한 값
     const body = {
       email: email,
       password: password,
       nickName: nickName,
-      //university: `https://via.placeholder.com/600x400?text=no+user+image`,
+      university: university,
     };
+
     dispatch(registerUser(body));
     reset(); //react-hook-form으로 입력후 입력값 초기화
   };
@@ -39,6 +41,9 @@ export default function RegisterPage() {
       message: "최소 6자입니다.",
     },
   };
+  const useruniversity = {
+    required: "필수 필드입니다.",
+  };
 
   return (
     // flex-col 자식요소 수직 , max-w-[400px] 최대 너비 제한   m-auto 좌우 여백을 자동으로 설정
@@ -51,9 +56,11 @@ export default function RegisterPage() {
 
         <form className="mt-6" onSubmit={handleSubmit(onSubmit)}>
           <h1 className="text-mb-1 mb-1 font-bold ">대학교</h1>
-          <select className="  border border-gray-300 rounded ">
-            <option disabled>대학교 선택</option>
-
+          <select
+            id="university"
+            className="  border border-gray-300 rounded "
+            {...register("university", useruniversity)}
+          >
             <option value="광운대학교">광운대학교</option>
             <option value="영철대학교">영철대학교</option>
             <option value="모카대학교">모카대학교</option>
@@ -69,9 +76,10 @@ export default function RegisterPage() {
               htmlFor="name"
               className="text-sm font-semibold text-gray-800"
             >
-              Name
+              닉네임
             </label>
             <input
+              placeholder="닉네임을 입력해주세요."
               type="nickName"
               id="nickName"
               className="w-full px-4 py-2 mt-2 border bg-white rounded-md"
@@ -89,9 +97,10 @@ export default function RegisterPage() {
               htmlFor="email" //htmlFor 속성은 레이블이 연결된 입력 요소의 ID를 지정
               className="text-sm font-semibold text-gray-800"
             >
-              Email
+              이메일
             </label>
             <input
+              placeholder="이메일을 입력해주세요."
               type="email"
               id="email"
               className="w-full px-4 py-2 mt-2 border bg-white rounded-md" //px 외부 여백 py 내부 여백 상하좌우
@@ -109,9 +118,10 @@ export default function RegisterPage() {
               htmlFor="password"
               className="text-sm font-semibold text-gray-800"
             >
-              Password
+              비밀번호
             </label>
             <input
+              placeholder="비밀번호를 입력해주세요."
               type="password"
               id="pasword"
               className="w-full px-4 py-2 mt-2 border bg-white rounded-md"
@@ -125,19 +135,15 @@ export default function RegisterPage() {
           </div>
 
           <div className="mt-6">
-            <button
-              type="submit" //duration hover시 색상 애니이션 지속시간
-              className="w-full px-4 py-2 text-white duration-200 bg-black  hover:bg-gray-700 "
-            >
-              회원가입
-            </button>
+            <Link href="/signup/congratulate">
+              <button
+                type="submit" //duration hover시 색상 애니이션 지속시간
+                className="w-full px-4 py-2 text-white duration-200 bg-black  hover:bg-gray-700 "
+              >
+                회원가입
+              </button>
+            </Link>
           </div>
-          <p className="mt-8 text-xs font-light text-center text-gray-700">
-            아이디가 있다면?{" "}
-            <a href="/login" className="font-medium hover:underline">
-              로그인
-            </a>
-          </p>
         </form>
       </div>
     </section>
