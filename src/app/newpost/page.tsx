@@ -33,6 +33,7 @@ export default function Newpost() {
     };
 
     dispatch(registerPost(body));
+
     reset(); //react-hook-form으로 입력후 입력값 초기화
   };
 
@@ -70,7 +71,11 @@ export default function Newpost() {
             className="w-full px-4 py-2 mt-2 border bg-white rounded-md"
             {...register("postTitle", newPostTitle)}
           ></input>
-
+          {errors?.postTitle && (
+            <div>
+              <span className="text-red-500">{errors.postTitle.message}</span>
+            </div>
+          )}
           <label //htmlFor 속성은 레이블이 연결된 입력 요소의 ID를 지정
             className="text-sm font-semibold text-gray-800"
           >
@@ -83,6 +88,13 @@ export default function Newpost() {
             className="w-full px-4 py-2 mt-2 border bg-white rounded-md"
             {...register("chatRoomTitle", newPostChatRoomTitle)}
           ></input>
+          {errors?.chatRoomTitle && (
+            <div>
+              <span className="text-red-500">
+                {errors.chatRoomTitle.message}
+              </span>
+            </div>
+          )}
         </div>
 
         <div className="text-xl font-bold flex  justify-between items-centemb mb-5  ">
@@ -119,6 +131,11 @@ export default function Newpost() {
           className="w-full px-4 py-2 mt-2 border bg-white rounded-md"
           {...register("postContent", newPostContent)}
         ></input>
+        {errors?.postContent && (
+          <div>
+            <span className="text-red-500">{errors.postContent.message}</span>
+          </div>
+        )}
       </form>
     </div>
   );
