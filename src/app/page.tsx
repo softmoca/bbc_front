@@ -32,7 +32,7 @@ export default function Home() {
         <div>
           <h1 className="text-xl mb-1 font-bold ">학교내 소통 게시판</h1>
         </div>
-        <Link href="/secondhandtrading">
+        <Link href="/jonggo">
           <h1> 🥕 중고 거래 게시판</h1>
         </Link>{" "}
         <Link href="/grouppurchase">
@@ -47,11 +47,6 @@ export default function Home() {
         <div>
           <h1 className="text-xl mb-1 font-bold ">핫플 건물별 소통 게시판</h1>
         </div>
-
-        <h1></h1>
-        <h1></h1>
-        <h1></h1>
-        <h1></h1>
 
         <Link href="/dormitory">
           <h1> 📌 기숙사(빛솔재)</h1>
@@ -71,7 +66,6 @@ export default function Home() {
         <div>
           <h1 className="text-xl mb-1 font-bold ">건물별 소통 게시판</h1>
         </div>
-        <h1>📌 건물별 소통 게시판</h1>
         <Link href="/bima">
           <h1>📌 비마관</h1>
         </Link>{" "}
