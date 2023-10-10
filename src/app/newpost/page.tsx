@@ -48,6 +48,10 @@ export default function Newpost() {
     required: "필수 필드입니다.",
   };
 
+  const newbuildingName = {
+    required: "필수 필드입ㄴ디ㅏ",
+  };
+
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -102,6 +106,7 @@ export default function Newpost() {
           <select
             id="buildingName"
             className="  border border-gray-300 rounded "
+            {...register("buildingName", newbuildingName)}
           >
             <option value="비마관">비마관</option>
             <option value="한울관">한울관</option>
