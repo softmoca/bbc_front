@@ -1,6 +1,6 @@
 "use client";
 
-import { registerPost } from "@/redux/features/userSlice";
+import { registerPost } from "@/redux/thunkFunctions";
 import Link from "next/link";
 import React from "react";
 import { useForm } from "react-hook-form";

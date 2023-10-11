@@ -1,5 +1,6 @@
 "use client";
-import { loginUser } from "@/redux/features/userSlice";
+
+import { loginUser } from "@/redux/thunkFunctions";
 import Link from "next/link";
 import React from "react";
 import { useForm } from "react-hook-form";
