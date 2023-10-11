@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
-import { registerPost } from "../thunkFunctions/psotThunk";
+import { dormitoryPost, registerPost } from "../thunkFunctions/psotThunk";
 
 const initialState = {
   postData: {
@@ -9,7 +9,6 @@ const initialState = {
     test: "",
     image: "",
   },
-  isAuth: false,
   isLoading: false,
   error: "",
 };
@@ -31,6 +30,19 @@ const postSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
         toast.error(action.payload);
+      })
+      .addCase(dormitoryPost.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(dormitoryPost.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.postData = action.payload; // 백엔드로 api 요청 한 후 return으로 받은 json
+        //console.log(action.payload);
+      })
+      .addCase(dormitoryPost.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+        state.postData = initialState.postData; // 유저 데이터 초기화
       });
   },
 });

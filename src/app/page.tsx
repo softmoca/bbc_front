@@ -15,7 +15,7 @@ export default function Home() {
     if (isAuth) {
       dispatch(authUser()); //thucnk 함수 이름은 authUser
     }
-  }); // 권한이 바뀌거나 or url경로가 바뀌거나
+  }, []); // 권한이 바뀌거나 or url경로가 바뀌거나
 
   return (
     <div>

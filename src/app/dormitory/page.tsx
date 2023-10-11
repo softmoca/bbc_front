@@ -1,8 +1,21 @@
+"use client";
+
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 import PostItem from "../../components/postItem";
+import { useDispatch, useSelector } from "react-redux";
+import { dormitoryPost } from "@/redux/thunkFunctions/psotThunk";
 
 export default function Dormitory() {
+  const dispatch = useDispatch();
+  const dPosts = useSelector(
+    (state) => state.persistedReducer.post.postData.data
+  );
+
+  useEffect(() => {
+    dispatch(dormitoryPost()); //thucnk 함수 이름은 authUser
+  }, []); // 권한이 바뀌거나 or url경로가 바뀌거나
+
   return (
     <section>
       <div className=" text-xl font-bold flex  justify-between items-center">
@@ -12,7 +25,9 @@ export default function Dormitory() {
       </div>
 
       <div>
-        <PostItem />
+        {dPosts.map((dpost) => (
+          <PostItem dpost={dpost} key={dpost.postIdx} />
+        ))}
       </div>
     </section>
   );

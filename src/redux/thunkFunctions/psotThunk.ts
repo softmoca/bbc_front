@@ -17,3 +17,19 @@ export const registerPost = createAsyncThunk(
     }
   }
 );
+
+export const dormitoryPost = createAsyncThunk(
+  "post/dormitoryPost",
+  async (_, thunkAPI) => {
+    try {
+      const response = await axiosInstance.get(
+        "/post/dormitory" //백엔드 api url
+      );
+
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
