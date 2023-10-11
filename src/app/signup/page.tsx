@@ -1,6 +1,6 @@
 "use client";
 
-import { registerUser } from "@/redux/thunkFunctions";
+import { registerUser } from "@/redux/thunkFunctions/userThunk";
 import Link from "next/link";
 import React from "react";
 import { useForm } from "react-hook-form";

@@ -1,6 +1,6 @@
 "use client";
 
-import { registerPost } from "@/redux/thunkFunctions";
+import { registerPost } from "@/redux/thunkFunctions/psotThunk";
 import Link from "next/link";
 import React from "react";
 import { useForm } from "react-hook-form";
@@ -108,6 +108,10 @@ export default function Newpost() {
             className="  border border-gray-300 rounded "
             {...register("buildingName", newbuildingName)}
           >
+            <option value="기숙사(빛솔재)">기숙사(빛솔재)</option>
+            <option value="중앙 도서관">중앙 도서관</option>{" "}
+            <option value="노천극장">노천극장</option>
+            <option value="복지관">복지관</option>
             <option value="비마관">비마관</option>
             <option value="한울관">한울관</option>
             <option value="화도관">화도관</option>

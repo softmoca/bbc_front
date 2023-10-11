@@ -1,12 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 
-import {
-  authUser,
-  loginUser,
-  registerPost,
-  registerUser,
-} from "../thunkFunctions";
+import { authUser, loginUser, registerUser } from "../thunkFunctions/userThunk";
 
 const initialState = {
   userData: {
@@ -69,18 +64,6 @@ const userSlice = createSlice({
         state.userData = initialState.userData; // 유저 데이터 초기화
         state.isAuth = false;
         localStorage.removeItem("accessToken"); // 만료가 된경우
-      })
-      .addCase(registerPost.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(registerPost.fulfilled, (state) => {
-        state.isLoading = false;
-        toast.info("글작성에 성공하였습니다.");
-      })
-      .addCase(registerPost.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
-        toast.error(action.payload);
       });
   },
 });

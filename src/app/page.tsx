@@ -1,6 +1,6 @@
 "use client";
 
-import { authUser } from "@/redux/thunkFunctions";
+import { authUser } from "@/redux/thunkFunctions/userThunk";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";

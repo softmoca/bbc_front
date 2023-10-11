@@ -2,10 +2,10 @@
 import "./globals.css";
 import { Open_Sans } from "next/font/google";
 import { Providers } from "../redux/provider";
-import ToastProvider from "./components/toast.provider";
+import ToastProvider from "../components/toast.provider";
 import { PersistGate } from "redux-persist/integration/react";
-import { persistor } from "@/redux/store";
-import Footbar from "./components/footbar";
+import { persistor } from "@/redux/store/store";
+import Footbar from "../components/footbar";
 
 const OpenSans = Open_Sans({ subsets: ["latin"] });
 
