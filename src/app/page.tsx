@@ -18,20 +18,18 @@ export default function Home() {
   }, []); // 권한이 바뀌거나 or url경로가 바뀌거나
 
   return (
-    <div>
-      <div className="mb-5">
+    <div className="bg-white flex flex-col m-5">
+      <div className=" mb-10 bg-gray-100 rounded-md shadow-md">
         <Link href="/everytimehot" className="text-xl mb-1 font-bold ">
-          <h1> 🔥주간 애브리타임 인기글🔥</h1>
+          <h1 className="mb-1"> 🔥주간 애브리타임 인기글🔥</h1>
         </Link>{" "}
         <Link href="/youtubehot" className="text-xl mb-1 font-bold ">
           <h1> 🔥주간 유튜브 인기영상🔥</h1>
         </Link>
       </div>
-
-      <div className="mb-5">
-        <div>
-          <h1 className="text-xl mb-1 font-bold ">학교내 소통 게시판</h1>
-        </div>
+      <h1 className="text-xl font-bold mb-2">학교내 소통 게시판</h1>
+      <div className="mb-10  font-bold bg-gray-100 rounded-md shadow-md">
+        <div></div>
         <Link href="/jonggo">
           <h1> 🥕 중고 거래 게시판</h1>
         </Link>{" "}
@@ -42,12 +40,9 @@ export default function Home() {
           <h1> 🍚 밥친구 게시판</h1>
         </Link>
       </div>
+      <h1 className="text-xl font-bold mb-2">핫플 건물별 소통 게시판</h1>
 
-      <div className="mb-5">
-        <div>
-          <h1 className="text-xl mb-1 font-bold ">핫플 건물별 소통 게시판</h1>
-        </div>
-
+      <div className="mb-10 font-bold bg-gray-100 rounded-md shadow-md">
         <Link href="/dormitory">
           <h1> 📌 기숙사(빛솔재)</h1>
         </Link>
@@ -61,11 +56,8 @@ export default function Home() {
           <h1>📌 복지관</h1>
         </Link>
       </div>
-
-      <div className="mb-5">
-        <div>
-          <h1 className="text-xl mb-1 font-bold ">건물별 소통 게시판</h1>
-        </div>
+      <h1 className="text-xl font-bold mb-2 ">건물별 소통 게시판</h1>
+      <div className="  font-bold bg-gray-100 rounded-md shadow-md">
         <Link href="/bima">
           <h1>📌 비마관</h1>
         </Link>{" "}

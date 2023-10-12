@@ -20,7 +20,7 @@ export default function Dormitory() {
     <section>
       <div className=" text-xl font-bold flex  justify-between items-center">
         <Link href={"/jonggo"}>{"<"}</Link>
-        <h1 className="text-xl font-bold">중고 거래 게시판 </h1>
+        <h1 className="text-xl font-bold">기숙사 게시판 </h1>
         <button type="submit">검색 임티 </button>
       </div>
 

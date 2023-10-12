@@ -1,8 +1,6 @@
 import React from "react";
 
 export default function PostItem({ dpost }) {
-  console.log(dpost);
-
   return (
     <div className="border-b p-3">
       <p className="font-bold">{dpost.postTitle} </p>
