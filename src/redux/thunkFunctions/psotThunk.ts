@@ -33,3 +33,20 @@ export const dormitoryPost = createAsyncThunk(
     }
   }
 );
+
+export const bimaPost = createAsyncThunk(
+  "post/bimaPost",
+  async (_, thunkAPI) => {
+    try {
+      const response = await axiosInstance.get(
+        "/post/bima" //백엔드 api url
+      );
+
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      c;
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

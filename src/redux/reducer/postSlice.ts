@@ -1,6 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
-import { dormitoryPost, registerPost } from "../thunkFunctions/psotThunk";
+import {
+  bimaPost,
+  dormitoryPost,
+  registerPost,
+} from "../thunkFunctions/psotThunk";
 
 const initialState = {
   postData: {
@@ -40,6 +44,19 @@ const postSlice = createSlice({
         //console.log(action.payload);
       })
       .addCase(dormitoryPost.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+        state.postData = initialState.postData; // 유저 데이터 초기화
+      })
+      .addCase(bimaPost.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(bimaPost.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.postData = action.payload; // 백엔드로 api 요청 한 후 return으로 받은 json
+        //console.log(action.payload);
+      })
+      .addCase(bimaPost.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
         state.postData = initialState.postData; // 유저 데이터 초기화
