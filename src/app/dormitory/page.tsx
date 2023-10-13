@@ -6,6 +6,8 @@ import PostItem from "../../components/postItem";
 import { useDispatch, useSelector } from "react-redux";
 import { dormitoryPost } from "@/redux/thunkFunctions/psotThunk";
 
+import NewPostButton from "@/components/newPost";
+
 export default function Dormitory() {
   const dispatch = useDispatch();
   const dPosts = useSelector(
@@ -29,6 +31,14 @@ export default function Dormitory() {
           <PostItem dpost={dpost} key={dpost.postIdx} />
         ))}
       </div>
+      <NewPostButton />
+      {/* <div className=" text-xl font-bold flex flex-col  items-center w-full fixed bottom-5  p-5">
+        <Link href={"/newpost"}>
+          <button className=" mb-10 bg-orange-300 rounded-md shadow-md">
+            + 글쓰기
+          </button>
+        </Link>
+      </div> */}
     </section>
   );
 }
