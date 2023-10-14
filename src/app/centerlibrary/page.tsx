@@ -25,7 +25,7 @@ export default function CenterLibrary() {
   return (
     <section>
       <div className=" text-xl font-bold flex  justify-between items-center">
-        <Link href={"/bokji"}>{"<"}</Link>
+        <Link href={"/"}>{"<"}</Link>
         <h1 className="text-xl font-bold">중앙도서관 게시판 </h1>
         <button type="submit">검색 임티 </button>
       </div>

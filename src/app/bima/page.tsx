@@ -20,8 +20,8 @@ export default function Bima() {
   return (
     <section>
       <div className=" text-xl font-bold flex  justify-between items-center">
-        <Link href={"/bima"}>{"<"}</Link>
-        <h1 className="text-xl font-bold">비마관 게시판 </h1>
+        <Link href={"/"}>{"<"}</Link>
+        <h1 className="text-xl font-bol pb-10">비마관 게시판 </h1>
         <button type="submit">검색 임티 </button>
       </div>
 

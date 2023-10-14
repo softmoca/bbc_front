@@ -50,7 +50,7 @@ export default function Home() {
           <h1>📌 중앙 도서관</h1>
         </Link>
         <Link href="/theater">
-          <h1>📌 노천국장</h1>
+          <h1>📌 노천극장</h1>
         </Link>
         <Link href="/bokji">
           <h1>📌 복지관</h1>
