@@ -117,3 +117,20 @@ export const theaterPost = createAsyncThunk(
     }
   }
 );
+
+export const hanulPost = createAsyncThunk(
+  "post/hanulPost",
+  async (_, thunkAPI) => {
+    try {
+      const response = await axiosInstance.get(
+        "/post/hanul" //백엔드 api url
+      );
+
+      return response.data;
+    } catch (error) {
+      console.log(error);
+
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
