@@ -167,3 +167,37 @@ export const hwadoPost = createAsyncThunk(
     }
   }
 );
+
+export const okuiPost = createAsyncThunk(
+  "post/okuiPost",
+  async (_, thunkAPI) => {
+    try {
+      const response = await axiosInstance.get(
+        "/post/okui" //백엔드 api url
+      );
+
+      return response.data;
+    } catch (error) {
+      console.log(error);
+
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const nuriPost = createAsyncThunk(
+  "post/nuriPost",
+  async (_, thunkAPI) => {
+    try {
+      const response = await axiosInstance.get(
+        "/post/nuri" //백엔드 api url
+      );
+
+      return response.data;
+    } catch (error) {
+      console.log(error);
+
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
