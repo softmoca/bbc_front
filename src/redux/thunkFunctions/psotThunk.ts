@@ -45,7 +45,6 @@ export const bimaPost = createAsyncThunk(
       return response.data;
     } catch (error) {
       console.log(error);
-      c;
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -62,7 +61,41 @@ export const bokjiPost = createAsyncThunk(
       return response.data;
     } catch (error) {
       console.log(error);
-      c;
+
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const centerLibraryPost = createAsyncThunk(
+  "post/centerLibraryPost",
+  async (_, thunkAPI) => {
+    try {
+      const response = await axiosInstance.get(
+        "/post/centerLibrary" //백엔드 api url
+      );
+
+      return response.data;
+    } catch (error) {
+      console.log(error);
+
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const chambitPost = createAsyncThunk(
+  "post/chatbitPost",
+  async (_, thunkAPI) => {
+    try {
+      const response = await axiosInstance.get(
+        "/post/chambit" //백엔드 api url
+      );
+
+      return response.data;
+    } catch (error) {
+      console.log(error);
+
       return thunkAPI.rejectWithValue(error.message);
     }
   }

@@ -8,7 +8,7 @@ import { bokjiPost, dormitoryPost } from "@/redux/thunkFunctions/psotThunk";
 
 import NewPostButton from "@/components/newPost";
 
-export default function Dormitory() {
+export default function Bokji() {
   const dispatch = useDispatch();
   const dPosts = useSelector(
     (state) => state.persistedReducer.post.postData.data

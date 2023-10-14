@@ -3,6 +3,8 @@ import { toast } from "react-toastify";
 import {
   bimaPost,
   bokjiPost,
+  centerLibraryPost,
+  chambitPost,
   dormitoryPost,
   registerPost,
 } from "../thunkFunctions/psotThunk";
@@ -71,6 +73,32 @@ const postSlice = createSlice({
         //console.log(action.payload);
       })
       .addCase(bokjiPost.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+        state.postData = initialState.postData; // 유저 데이터 초기화
+      })
+      .addCase(centerLibraryPost.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(centerLibraryPost.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.postData = action.payload; // 백엔드로 api 요청 한 후 return으로 받은 json
+        //console.log(action.payload);
+      })
+      .addCase(centerLibraryPost.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+        state.postData = initialState.postData; // 유저 데이터 초기화
+      })
+      .addCase(chambitPost.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(chambitPost.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.postData = action.payload; // 백엔드로 api 요청 한 후 return으로 받은 json
+        //console.log(action.payload);
+      })
+      .addCase(chambitPost.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
         state.postData = initialState.postData; // 유저 데이터 초기화
