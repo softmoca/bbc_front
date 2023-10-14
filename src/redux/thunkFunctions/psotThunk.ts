@@ -50,3 +50,20 @@ export const bimaPost = createAsyncThunk(
     }
   }
 );
+
+export const bokjiPost = createAsyncThunk(
+  "post/bokjiPost",
+  async (_, thunkAPI) => {
+    try {
+      const response = await axiosInstance.get(
+        "/post/bokji" //백엔드 api url
+      );
+
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      c;
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
