@@ -134,3 +134,20 @@ export const hanulPost = createAsyncThunk(
     }
   }
 );
+
+export const saebitPost = createAsyncThunk(
+  "post/saebitPost",
+  async (_, thunkAPI) => {
+    try {
+      const response = await axiosInstance.get(
+        "/post/saebit" //백엔드 api url
+      );
+
+      return response.data;
+    } catch (error) {
+      console.log(error);
+
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

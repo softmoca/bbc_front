@@ -8,6 +8,7 @@ import {
   dormitoryPost,
   hanulPost,
   registerPost,
+  saebitPost,
   theaterPost,
 } from "../thunkFunctions/psotThunk";
 
@@ -127,6 +128,19 @@ const postSlice = createSlice({
         //console.log(action.payload);
       })
       .addCase(hanulPost.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+        state.postData = initialState.postData; // 유저 데이터 초기화
+      })
+      .addCase(saebitPost.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(saebitPost.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.postData = action.payload; // 백엔드로 api 요청 한 후 return으로 받은 json
+        //console.log(action.payload);
+      })
+      .addCase(saebitPost.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
         state.postData = initialState.postData; // 유저 데이터 초기화
