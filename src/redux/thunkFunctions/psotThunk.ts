@@ -151,3 +151,19 @@ export const saebitPost = createAsyncThunk(
     }
   }
 );
+export const hwadoPost = createAsyncThunk(
+  "post/hwadoPost",
+  async (_, thunkAPI) => {
+    try {
+      const response = await axiosInstance.get(
+        "/post/hwado" //백엔드 api url
+      );
+
+      return response.data;
+    } catch (error) {
+      console.log(error);
+
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
