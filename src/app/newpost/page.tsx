@@ -6,6 +6,7 @@ import Link from "next/link";
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
+import FileUpload from "../../components/FileUpload";
 
 //  TODO <과 완료 부르면 바로 뒤 페이지로 이동하게
 export default function Newpost() {
@@ -18,8 +19,10 @@ export default function Newpost() {
 
   const dispatch = useDispatch();
 
-  const isAuth = useSelector((state) => state.persistedReducer.user.isAuth); // 전체 state 를 가져오기
-  console.log(isAuth);
+  // const isAuth = useSelector((state) => state.persistedReducer.user.isAuth); // 전체 state 를 가져오기
+  // console.log(isAuth);
+
+  const isAuth = true;
 
   const onSubmit = ({
     postTitle,
@@ -59,7 +62,7 @@ export default function Newpost() {
   return (
     <div>
       {isAuth ? (
-        <div>
+        <div className="p-5">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className=" text-xl font-bold flex  justify-between items-center">
               <Link href={"/jonggo"}>{"<"}</Link>
@@ -67,18 +70,12 @@ export default function Newpost() {
               <button type="submit">완료 </button>
             </div>
 
-            <div className="mb-20">
-              <label //입력 요소와 텍스트를 연결하는 데 사용 되는 label 태그
-                htmlFor="postTitle" //htmlFor 속성은 레이블이 연결된 입력 요소의 ID를 지정
-                className="text-sm font-semibold text-gray-800"
-              >
-                제목
-              </label>
+            <div className=" flex   mb-20 mt-10">
               <input
-                placeholder="제목을 입력해주세요."
+                placeholder="제목"
                 type="postTitle"
                 id="postTitle"
-                className="w-full px-4 py-2 mt-2 border bg-white rounded-md"
+                className="w-1/3 px-4 py-2 mt-2 border-b bg-white rounded-md"
                 {...register("postTitle", newPostTitle)}
               ></input>
               {errors?.postTitle && (
@@ -88,16 +85,12 @@ export default function Newpost() {
                   </span>
                 </div>
               )}
-              <label //htmlFor 속성은 레이블이 연결된 입력 요소의 ID를 지정
-                className="text-sm font-semibold text-gray-800"
-              >
-                채팅방
-              </label>
+              <div className="w-1/3"></div>
               <input
-                placeholder="채팅방 이름을 입력하세요.."
+                placeholder="채팅방 이름"
                 type="chatRoomTitle"
                 id="chatRoomTitle"
-                className="w-full px-4 py-2 mt-2 border bg-white rounded-md"
+                className="w-1/3 px-4 py-2 mt-2 border bg-red-100 rounded-md"
                 {...register("chatRoomTitle", newPostChatRoomTitle)}
               ></input>
               {errors?.chatRoomTitle && (
@@ -109,8 +102,9 @@ export default function Newpost() {
               )}
             </div>
 
-            <div className="text-xl font-bold flex  justify-between items-centemb mb-5  ">
-              <h1>📷</h1>
+            <div className="text-xl font-bold flex  justify-between items-centemb p-5 ">
+              <FileUpload></FileUpload>
+
               <select
                 id="buildingName"
                 className="  border border-gray-300 rounded "
@@ -145,7 +139,7 @@ export default function Newpost() {
               placeholder="내용을 입력하세요.."
               type="postContent"
               id="postContent"
-              className="w-full px-4 py-2 mt-2 border bg-white rounded-md"
+              className="w-full   px-4 py-2 mt-2 border bg-white rounded-md"
               {...register("postContent", newPostContent)}
             ></input>
             {errors?.postContent && (

@@ -4,7 +4,7 @@ import Link from "next/link";
 import React, { useEffect } from "react";
 import PostItem from "../../components/postItem";
 import { useDispatch, useSelector } from "react-redux";
-import NewPostButton from "@/components/newPost";
+import NewPostButton from "@/components/newPostButton";
 import { bimaPost } from "@/redux/thunkFunctions/psotThunk";
 
 export default function Bima() {

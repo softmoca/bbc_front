@@ -10,7 +10,7 @@ import {
   dormitoryPost,
 } from "@/redux/thunkFunctions/psotThunk";
 
-import NewPostButton from "@/components/newPost";
+import NewPostButton from "@/components/newPostButton";
 
 export default function CenterLibrary() {
   const dispatch = useDispatch();

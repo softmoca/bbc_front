@@ -5,7 +5,7 @@ import React, { useEffect } from "react";
 import PostItem from "../../components/postItem";
 import { useDispatch, useSelector } from "react-redux";
 
-import NewPostButton from "@/components/newPost";
+import NewPostButton from "@/components/newPostButton";
 import { nuriPost } from "@/redux/thunkFunctions/psotThunk";
 
 export default function Okui() {

@@ -6,7 +6,7 @@ import PostItem from "../../components/postItem";
 import { useDispatch, useSelector } from "react-redux";
 import { bokjiPost, dormitoryPost } from "@/redux/thunkFunctions/psotThunk";
 
-import NewPostButton from "@/components/newPost";
+import NewPostButton from "@/components/newPostButton";
 
 export default function Bokji() {
   const dispatch = useDispatch();
