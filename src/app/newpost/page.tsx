@@ -45,18 +45,18 @@ export default function Newpost() {
   };
 
   const newPostTitle = {
-    required: "필수 필드입니다.",
+    required: "게시글 제목은  필수 요소입니다.",
   };
   const newPostChatRoomTitle = {
-    required: "필수 필드입니다.",
+    required: " 채팅방 이름필수 요소입니다.",
   };
 
   const newPostContent = {
-    required: "필수 필드입니다.",
+    required: "게시글 내용은 필수 요소입니다.",
   };
 
   const newbuildingName = {
-    required: "필수 필드입ㄴ디ㅏ",
+    required: "필수 입니다",
   };
 
   return (
@@ -70,7 +70,7 @@ export default function Newpost() {
               <button type="submit">완료 </button>
             </div>
 
-            <div className=" flex   mb-20 mt-10">
+            <div className=" flex   mb-2 mt-10">
               <input
                 placeholder="제목"
                 type="postTitle"
@@ -78,13 +78,7 @@ export default function Newpost() {
                 className="w-1/3 px-4 py-2 mt-2 border-b bg-white rounded-md"
                 {...register("postTitle", newPostTitle)}
               ></input>
-              {errors?.postTitle && (
-                <div>
-                  <span className="text-red-500">
-                    {errors.postTitle.message}
-                  </span>
-                </div>
-              )}
+
               <div className="w-1/3"></div>
               <input
                 placeholder="채팅방 이름"
@@ -93,8 +87,19 @@ export default function Newpost() {
                 className="w-1/3 px-4 py-2 mt-2 border bg-red-100 rounded-md"
                 {...register("chatRoomTitle", newPostChatRoomTitle)}
               ></input>
+            </div>
+
+            <div className="flex mb-10">
+              {errors?.postTitle && (
+                <div className="w-1/3">
+                  <span className="text-red-500">
+                    {errors.postTitle.message}
+                  </span>
+                </div>
+              )}
+              <div className="w-1/3"></div>
               {errors?.chatRoomTitle && (
-                <div>
+                <div className="w-1/3">
                   <span className="text-red-500">
                     {errors.chatRoomTitle.message}
                   </span>
@@ -139,7 +144,7 @@ export default function Newpost() {
               placeholder="내용을 입력하세요.."
               type="postContent"
               id="postContent"
-              className="w-full   px-4 py-2 mt-2 border bg-white rounded-md"
+              className="w-full h-96 border rounded-md px-4 py-2 mt-2  bg-white "
               {...register("postContent", newPostContent)}
             ></input>
             {errors?.postContent && (
