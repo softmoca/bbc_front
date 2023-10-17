@@ -7,6 +7,8 @@ import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import FileUpload from "../../components/FileUpload";
+import Dropzone from "react-dropzone";
+import axiosInstance from "@/utils/axios";
 
 //  TODO <과 완료 부르면 바로 뒤 페이지로 이동하게
 export default function Newpost() {
@@ -59,6 +61,26 @@ export default function Newpost() {
     required: "필수 입니다",
   };
 
+  const handleDrop = async (files) => {
+    let formData = new FormData();
+
+    const config = {
+      header: { "content-type": "multipart/form-data" }, // 헤더에 타입 명시
+    };
+
+    formData.append("file", files[0]); //file이라는 키와 files(파일들의 정보 객체) 값을 추가
+    try {
+      // 백엔드에서 위에서 생성한 config와 formdata 보내기
+      const response = await axiosInstance.post(
+        "/post/image",
+        formData,
+        config
+      );
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div>
       {isAuth ? (
@@ -108,7 +130,21 @@ export default function Newpost() {
             </div>
 
             <div className="text-xl font-bold flex  justify-between items-centemb p-5 ">
-              <FileUpload></FileUpload>
+              <div>
+                {" "}
+                <Dropzone onDrop={handleDrop}>
+                  {(
+                    { getRootProps, getInputProps } //Dropzone 에서 가져온 인자들
+                  ) => (
+                    <section>
+                      <div {...getRootProps()}>
+                        <input {...getInputProps()} />
+                        <p>📷</p>
+                      </div>
+                    </section>
+                  )}
+                </Dropzone>
+              </div>
 
               <select
                 id="buildingName"
