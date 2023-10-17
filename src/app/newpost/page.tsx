@@ -3,7 +3,7 @@
 import { registerPost } from "@/redux/thunkFunctions/psotThunk";
 import { authUser } from "@/redux/thunkFunctions/userThunk";
 import Link from "next/link";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import FileUpload from "../../components/FileUpload";
@@ -25,6 +25,8 @@ export default function Newpost() {
   // console.log(isAuth);
 
   const isAuth = true;
+
+  const [imageUrl, setImageURL] = useState();
 
   const onSubmit = ({
     postTitle,
@@ -68,7 +70,8 @@ export default function Newpost() {
       header: { "content-type": "multipart/form-data" }, // 헤더에 타입 명시
     };
 
-    formData.append("file", files[0]); //file이라는 키와 files(파일들의 정보 객체) 값을 추가
+    formData.append("files", files[0]); //file이라는 키와 files(파일들의 정보 객체) 값을 추가
+    console.log(files);
     try {
       // 백엔드에서 위에서 생성한 config와 formdata 보내기
       const response = await axiosInstance.post(
@@ -76,11 +79,14 @@ export default function Newpost() {
         formData,
         config
       );
+
+      //console.log(response.data.data.image);
+      setImageURL(response.data.data.image);
     } catch (error) {
       console.error(error);
     }
   };
-
+  console.log(imageUrl);
   return (
     <div>
       {isAuth ? (
@@ -130,7 +136,7 @@ export default function Newpost() {
             </div>
 
             <div className="text-xl font-bold flex  justify-between items-centemb p-5 ">
-              <div>
+              <div className="flex">
                 {" "}
                 <Dropzone onDrop={handleDrop}>
                   {(
@@ -175,7 +181,9 @@ export default function Newpost() {
                 </label>
               </div>
             </div>
-
+            <div>
+              <img className="min-w-[300px] h-[300px]" src={imageUrl}></img>
+            </div>
             <input
               placeholder="내용을 입력하세요.."
               type="postContent"
