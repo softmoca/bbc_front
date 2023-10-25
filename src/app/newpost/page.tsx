@@ -188,7 +188,7 @@ export default function Newpost() {
               placeholder="내용을 입력하세요.."
               type="postContent"
               id="postContent"
-              className="w-full h-96 border rounded-md px-4 py-2 mt-2  bg-white "
+              className="w-full h-32 border rounded-md px-4 py-2 mt-2  bg-white "
               {...register("postContent", newPostContent)}
             ></input>
             {errors?.postContent && (
