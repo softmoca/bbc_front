@@ -26,27 +26,7 @@ export default function Newpost() {
 
   const isAuth = true;
 
-  const [imageUrl, setImageURL] = useState();
-
-  const onSubmit = ({
-    postTitle,
-    chatRoomTitle,
-    buildingName,
-    postContent,
-  }) => {
-    // 페이지에서 입력 한 값
-    const body = {
-      postTitle: postTitle,
-      postContent: postContent,
-
-      buildingName: buildingName,
-      chatRoomTitle: chatRoomTitle,
-    };
-
-    dispatch(registerPost(body));
-
-    reset(); //react-hook-form으로 입력후 입력값 초기화
-  };
+  const [postImage, setPostImage] = useState();
 
   const newPostTitle = {
     required: "게시글 제목은  필수 요소입니다.",
@@ -71,7 +51,7 @@ export default function Newpost() {
     };
 
     formData.append("files", files[0]); //file이라는 키와 files(파일들의 정보 객체) 값을 추가
-    console.log(files);
+    // console.log(files);
     try {
       // 백엔드에서 위에서 생성한 config와 formdata 보내기
       const response = await axiosInstance.post(
@@ -81,12 +61,33 @@ export default function Newpost() {
       );
 
       //console.log(response.data.data.image);
-      setImageURL(response.data.data.image);
+      setPostImage(response.data.data.image);
     } catch (error) {
       console.error(error);
     }
   };
-  console.log(imageUrl);
+
+  const onSubmit = ({
+    postTitle,
+    chatRoomTitle,
+    buildingName,
+    postContent,
+  }) => {
+    // 페이지에서 입력 한 값
+    const body = {
+      postTitle: postTitle,
+      postContent: postContent,
+
+      buildingName: buildingName,
+      chatRoomTitle: chatRoomTitle,
+      postImage: postImage,
+    };
+    console.log(postImage);
+    dispatch(registerPost(body));
+
+    reset(); //react-hook-form으로 입력후 입력값 초기화
+  };
+
   return (
     <div>
       {isAuth ? (
@@ -182,13 +183,13 @@ export default function Newpost() {
               </div>
             </div>
             <div>
-              <img className="min-w-[300px] h-[300px]" src={imageUrl}></img>
+              <img className="min-w-[300px] h-[300px]" src={postImage}></img>
             </div>
             <input
               placeholder="내용을 입력하세요.."
               type="postContent"
               id="postContent"
-              className="w-full h-32 border rounded-md px-4 py-2 mt-2  bg-white "
+              className="w-full h-96 border rounded-md px-4 py-2 mt-2  bg-white "
               {...register("postContent", newPostContent)}
             ></input>
             {errors?.postContent && (
