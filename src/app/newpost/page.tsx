@@ -82,7 +82,7 @@ export default function Newpost() {
       chatRoomTitle: chatRoomTitle,
       postImage: postImage,
     };
-    console.log(postImage);
+    // console.log(postImage);
     dispatch(registerPost(body));
 
     reset(); //react-hook-form으로 입력후 입력값 초기화

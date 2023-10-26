@@ -9,6 +9,7 @@ export const registerPost = createAsyncThunk(
         "/post/",
         body //백엔드 api url
       );
+      console.log(body);
 
       return response.data;
     } catch (error) {
