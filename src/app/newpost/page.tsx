@@ -93,8 +93,8 @@ export default function Newpost() {
     dispatch(registerPost(body));
     setPostImage([]);
     reset(); //react-hook-form으로 입력후 입력값 초기화
-
     router.push("/");
+    //router.push(`/${buildingName}`);
   };
 
   return (
