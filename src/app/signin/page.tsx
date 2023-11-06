@@ -5,8 +5,11 @@ import Link from "next/link";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
+import { useRouter } from "next/navigation";
 
 export default function Signin() {
+  let router = useRouter();
+
   const {
     register,
     handleSubmit,
@@ -25,6 +28,8 @@ export default function Signin() {
 
     dispatch(loginUser(body));
     reset(); //react-hook-form으로 입력후 입력값 초기화
+
+    //router.push("/");
   };
 
   const userEmail = {
