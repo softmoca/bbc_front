@@ -30,7 +30,6 @@ export const loginUser: any = createAsyncThunk(
       return response.data;
     } catch (error) {
       console.log(error.response.data.message);
-      console.log(error.message);
       return thunkAPI.rejectWithValue(error.response.data.message);
     } //rejectWithValue에 string 을 넣어주면    action의 Payload(state에 전달하는 값)가 된다.
   }

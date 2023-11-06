@@ -19,17 +19,25 @@ export default function Signin() {
 
   const dispatch = useDispatch();
 
-  const onSubmit = ({ email, password }) => {
-    // 페이지에서 입력 한 값
-    const body = {
-      email: email,
-      password: password,
-    };
+  const onSubmit = async ({ email, password }) => {
+    try {
+      // 페이지에서 입력한 값
+      const body = {
+        email: email,
+        password: password,
+      };
 
-    dispatch(loginUser(body));
-    reset(); //react-hook-form으로 입력후 입력값 초기화
+      // dispatch 함수 호출
+      await dispatch(loginUser(body));
 
-    //router.push("/");
+      // dispatch에서 에러가 발생하지 않았을 때만 router.push("/") 실행
+      router.push("/");
+      reset(); // react-hook-form으로 입력 후 입력값 초기화
+    } catch (error) {
+      // dispatch 도중 에러가 발생한 경우 에러 처리 코드 작성
+      console.error("에러 발생: ", error);
+      // 에러 처리 로직 추가 (예: 사용자에게 에러 메시지 표시)
+    }
   };
 
   const userEmail = {
