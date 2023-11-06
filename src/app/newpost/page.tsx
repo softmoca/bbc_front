@@ -62,7 +62,7 @@ export default function Newpost() {
         config
       );
 
-      setPostImage(response.data.path);
+      setPostImage([response.data.path]);
     } catch (error) {
       console.error(error);
     }
@@ -80,8 +80,12 @@ export default function Newpost() {
       postContent: postContent,
       buildingName: buildingName,
       chatRoomTitle: chatRoomTitle,
-      image: [postImage],
     };
+
+    if (postImage.length > 0) {
+      body.images = postImage;
+    }
+
     //console.log(body);
     dispatch(registerPost(body));
 
