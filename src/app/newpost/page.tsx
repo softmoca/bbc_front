@@ -49,19 +49,19 @@ export default function Newpost() {
     const config = {
       header: { "content-type": "multipart/form-data" }, // 헤더에 타입 명시
     };
+    //console.log(files);
 
-    formData.append("files", files[0]); //file이라는 키와 files(파일들의 정보 객체) 값을 추가
-    // console.log(files);
+    formData.append("image", files[0]); //file이라는 키와 files(파일들의 정보 객체) 값을 추가
+
     try {
       // 백엔드에서 위에서 생성한 config와 formdata 보내기
       const response = await axiosInstance.post(
-        "/post/image",
+        "/common/image",
         formData,
         config
       );
 
-      //console.log(response.data.data.image);
-      setPostImage(response.data.data.image);
+      setPostImage(response.data.path);
     } catch (error) {
       console.error(error);
     }
@@ -183,7 +183,10 @@ export default function Newpost() {
               </div>
             </div>
             <div>
-              <img className="min-w-[300px] h-[300px]" src={postImage}></img>
+              <img
+                className="min-w-[300px] h-[300px]"
+                src={`${process.env.NEXT_PUBLIC_SERVER_URL}/public/temp/${postImage}`}
+              ></img>
             </div>
             <input
               placeholder="내용을 입력하세요.."
