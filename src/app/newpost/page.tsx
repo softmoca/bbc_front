@@ -10,9 +10,12 @@ import FileUpload from "../../components/FileUpload";
 import Dropzone from "react-dropzone";
 import axiosInstance from "@/utils/axios";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 //  TODO <과 완료 부르면 바로 뒤 페이지로 이동하게
 export default function Newpost() {
+  let router = useRouter();
+
   const {
     register,
     handleSubmit,
@@ -90,6 +93,8 @@ export default function Newpost() {
     dispatch(registerPost(body));
     setPostImage([]);
     reset(); //react-hook-form으로 입력후 입력값 초기화
+
+    router.push("/");
   };
 
   return (
@@ -98,9 +103,15 @@ export default function Newpost() {
         <div className="p-5">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className=" text-xl font-bold flex  justify-between items-center">
-              <Link href={"/jonggo"}>{"<"}</Link>
+              <div>{""}</div>
               <h1 className="text-xl font-bold">글쓰기 </h1>
-              <button type="submit">완료 </button>
+
+              <button
+                type="submit"
+                className="w-1/6 px-2 py-2 border bg-red-300 rounded-md"
+              >
+                완료
+              </button>
             </div>
 
             <div className=" flex   mb-2 mt-10">
