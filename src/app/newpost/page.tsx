@@ -27,7 +27,7 @@ export default function Newpost() {
 
   const isAuth = true;
 
-  const [postImage, setPostImage] = useState(null);
+  const [postImage, setPostImage] = useState([]);
 
   const newPostTitle = {
     required: "게시글 제목은  필수 요소입니다.",
@@ -78,12 +78,11 @@ export default function Newpost() {
     const body = {
       postTitle: postTitle,
       postContent: postContent,
-
       buildingName: buildingName,
       chatRoomTitle: chatRoomTitle,
-      postImage: postImage,
+      image: [postImage][0],
     };
-    // console.log(postImage);
+    //console.log(body);
     dispatch(registerPost(body));
 
     reset(); //react-hook-form으로 입력후 입력값 초기화
@@ -184,10 +183,10 @@ export default function Newpost() {
               </div>
             </div>
             <div>
-              {postImage !== null && (
+              {postImage.length > 0 && (
                 <img
                   className="min-w-[100px] h-[100px]"
-                  src={`${process.env.NEXT_PUBLIC_SERVER_URL}/public/temp/${postImage}`}
+                  src={`${process.env.NEXT_PUBLIC_SERVER_URL}/public/temp/${postImage[0]}`}
                   alt="image"
                 />
               )}

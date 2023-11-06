@@ -5,11 +5,11 @@ export const registerPost = createAsyncThunk(
   "post/registerPost",
   async (body, thunkAPI) => {
     try {
+      console.log(body);
       const response = await axiosInstance.post(
         "/post/",
         body //백엔드 api url
       );
-      //console.log(body);
 
       return response.data;
     } catch (error) {
