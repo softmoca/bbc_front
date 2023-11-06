@@ -26,7 +26,7 @@ export default function Newpost() {
 
   const isAuth = true;
 
-  const [postImage, setPostImage] = useState();
+  const [postImage, setPostImage] = useState("default.png");
 
   const newPostTitle = {
     required: "게시글 제목은  필수 요소입니다.",
@@ -184,7 +184,7 @@ export default function Newpost() {
             </div>
             <div>
               <img
-                className="min-w-[300px] h-[300px]"
+                className="min-w-[100px] h-[100px]"
                 src={`${process.env.NEXT_PUBLIC_SERVER_URL}/public/temp/${postImage}`}
               ></img>
             </div>
@@ -192,7 +192,7 @@ export default function Newpost() {
               placeholder="내용을 입력하세요.."
               type="postContent"
               id="postContent"
-              className="w-full h-96 border rounded-md px-4 py-2 mt-2  bg-white "
+              className="w-full h-32 border rounded-md px-4 py-2 mt-2  bg-white "
               {...register("postContent", newPostContent)}
             ></input>
             {errors?.postContent && (
