@@ -80,7 +80,7 @@ export default function Newpost() {
       postContent: postContent,
       buildingName: buildingName,
       chatRoomTitle: chatRoomTitle,
-      image: [postImage][0],
+      image: [postImage],
     };
     //console.log(body);
     dispatch(registerPost(body));
@@ -186,7 +186,7 @@ export default function Newpost() {
               {postImage.length > 0 && (
                 <img
                   className="min-w-[100px] h-[100px]"
-                  src={`${process.env.NEXT_PUBLIC_SERVER_URL}/public/temp/${postImage[0]}`}
+                  src={`${process.env.NEXT_PUBLIC_SERVER_URL}/public/temp/${postImage}`}
                   alt="image"
                 />
               )}
