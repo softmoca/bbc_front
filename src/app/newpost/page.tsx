@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import FileUpload from "../../components/FileUpload";
 import Dropzone from "react-dropzone";
 import axiosInstance from "@/utils/axios";
+import Image from "next/image";
 
 //  TODO <과 완료 부르면 바로 뒤 페이지로 이동하게
 export default function Newpost() {
@@ -26,7 +27,7 @@ export default function Newpost() {
 
   const isAuth = true;
 
-  const [postImage, setPostImage] = useState("default.png");
+  const [postImage, setPostImage] = useState(null);
 
   const newPostTitle = {
     required: "게시글 제목은  필수 요소입니다.",
@@ -183,10 +184,13 @@ export default function Newpost() {
               </div>
             </div>
             <div>
-              <img
-                className="min-w-[100px] h-[100px]"
-                src={`${process.env.NEXT_PUBLIC_SERVER_URL}/public/temp/${postImage}`}
-              ></img>
+              {postImage !== null && (
+                <img
+                  className="min-w-[100px] h-[100px]"
+                  src={`${process.env.NEXT_PUBLIC_SERVER_URL}/public/temp/${postImage}`}
+                  alt="image"
+                />
+              )}
             </div>
             <input
               placeholder="내용을 입력하세요.."
