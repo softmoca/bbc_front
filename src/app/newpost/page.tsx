@@ -88,7 +88,7 @@ export default function Newpost() {
 
     //console.log(body);
     dispatch(registerPost(body));
-
+    setPostImage([]);
     reset(); //react-hook-form으로 입력후 입력값 초기화
   };
 
