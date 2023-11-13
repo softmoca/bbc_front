@@ -7,15 +7,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { dormitoryPost } from "@/redux/thunkFunctions/psotThunk";
 
 import NewPostButton from "@/components/newPostButton";
+import { usePathname } from "next/navigation";
 
 export default function Dormitory() {
   const dispatch = useDispatch();
   const dPosts = useSelector(
     (state) => state.persistedReducer.post.postData.data
   );
+  const pathname = usePathname();
+  const path = pathname.substring(1);
+
+  // console.log(path);
 
   useEffect(() => {
-    dispatch(dormitoryPost()); //thucnk 함수 이름은 authUser
+    dispatch(dormitoryPost(path)); //thucnk 함수 이름은 authUser
   }, []); // 권한이 바뀌거나 or url경로가 바뀌거나
 
   return (
