@@ -19,7 +19,7 @@ export default function Home() {
 
   return (
     <div className="bg-white flex flex-col m-5">
-      <div className=" mb-10 bg-gray-100 rounded-md shadow-md">
+      <div className=" w-1/4 mb-10 bg-gray-100 rounded-md shadow-md">
         <Link href="/everytimehot" className="text-xl mb-1 font-bold ">
           <h1 className="mb-1"> 🔥주간 애브리타임 인기글🔥</h1>
         </Link>{" "}
@@ -28,7 +28,7 @@ export default function Home() {
         </Link>
       </div>
       <h1 className="text-xl font-bold mb-2">학교내 소통 게시판</h1>
-      <div className="mb-10  font-bold bg-gray-100 rounded-md shadow-md">
+      <div className="w-1/4 mb-10  font-bold bg-gray-100 rounded-md shadow-md">
         <Link href="/jonggo">
           <h1 className="mb-2"> 🥕 중고 거래 게시판</h1>
         </Link>{" "}
@@ -41,7 +41,7 @@ export default function Home() {
       </div>
       <h1 className="text-xl font-bold mb-2">핫플 건물별 소통 게시판</h1>
 
-      <div className="mb-10 font-bold bg-gray-100 rounded-md shadow-md">
+      <div className=" w-1/4 mb-10 font-bold bg-gray-100 rounded-md shadow-md">
         <Link href="/dormitory">
           <h1 className="mb-2"> 📌 기숙사(빛솔재)</h1>
         </Link>
@@ -56,28 +56,34 @@ export default function Home() {
         </Link>
       </div>
       <h1 className="text-xl font-bold mb-2 ">건물별 소통 게시판</h1>
-      <div className="  font-bold bg-gray-100 rounded-md shadow-md">
-        <Link href="/bima">
-          <h1 className="mb-2">📌 비마관</h1>
-        </Link>{" "}
-        <Link href="/chambit">
-          <h1 className="mb-2">📌 참빛관</h1>
-        </Link>{" "}
-        <Link href="/hanul">
-          <h1 className="mb-2">📌 한울관</h1>
-        </Link>{" "}
-        <Link href="/saebit">
-          <h1 className="mb-2">📌 새빛관</h1>
-        </Link>{" "}
-        <Link href="/hwado">
-          <h1 className="mb-2">📌 화도관</h1>
-        </Link>{" "}
-        <Link href="/okui">
-          <h1 className="mb-2">📌 옥의관</h1>
-        </Link>
-        <Link href="/nuri">
-          <h1 className="mb-2">📌 누리관</h1>
-        </Link>
+      <div className="w-1/4 grid grid-cols-1 sm:grid-cols-2 gap-4 font-bold bg-gray-100 rounded-md shadow-md">
+        <div>
+          <Link href="/bima">
+            <h1 className="mb-2">📌 비마관</h1>
+          </Link>{" "}
+          <Link href="/chambit">
+            <h1 className="mb-2">📌 참빛관</h1>
+          </Link>{" "}
+          <Link href="/hanul">
+            <h1 className="mb-2">📌 한울관</h1>
+          </Link>{" "}
+          <Link href="/saebit">
+            <h1 className="mb-2">📌 새빛관</h1>
+          </Link>{" "}
+        </div>
+
+        <div>
+          {" "}
+          <Link href="/hwado">
+            <h1 className="mb-2">📌 화도관</h1>
+          </Link>{" "}
+          <Link href="/okui">
+            <h1 className="mb-2">📌 옥의관</h1>
+          </Link>
+          <Link href="/nuri">
+            <h1 className="mb-2">📌 누리관</h1>
+          </Link>{" "}
+        </div>
       </div>
     </div>
   );
