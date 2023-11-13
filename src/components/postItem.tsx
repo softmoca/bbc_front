@@ -5,7 +5,9 @@ export default function PostItem({ dpost }) {
     <div className="border-b p-3">
       <p className="font-bold">{dpost.postTitle} </p>
       <p>{dpost.postContent} </p>
-      <p>{dpost.postLike}</p>
+      <p>
+        👍🏻 {dpost.postLike} 💬 {dpost.commentCount} {dpost.createdAt}
+      </p>
     </div>
   );
 }

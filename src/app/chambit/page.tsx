@@ -13,6 +13,7 @@ export default function Chatbit() {
   const dPosts = useSelector(
     (state) => state.persistedReducer.post.postData.data
   );
+  //TODO 사용자 정도 포함된거 가져오기
 
   useEffect(() => {
     dispatch(chambitPost()); //thucnk 함수 이름은 authUser
