@@ -18,25 +18,24 @@ export const registerPost = createAsyncThunk(
   }
 );
 
-export const getBoardPosts = createAsyncThunk(
-  "post/getBoardPosts",
-  async (path, thunkAPI) => {
-    try {
-      const response = await axiosInstance.get("post/getBoardPost");
+// export const getBoardPosts = createAsyncThunk(
+//   "post/getBoardPosts",
+//   async (path, thunkAPI) => {
+//     try {
+//       const response = await axiosInstance.get("post/getBoardPost");
 
-      return response.data;
-    } catch (error) {
-      console.log(error);
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
+//       return response.data;
+//     } catch (error) {
+//       console.log(error);
+//       return thunkAPI.rejectWithValue(error.message);
+//     }
+//   }
+// );
 
 export const dormitoryPost = createAsyncThunk(
   "post/dormitoryPost",
   async (_, thunkAPI) => {
     try {
-      console.log(path);
       const response = await axiosInstance.get(
         "/post/dormitory" //백엔드 api url
       );
@@ -56,6 +55,7 @@ export const bimaPost = createAsyncThunk(
       const response = await axiosInstance.get(
         "/post/bima" //백엔드 api url
       );
+      console.log(response.data);
 
       return response.data;
     } catch (error) {

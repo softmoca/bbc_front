@@ -10,17 +10,19 @@ import NewPostButton from "@/components/newPostButton";
 import { usePathname } from "next/navigation";
 
 export default function Dormitory() {
+  const boardName = usePathname();
+
+  console.log("sdfdsf");
+  console.log(boardName);
+  console.log("sdfdsf");
+
   const dispatch = useDispatch();
   const dPosts = useSelector(
     (state) => state.persistedReducer.post.postData.data
   );
-  const pathname = usePathname();
-  const path = pathname.substring(1);
-
-  // console.log(path);
 
   useEffect(() => {
-    dispatch(dormitoryPost(path)); //thucnk 함수 이름은 authUser
+    dispatch(dormitoryPost()); //thucnk 함수 이름은 authUser
   }, []); // 권한이 바뀌거나 or url경로가 바뀌거나
 
   return (
@@ -36,7 +38,14 @@ export default function Dormitory() {
           <PostItem dpost={dpost} key={dpost.postIdx} />
         ))}
       </div>
-      <NewPostButton />
+
+      <div className=" text-4xl font-bold flex flex-col  items-center w-full fixed bottom-10  p-5">
+        <Link href={`${boardName}/createpost`}>
+          <button className=" mb-10 bg-orange-300 rounded-md shadow-md">
+            + 글쓰기
+          </button>
+        </Link>
+      </div>
     </section>
   );
 }
