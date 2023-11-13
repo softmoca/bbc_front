@@ -12,10 +12,6 @@ import { usePathname } from "next/navigation";
 export default function Dormitory() {
   const boardName = usePathname();
 
-  console.log("sdfdsf");
-  console.log(boardName);
-  console.log("sdfdsf");
-
   const dispatch = useDispatch();
   const dPosts = useSelector(
     (state) => state.persistedReducer.post.postData.data
@@ -35,7 +31,7 @@ export default function Dormitory() {
 
       <div>
         {dPosts.map((dpost) => (
-          <PostItem dpost={dpost} key={dpost.postIdx} />
+          <PostItem dpost={dpost} key={dpost.id} />
         ))}
       </div>
 

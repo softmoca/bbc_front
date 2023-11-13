@@ -85,6 +85,7 @@ export default function Newpost() {
       postContent: postContent,
       buildingName: buildingName,
       chatRoomTitle: chatRoomTitle,
+      boardName: boardName,
     };
 
     if (postImage.length > 0) {
@@ -96,7 +97,6 @@ export default function Newpost() {
     setPostImage([]);
     reset(); //react-hook-form으로 입력후 입력값 초기화
     router.push(`/${boardName}`);
-    //router.push(`/${buildingName}`);
   };
 
   return (
