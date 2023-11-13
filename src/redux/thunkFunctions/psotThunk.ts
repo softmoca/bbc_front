@@ -19,19 +19,25 @@ export const registerPost = createAsyncThunk(
   }
 );
 
-// export const getBoardPosts = createAsyncThunk(
-//   "post/getBoardPosts",
-//   async (path, thunkAPI) => {
-//     try {
-//       const response = await axiosInstance.get("post/getBoardPost");
+export const getBoardPosts = createAsyncThunk(
+  "post/getBoardPosts",
+  async (boardName: string, thunkAPI) => {
+    const extractedValue: string = boardName.substring(1);
 
-//       return response.data;
-//     } catch (error) {
-//       console.log(error);
-//       return thunkAPI.rejectWithValue(error.message);
-//     }
-//   }
-// );
+    const queryBoardName = { where__buildingName__i_like: extractedValue };
+    try {
+      const response = await axiosInstance.get("post/getBoardPost", {
+        params: queryBoardName,
+      });
+
+      console.log(response.data);
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
 
 export const dormitoryPost = createAsyncThunk(
   "post/dormitoryPost",

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import React, { useEffect } from "react";
-import PostItem from "../../components/postItem";
+import PostItem from "../../../components/postItem";
 import { useDispatch, useSelector } from "react-redux";
 import { chambitPost } from "@/redux/thunkFunctions/psotThunk";
 import NewPostButton from "@/components/newPostButton";
