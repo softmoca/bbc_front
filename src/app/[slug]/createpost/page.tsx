@@ -17,7 +17,6 @@ export default function Newpost() {
   const boardName = parts[1];
   let router = useRouter();
 
-  console.log(boardName);
   const {
     register,
     handleSubmit,

@@ -4,13 +4,13 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 export const registerPost = createAsyncThunk(
   "post/registerPost",
   async (body, thunkAPI) => {
+    //console.log(body);
     try {
       const response = await axiosInstance.post(
         "/post/",
         body //백엔드 api url
       );
-      console.log("fsdfsdfsdf");
-      console.log(body);
+
       return response.data;
     } catch (error) {
       console.log(error);

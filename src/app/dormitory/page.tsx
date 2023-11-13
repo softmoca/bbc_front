@@ -35,7 +35,7 @@ export default function Dormitory() {
         ))}
       </div>
 
-      <div className=" text-4xl font-bold flex flex-col  items-center w-full fixed bottom-10  p-5">
+      <div className="w-1/3 text-3xl font-bold flex flex-col  items-center  fixed bottom-10  p-5">
         <Link href={`${boardName}/createpost`}>
           <button className=" mb-10 bg-orange-300 rounded-md shadow-md">
             + 글쓰기
