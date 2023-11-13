@@ -3,19 +3,21 @@
 import { registerPost } from "@/redux/thunkFunctions/psotThunk";
 import { authUser } from "@/redux/thunkFunctions/userThunk";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import FileUpload from "../../../components/FileUpload";
 import Dropzone from "react-dropzone";
 import axiosInstance from "@/utils/axios";
-import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 //  TODO <과 완료 부르면 바로 뒤 페이지로 이동하게
 export default function Newpost() {
+  const newPostPath = usePathname();
+  const parts: string[] = newPostPath.split("/");
+  const boardName = parts[1];
   let router = useRouter();
 
+  console.log(boardName);
   const {
     register,
     handleSubmit,
@@ -83,7 +85,6 @@ export default function Newpost() {
       postContent: postContent,
       buildingName: buildingName,
       chatRoomTitle: chatRoomTitle,
-      router: router,
     };
 
     if (postImage.length > 0) {
@@ -94,7 +95,7 @@ export default function Newpost() {
     dispatch(registerPost(body));
     setPostImage([]);
     reset(); //react-hook-form으로 입력후 입력값 초기화
-    router.push("/");
+    router.push(`/${boardName}`);
     //router.push(`/${buildingName}`);
   };
 
