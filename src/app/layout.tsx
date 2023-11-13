@@ -21,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="{OpenSans.className}">
-      <body>
+      <body className="w-1/3">
         <ToastProvider>
           {" "}
           <Providers>
