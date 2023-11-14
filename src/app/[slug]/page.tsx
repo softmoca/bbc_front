@@ -15,7 +15,7 @@ export default function Post() {
 
   const dPosts = useSelector((state) => state.persistedReducer.post.postData);
 
-  console.log(dPosts);
+  const BoardName = dPosts[1].buildingName;
 
   useEffect(() => {
     dispatch(getBoardPosts(boardId)); //thucnk 함수 이름은 authUser
@@ -25,8 +25,8 @@ export default function Post() {
     <section>
       <div className=" text-xl font-bold flex  justify-between items-center">
         <Link href={"/"}>{"<"}</Link>
-        <h1 className="text-xl font-bold">기숙사 게시판 </h1>
-        <button type="submit">검색 임티 </button>
+        <h1 className="text-xl font-bold">{`${BoardName} 게시판`} </h1>
+        <button type="submit">🔍 </button>
       </div>
 
       <div>
