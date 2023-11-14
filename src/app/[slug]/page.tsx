@@ -13,9 +13,7 @@ export default function Post() {
 
   const dispatch = useDispatch();
 
-  const dPosts = useSelector(
-    (state) => state.persistedReducer.post.postData.data
-  );
+  const dPosts = useSelector((state) => state.persistedReducer.post.postData);
 
   console.log(dPosts);
 
@@ -32,9 +30,9 @@ export default function Post() {
       </div>
 
       <div>
-        {/* {dPosts.map((dpost) => (
+        {dPosts.map((dpost) => (
           <PostItem dpost={dpost} key={dpost.id} />
-        ))} */}
+        ))}
       </div>
 
       <div className="w-1/3 text-3xl font-bold flex flex-col  items-center  fixed bottom-10  p-5">

@@ -28,7 +28,7 @@ export const getBoardPosts = createAsyncThunk(
         params: queryBoardId,
       });
 
-      console.log(response.data.data.data);
+      //console.log(response.data.data.data);
       return response.data;
     } catch (error) {
       console.log(error);
