@@ -21,16 +21,14 @@ export const registerPost = createAsyncThunk(
 
 export const getBoardPosts = createAsyncThunk(
   "post/getBoardPosts",
-  async (boardName: string, thunkAPI) => {
-    const extractedValue: string = boardName.substring(1);
-
-    const queryBoardName = { where__buildingName__i_like: extractedValue };
+  async (boardId: string, thunkAPI) => {
+    const queryBoardId = { where__board__i_like: boardId };
     try {
       const response = await axiosInstance.get("post/getBoardPost", {
-        params: queryBoardName,
+        params: queryBoardId,
       });
 
-      console.log(response.data);
+      console.log(response.data.data.data);
       return response.data;
     } catch (error) {
       console.log(error);

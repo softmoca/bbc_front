@@ -61,7 +61,7 @@ export default function Home() {
           <Link href="/bima">
             <h1 className="mb-2">📌 비마관</h1>
           </Link>{" "}
-          <Link href="/chambit">
+          <Link href="/12">
             <h1 className="mb-2">📌 참빛관</h1>
           </Link>{" "}
           <Link href="/hanul">
