@@ -6,6 +6,7 @@ import {
   centerLibraryPost,
   chambitPost,
   dormitoryPost,
+  getBoardPosts,
   hanulPost,
   hwadoPost,
   nuriPost,
@@ -43,6 +44,19 @@ const postSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
         toast.error(action.payload);
+      })
+      .addCase(getBoardPosts.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getBoardPosts.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.postData = action.payload; // 백엔드로 api 요청 한 후 return으로 받은 json
+        //console.log(action.payload);
+      })
+      .addCase(getBoardPosts.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+        state.postData = initialState.postData; // 유저 데이터 초기화
       });
   },
 });
