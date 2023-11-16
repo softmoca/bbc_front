@@ -41,13 +41,11 @@ export const getBoardPosts = createAsyncThunk(
 export const getPost = createAsyncThunk(
   "post/getPost",
   async (postId: string, thunkAPI) => {
-    const queryPostId = { id: postId };
-    console.log(queryPostId);
     try {
       const response = await axiosInstance.get(`post/${postId}`);
 
-      console.log(response.data.data);
-      return response.data;
+      //console.log(response.data.data);
+      return response.data.data;
     } catch (error) {
       console.log(error);
       return thunkAPI.rejectWithValue(error.message);

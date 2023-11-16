@@ -1,9 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
-import { getBoardPosts, registerPost } from "../thunkFunctions/psotThunk";
+import {
+  getBoardPosts,
+  getPost,
+  registerPost,
+} from "../thunkFunctions/psotThunk";
 
 const initialState = {
   postData: {},
+  postDetailData: {},
   isLoading: false,
   error: "",
 };
@@ -35,6 +40,18 @@ const postSlice = createSlice({
         //console.log(action.payload.data.data);
       })
       .addCase(getBoardPosts.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+        state.postData = initialState.postData; // 유저 데이터 초기화
+      })
+      .addCase(getPost.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getPost.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.postDetailData = action.payload; // 백엔드로 api 요청 한 후 return으로 받은 json
+      })
+      .addCase(getPost.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
         state.postData = initialState.postData; // 유저 데이터 초기화

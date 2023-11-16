@@ -19,7 +19,11 @@ export default function page() {
   }, []); // 권한이 바뀌거나 or url경로가 바뀌거나
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const dPosts = useSelector((state) => state.persistedReducer.post.postData);
+  const dDetailPosts = useSelector(
+    (state) => state.persistedReducer.post.postDetailData
+  );
+
+  console.log(dDetailPosts);
 
   return <div>개별게시물</div>;
 }
