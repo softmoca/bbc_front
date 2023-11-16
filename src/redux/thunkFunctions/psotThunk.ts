@@ -23,6 +23,7 @@ export const getBoardPosts = createAsyncThunk(
   "post/getBoardPosts",
   async (boardId: string, thunkAPI) => {
     const queryBoardId = { where__board__i_like: boardId };
+
     try {
       const response = await axiosInstance.get("post/getBoardPost", {
         params: queryBoardId,

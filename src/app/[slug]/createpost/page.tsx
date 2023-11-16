@@ -14,7 +14,7 @@ import { usePathname, useRouter } from "next/navigation";
 export default function Newpost() {
   const newPostPath = usePathname();
   const parts: string[] = newPostPath.split("/");
-  const boardName = parts[1];
+  const boardId = parts[1];
   let router = useRouter();
 
   const {
@@ -25,9 +25,6 @@ export default function Newpost() {
   } = useForm({ mode: "onChange" });
 
   const dispatch = useDispatch();
-
-  // const isAuth = useSelector((state) => state.persistedReducer.user.isAuth); // 전체 state 를 가져오기
-  // console.log(isAuth);
 
   const isAuth = true;
 
@@ -54,7 +51,6 @@ export default function Newpost() {
     const config = {
       header: { "content-type": "multipart/form-data" }, // 헤더에 타입 명시
     };
-    //console.log(files);
 
     formData.append("image", files[0]); //file이라는 키와 files(파일들의 정보 객체) 값을 추가
 
@@ -84,7 +80,7 @@ export default function Newpost() {
       postContent: postContent,
       buildingName: buildingName,
       chatRoomTitle: chatRoomTitle,
-      boardName: boardName,
+      boardId: boardId,
     };
 
     if (postImage.length > 0) {
@@ -92,10 +88,11 @@ export default function Newpost() {
     }
 
     //console.log(body);
+
     dispatch(registerPost(body));
     setPostImage([]);
     reset(); //react-hook-form으로 입력후 입력값 초기화
-    router.push(`/${boardName}`);
+    router.push(`/${boardId}`);
   };
 
   return (

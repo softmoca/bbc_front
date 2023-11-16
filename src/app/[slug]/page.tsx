@@ -15,6 +15,8 @@ export default function Post() {
 
   const dPosts = useSelector((state) => state.persistedReducer.post.postData);
 
+  //console.log(dPosts);
+
   const BoardName = dPosts[1].buildingName;
 
   useEffect(() => {
