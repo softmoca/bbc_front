@@ -13,21 +13,23 @@ export default function Post() {
 
   const dispatch = useDispatch();
 
-  const dPosts = useSelector((state) => state.persistedReducer.post.postData);
-
-  //console.log(dPosts);
-
-  const BoardName = dPosts[1].buildingName;
-
   useEffect(() => {
     dispatch(getBoardPosts(boardId)); //thucnk 함수 이름은 authUser
   }, []); // 권한이 바뀌거나 or url경로가 바뀌거나
+
+  const dPosts = useSelector((state) => state.persistedReducer.post.postData);
+  console.log(dPosts);
+
+  let BoardTitle = "";
+  if (dPosts.length > 0) {
+    BoardTitle = dPosts[1].board.BoardTitle;
+  }
 
   return (
     <section>
       <div className=" text-xl font-bold flex  justify-between items-center">
         <Link href={"/"}>{"<"}</Link>
-        <h1 className="text-xl font-bold">{`${BoardName} 게시판`} </h1>
+        <h1 className="text-xl font-bold">{`${BoardTitle} 게시판`} </h1>
         <button type="submit">🔍 </button>
       </div>
 
