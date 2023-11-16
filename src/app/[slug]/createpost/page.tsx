@@ -68,17 +68,11 @@ export default function Newpost() {
     }
   };
 
-  const onSubmit = ({
-    postTitle,
-    chatRoomTitle,
-    buildingName,
-    postContent,
-  }) => {
+  const onSubmit = ({ postTitle, chatRoomTitle, postContent }) => {
     // 페이지에서 입력 한 값
     const body = {
       postTitle: postTitle,
       postContent: postContent,
-      buildingName: buildingName,
       chatRoomTitle: chatRoomTitle,
       boardId: boardId,
     };
@@ -165,24 +159,6 @@ export default function Newpost() {
                   )}
                 </Dropzone>
               </div>
-
-              <select
-                id="buildingName"
-                className="  border border-gray-300 rounded "
-                {...register("buildingName", newbuildingName)}
-              >
-                <option value="기숙사(빛솔재)">기숙사(빛솔재)</option>
-                <option value="중앙 도서관">중앙 도서관</option>{" "}
-                <option value="노천극장">노천극장</option>
-                <option value="복지관">복지관</option>
-                <option value="비마관">비마관</option>
-                <option value="한울관">한울관</option>
-                <option value="화도관">화도관</option>
-                <option value="참빛관">참빛관</option>
-                <option value="새빛관">새빛관</option>
-                <option value="옥의관">옥의관</option>
-                <option value="누리관">누리관</option>
-              </select>
 
               <div className="flex items-center space-x-2">
                 <input

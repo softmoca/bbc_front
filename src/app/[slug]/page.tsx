@@ -18,12 +18,8 @@ export default function Post() {
   }, []); // 권한이 바뀌거나 or url경로가 바뀌거나
 
   const dPosts = useSelector((state) => state.persistedReducer.post.postData);
-  console.log(dPosts);
 
-  let BoardTitle = "";
-  if (dPosts.length > 0) {
-    BoardTitle = dPosts[1].board.BoardTitle;
-  }
+  const BoardTitle = dPosts[1].board.BoardTitle;
 
   return (
     <section>
