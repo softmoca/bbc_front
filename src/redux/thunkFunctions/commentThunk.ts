@@ -7,8 +7,8 @@ export const getComments = createAsyncThunk(
     try {
       const response = await axiosInstance.get(`post/${postId}/comment`);
 
-      //console.log(response.data.data);
-      return response.data.data;
+      console.log(response.data.data.data);
+      return response.data.data.data;
     } catch (error) {
       console.log(error);
       return thunkAPI.rejectWithValue(error.message);

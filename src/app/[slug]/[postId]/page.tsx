@@ -1,5 +1,6 @@
 "use client";
 
+import { getComments } from "@/redux/thunkFunctions/commentThunk";
 import { getPost } from "@/redux/thunkFunctions/psotThunk";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -11,7 +12,6 @@ export default function page() {
   const postNamePath = usePathname();
   const postId = postNamePath.substring(5);
   const BoardId = postNamePath.slice(1, 4);
-  console.log(BoardId);
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const dispatch = useDispatch();
@@ -19,6 +19,7 @@ export default function page() {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
     dispatch(getPost(postId)); //thucnk 함수 이름은 authUser
+    dispatch(getComments(postId));
   }, []); // 권한이 바뀌거나 or url경로가 바뀌거나
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -29,8 +30,6 @@ export default function page() {
   const BoardTitle = dDetailPosts.board.BoardTitle;
   const PostNickName = dDetailPosts.author.nickName;
   const postAnonymous = dDetailPosts.postAnonymous;
-
-  console.log(dDetailPosts);
 
   return (
     <section>
