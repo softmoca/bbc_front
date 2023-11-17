@@ -1,6 +1,7 @@
 "use client";
 
 import { getPost } from "@/redux/thunkFunctions/psotThunk";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,6 +10,8 @@ export default function page() {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const postNamePath = usePathname();
   const postId = postNamePath.substring(5);
+  const BoardId = postNamePath.slice(1, 4);
+  console.log(BoardId);
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const dispatch = useDispatch();
@@ -23,7 +26,14 @@ export default function page() {
     (state) => state.persistedReducer.post.postDetailData
   );
 
-  console.log(dDetailPosts);
+  const BoardTitle = dDetailPosts.board.BoardTitle;
 
-  return <div>개별게시물</div>;
+  return (
+    <div>
+      <div className=" text-xl font-bold flex  justify-between items-center">
+        <Link href={`${BoardId}`}>{"<"}</Link>
+        <h1 className="text-xl font-bold">{`${BoardTitle} 게시판`} </h1>
+      </div>
+    </div>
+  );
 }
