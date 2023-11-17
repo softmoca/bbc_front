@@ -1,3 +1,5 @@
+("");
+
 import { createSlice } from "@reduxjs/toolkit";
 import { getComments } from "../thunkFunctions/commentThunk";
 
@@ -19,7 +21,7 @@ const commentSlice = createSlice({
       })
       .addCase(getComments.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.commentData = action.payload.data.data; // 백엔드로 api 요청 한 후 return으로 받은 json
+        state.commentData = action.payload.data; // 백엔드로 api 요청 한 후 return으로 받은 json
         //console.log(action.payload.data.data);
       })
       .addCase(getComments.rejected, (state, action) => {
