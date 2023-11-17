@@ -27,13 +27,44 @@ export default function page() {
   );
 
   const BoardTitle = dDetailPosts.board.BoardTitle;
+  const PostNickName = dDetailPosts.author.nickName;
+  const postAnonymous = dDetailPosts.postAnonymous;
+
+  console.log(dDetailPosts);
 
   return (
-    <div>
+    <section>
       <div className=" text-xl font-bold flex  justify-between items-center">
         <Link href={`${BoardId}`}>{"<"}</Link>
         <h1 className="text-xl font-bold">{`${BoardTitle} 게시판`} </h1>
       </div>
-    </div>
+
+      <div className=" flex mt-3">
+        <div> 😀</div>
+        {postAnonymous ? (
+          <div className="ml-10 font-bold">익명</div>
+        ) : (
+          <div className="ml-10 font-bold">{`${PostNickName}`}</div>
+        )}
+      </div>
+
+      <div className="mt-10">
+        <h1 className="text-xl font-bold">{`${dDetailPosts.postTitle} `} </h1>
+        <div className="text-m mb-20">{`${dDetailPosts.postContent} `} </div>
+
+        <div className="flex">
+          <div className="mr-3 text-xs"> 👍🏻 {`${dDetailPosts.postLike} `}</div>
+          <div className="mr-3 text-xs">
+            💬 {`${dDetailPosts.commentCount} `}
+          </div>
+          <div className="mr-3 text-xs">{`${dDetailPosts.createdAt} `}</div>
+          <div>채팅방참여</div>
+        </div>
+
+        <div className="m-10">광고</div>
+
+        <div>댓글</div>
+      </div>
+    </section>
   );
 }
