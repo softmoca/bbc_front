@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 "use client";
 
 import { getComments } from "@/redux/thunkFunctions/commentThunk";
@@ -8,24 +9,24 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function page() {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const postNamePath = usePathname();
   const postId = postNamePath.substring(5);
   const BoardId = postNamePath.slice(1, 4);
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const dispatch = useDispatch();
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
     dispatch(getPost(postId)); //thucnk 함수 이름은 authUser
     dispatch(getComments(postId));
   }, []); // 권한이 바뀌거나 or url경로가 바뀌거나
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const dDetailPosts = useSelector(
     (state) => state.persistedReducer.post.postDetailData
   );
+
+  const dComments = useSelector((state) => state.persistedReducer.comment);
+
+  console.log(dComments);
 
   const BoardTitle = dDetailPosts.board.BoardTitle;
   const PostNickName = dDetailPosts.author.nickName;
@@ -62,7 +63,9 @@ export default function page() {
 
         <div className="m-10">광고</div>
 
-        <div>댓글</div>
+        <div>
+          <div></div>
+        </div>
       </div>
     </section>
   );

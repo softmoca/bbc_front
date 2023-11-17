@@ -21,8 +21,8 @@ const commentSlice = createSlice({
       })
       .addCase(getComments.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.commentData = action.payload.data; // 백엔드로 api 요청 한 후 return으로 받은 json
-        //console.log(action.payload.data.data);
+        state.commentData = action.payload; // 백엔드로 api 요청 한 후 return으로 받은 json
+        //console.log(action.payload);
       })
       .addCase(getComments.rejected, (state, action) => {
         state.isLoading = false;
