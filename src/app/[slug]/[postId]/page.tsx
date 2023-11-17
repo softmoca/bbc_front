@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 "use client";
 
+import CommentItem from "@/components/commentItem";
 import { getComments } from "@/redux/thunkFunctions/commentThunk";
 import { getPost } from "@/redux/thunkFunctions/psotThunk";
 import Link from "next/link";
@@ -24,7 +25,9 @@ export default function page() {
     (state) => state.persistedReducer.post.postDetailData
   );
 
-  const dComments = useSelector((state) => state.persistedReducer.comment);
+  const dComments = useSelector(
+    (state) => state.persistedReducer.comment.commentData
+  );
 
   console.log(dComments);
 
@@ -64,7 +67,11 @@ export default function page() {
         <div className="m-10">광고</div>
 
         <div>
-          <div></div>
+          <div>
+            {dComments.map((dcomment) => (
+              <CommentItem dcomment={dcomment} key={dcomment.id} />
+            ))}
+          </div>
         </div>
       </div>
     </section>
