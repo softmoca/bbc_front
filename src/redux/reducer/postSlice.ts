@@ -9,6 +9,7 @@ import {
 const initialState = {
   postData: {},
   postDetailData: {},
+
   isLoading: false,
   error: "",
 };
