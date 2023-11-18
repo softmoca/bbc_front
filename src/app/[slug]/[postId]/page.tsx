@@ -31,7 +31,6 @@ export default function page() {
 
   const BoardTitle = dDetailPosts.board.BoardTitle;
   const PostNickName = dDetailPosts.author.nickName;
-  const postAnonymous = dDetailPosts.postAnonymous;
 
   return (
     <section>
@@ -42,11 +41,8 @@ export default function page() {
 
       <div className=" flex mt-3">
         <div> 😀</div>
-        {postAnonymous ? (
-          <div className="ml-10 font-bold">익명</div>
-        ) : (
-          <div className="ml-10 font-bold">{`${PostNickName}`}</div>
-        )}
+
+        <div className="ml-10 font-bold">{`${PostNickName}`}</div>
       </div>
 
       <div className="mt-10">

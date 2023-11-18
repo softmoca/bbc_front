@@ -24,12 +24,8 @@ export default function CommentItem({ dcomment }) {
         </div>
 
         <div>
-          {" "}
-          {postAnonymous ? (
-            <div className="ml-5 text-sm  font-extrabold">익명</div>
-          ) : (
-            <div className="ml-5 font-extrabold">{`${commnetNickName}`}</div>
-          )}
+          <div className="ml-5 font-extrabold">{`${commnetNickName}`}</div>
+
           <div className="ml-5 text-xs font-thin  ">{`${commentCreateAt}`}</div>
         </div>
       </div>

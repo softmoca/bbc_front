@@ -4,13 +4,7 @@ import { toast } from "react-toastify";
 import { authUser, loginUser, registerUser } from "../thunkFunctions/userThunk";
 
 const initialState = {
-  userData: {
-    id: "",
-    email: "",
-    name: "",
-    role: 0, //0은 일반 유저
-    image: "",
-  },
+  userData: {},
   isAuth: false,
   isLoading: false,
   error: "",
