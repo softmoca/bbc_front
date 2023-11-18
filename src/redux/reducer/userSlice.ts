@@ -1,7 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 
-import { authUser, loginUser, registerUser } from "../thunkFunctions/userThunk";
+import {
+  authUser,
+  getUserData,
+  loginUser,
+  registerUser,
+} from "../thunkFunctions/userThunk";
 
 const initialState = {
   userData: {},
@@ -59,6 +64,20 @@ const userSlice = createSlice({
         state.error = action.payload;
         state.userData = initialState.userData; // 유저 데이터 초기화
         state.isAuth = false;
+        localStorage.removeItem("accessToken"); // 만료가 된경우
+      })
+      .addCase(getUserData.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getUserData.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.userData = action.payload; // 백엔드로 api 요청 한 후 return으로 받은 json
+
+        console.log(action.payload);
+      })
+      .addCase(getUserData.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
         localStorage.removeItem("accessToken"); // 만료가 된경우
       });
   },
