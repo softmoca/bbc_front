@@ -1,6 +1,6 @@
 "use client";
 
-import { getUserData } from "@/redux/thunkFunctions/userThunk";
+import { authUser, getUserData } from "@/redux/thunkFunctions/userThunk";
 import Link from "next/link";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,7 +10,7 @@ export default function Profile() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getUserData()); //thucnk 함수 이름은 authUser
+    dispatch(authUser()); //thucnk 함수 이름은 authUser
   }, []); // 권한이 바뀌거나 or url경로가 바뀌거나
 
   const userData = useSelector((state) => state.persistedReducer.user.userData);
@@ -24,7 +24,6 @@ export default function Profile() {
             alt={userData.nickName}
           />
         </div>
-
         <div>
           <div className="ml-5 font-extrabold">{`${userData.email}`}</div>
 
@@ -34,7 +33,7 @@ export default function Profile() {
 
       <div className=" mb-10  font-bold bg-gray-100 rounded-md shadow-md">
         <h1 className="text-2xl font-extrabold "> 계정 </h1>
-        <Link href="/">
+        <Link href={`/profile/${userData.id}`}>
           <h1 className="mb-1 mt-2"> 닉네임/프로필 사진 변경</h1>
         </Link>{" "}
         <Link href="/">
