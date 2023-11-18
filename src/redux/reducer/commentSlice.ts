@@ -1,5 +1,3 @@
-("");
-
 import { createSlice } from "@reduxjs/toolkit";
 import { getComments } from "../thunkFunctions/commentThunk";
 

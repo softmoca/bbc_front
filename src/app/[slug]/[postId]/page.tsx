@@ -29,11 +29,13 @@ export default function page() {
     (state) => state.persistedReducer.comment.commentData
   );
 
-  console.log(dComments);
+  // console.log(dComments);
 
   const BoardTitle = dDetailPosts.board.BoardTitle;
   const PostNickName = dDetailPosts.author.nickName;
   const postAnonymous = dDetailPosts.postAnonymous;
+
+  console.log(dDetailPosts.images[0]?.path);
 
   return (
     <section>
@@ -54,6 +56,14 @@ export default function page() {
       <div className="mt-10">
         <h1 className="text-xl font-bold">{`${dDetailPosts.postTitle} `} </h1>
         <div className="text-m mb-20">{`${dDetailPosts.postContent} `} </div>
+
+        {dDetailPosts.images.length > 0 && (
+          <img
+            className="min-w-[100px] h-[100px]"
+            src={`${process.env.NEXT_PUBLIC_SERVER_URL}${dDetailPosts.images[0]?.path}`}
+            alt="image"
+          />
+        )}
 
         <div className="flex">
           <div className="mr-3 text-xs"> 👍🏻 {`${dDetailPosts.postLike} `}</div>

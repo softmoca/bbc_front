@@ -1,4 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 import React from "react";
+import gravatar from "gravatar";
 
 export default function CommentItem({ dcomment }) {
   const dcommentId = dcomment.id;
@@ -7,11 +9,19 @@ export default function CommentItem({ dcomment }) {
   const commnetNickName = dcomment.author.nickName;
   const commentCreateAt = dcomment.createdAt;
   const commentContent = dcomment.commentContent;
+  const authorEmail = dcomment.author.email;
+
+  //console.log(authorEmail);
 
   return (
     <div>
       <div className=" flex mt-4">
-        <div className="text-3xl "> 😀</div>
+        <div>
+          <img
+            src={gravatar.url(authorEmail, { s: "25px", d: "identicon" })}
+            alt={CommentNickName}
+          />
+        </div>
 
         <div>
           {" "}

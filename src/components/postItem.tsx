@@ -4,7 +4,6 @@ import React from "react";
 
 export default function PostItem({ dpost }) {
   const dpostId = dpost.id;
-  console.log(dpostId);
 
   const boardNamePath = usePathname();
   const boardId = boardNamePath.substring(1);
@@ -14,6 +13,7 @@ export default function PostItem({ dpost }) {
       <div className="border-b p-3">
         <p className="font-bold">{dpost.postTitle} </p>
         <p>{dpost.postContent} </p>
+
         <p>
           👍🏻 {dpost.postLike} 💬 {dpost.commentCount} {dpost.createdAt}
         </p>
