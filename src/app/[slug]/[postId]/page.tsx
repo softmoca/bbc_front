@@ -29,13 +29,9 @@ export default function page() {
     (state) => state.persistedReducer.comment.commentData
   );
 
-  // console.log(dComments);
-
   const BoardTitle = dDetailPosts.board.BoardTitle;
   const PostNickName = dDetailPosts.author.nickName;
   const postAnonymous = dDetailPosts.postAnonymous;
-
-  console.log(dDetailPosts.images[0]?.path);
 
   return (
     <section>
