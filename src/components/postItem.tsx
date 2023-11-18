@@ -10,7 +10,7 @@ export default function PostItem({ dpost }) {
 
   return (
     <Link href={`/${boardId}/${dpostId}`}>
-      <div className="border-b p-3">
+      <div className="border-b p-1">
         <p className="font-bold">{dpost.postTitle} </p>
         <p>{dpost.postContent} </p>
 

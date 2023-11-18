@@ -18,8 +18,8 @@ export default function Home() {
   }, []); // 권한이 바뀌거나 or url경로가 바뀌거나
 
   return (
-    <div className="bg-white flex flex-col mb-20">
-      <div className="  mb-10 bg-gray-100 rounded-md shadow-md">
+    <div className="bg-white flex flex-col ml-3 mt-3 m-b-10">
+      <div className="  mb-5 bg-gray-100 rounded-md shadow-md">
         <Link href="/101" className="text-xl mb-1 font-bold ">
           <h1 className="mb-1"> 🔥주간 애브리타임 인기글🔥</h1>
         </Link>{" "}
@@ -28,7 +28,7 @@ export default function Home() {
         </Link>
       </div>
       <h1 className="text-xl font-bold mb-2">학교내 소통 게시판</h1>
-      <div className=" mb-10  font-bold bg-gray-100 rounded-md shadow-md">
+      <div className=" mb-5  font-bold bg-gray-100 rounded-md shadow-md">
         <Link href="/103">
           <h1 className="mb-2"> 🥕 중고 거래 게시판</h1>
         </Link>{" "}
@@ -41,7 +41,7 @@ export default function Home() {
       </div>
       <h1 className="text-xl font-bold mb-2">핫플 건물별 소통 게시판</h1>
 
-      <div className="  mb-10 font-bold bg-gray-100 rounded-md shadow-md">
+      <div className="  mb-5 font-bold bg-gray-100 rounded-md shadow-md">
         <Link href="/106">
           <h1 className="mb-2"> 📌 기숙사(빛솔재)</h1>
         </Link>
@@ -56,7 +56,7 @@ export default function Home() {
         </Link>
       </div>
       <h1 className="text-xl font-bold mb-2 ">건물별 소통 게시판</h1>
-      <div className=" grid grid-cols-1 sm:grid-cols-2 gap-4 font-bold bg-gray-100 rounded-md shadow-md">
+      <div className=" grid grid-cols-2 sm:grid-cols-2 gap-4 font-bold bg-gray-100 rounded-md shadow-md">
         <div>
           <Link href="/110">
             <h1 className="mb-2">📌 비마관</h1>

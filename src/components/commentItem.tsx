@@ -18,7 +18,7 @@ export default function CommentItem({ dcomment }) {
       <div className=" flex mt-4">
         <div>
           <img
-            src={gravatar.url(authorEmail, { s: "25px", d: "identicon" })}
+            src={gravatar.url(authorEmail, { s: "25px", d: "mm" })}
             alt={CommentNickName}
           />
         </div>

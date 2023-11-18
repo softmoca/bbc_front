@@ -29,6 +29,8 @@ export default function Post() {
         <button type="submit">🔍 </button>
       </div>
 
+      <div className="m-5"> 광고 </div>
+
       <div>
         {dPosts.map((dpost) => (
           <PostItem dpost={dpost} key={dpost.id} />
