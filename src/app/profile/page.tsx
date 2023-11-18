@@ -4,6 +4,7 @@ import { getUserData } from "@/redux/thunkFunctions/userThunk";
 import Link from "next/link";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import gravatar from "gravatar";
 
 export default function Profile() {
   const dispatch = useDispatch();
@@ -16,10 +17,19 @@ export default function Profile() {
 
   return (
     <div className="m-3">
-      <div className=" flex mt-3">
-        <div> 😀</div>
+      <div className=" flex mt-4 mb-10">
+        <div>
+          <img
+            src={gravatar.url(userData.email, { s: "50px", d: "mm" })}
+            alt={userData.nickName}
+          />
+        </div>
 
-        <div className="ml-10 font-bold">{`${userData.nickName}`}</div>
+        <div>
+          <div className="ml-5 font-extrabold">{`${userData.email}`}</div>
+
+          <div className="ml-5   ">{`${userData.nickName}`}</div>
+        </div>
       </div>
 
       <div className=" mb-10  font-bold bg-gray-100 rounded-md shadow-md">
