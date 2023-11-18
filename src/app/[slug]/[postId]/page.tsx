@@ -8,6 +8,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import gravatar from "gravatar";
 
 export default function page() {
   const postNamePath = usePathname();
@@ -31,6 +32,7 @@ export default function page() {
 
   const BoardTitle = dDetailPosts.board.BoardTitle;
   const PostNickName = dDetailPosts.author.nickName;
+  const PostUserEmail = dDetailPosts.author.email;
 
   return (
     <section>
@@ -40,7 +42,12 @@ export default function page() {
       </div>
 
       <div className=" flex mt-3">
-        <div> 😀</div>
+        <div>
+          <img
+            src={gravatar.url(PostUserEmail, { s: "25px", d: "mm" })}
+            alt={PostNickName}
+          />
+        </div>
 
         <div className="ml-10 font-bold">{`${PostNickName}`}</div>
       </div>

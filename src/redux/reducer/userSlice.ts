@@ -73,7 +73,7 @@ const userSlice = createSlice({
         state.isLoading = false;
         state.userData = action.payload; // 백엔드로 api 요청 한 후 return으로 받은 json
 
-        console.log(action.payload);
+        //console.log(action.payload);
       })
       .addCase(getUserData.rejected, (state, action) => {
         state.isLoading = false;
