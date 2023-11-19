@@ -54,12 +54,14 @@ export const authUser = createAsyncThunk(
 export const getUserData = createAsyncThunk(
   "user/getUserData",
   async (_, thunkAPI) => {
+    console.log("ㄴㄹㄴㅇㄹ");
+
     try {
       const response = await axiosInstance.get(
         "/user/userData" //백엔드 api url
       );
 
-      // console.log(response.data.data);
+      console.log(response.data.data);
       return response.data.data;
     } catch (error) {
       console.log(error);
@@ -72,6 +74,7 @@ export const porfileChange = createAsyncThunk(
   "user/porfileChange",
   async (body, thunkAPI) => {
     try {
+      console.log(body);
       const response = await axiosInstance.patch(
         "/user/profileChange",
         body //백엔드 api url

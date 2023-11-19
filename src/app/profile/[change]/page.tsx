@@ -12,6 +12,7 @@ import gravatar from "gravatar";
 import { useForm } from "react-hook-form";
 import Dropzone from "react-dropzone";
 import axiosInstance from "@/utils/axios";
+import { toast } from "react-toastify";
 
 export default function page() {
   const postNamePath = usePathname();
@@ -24,8 +25,7 @@ export default function page() {
   }, []); // 권한이 바뀌거나 or url경로가 바뀌거나
 
   const userData = useSelector((state) => state.persistedReducer.user.userData);
-
-  console.log(userData);
+  //console.log(userData);
 
   const [userImage, setUserImage] = useState([]);
   const {
@@ -60,11 +60,21 @@ export default function page() {
 
   const onSubmit = ({ nickName }) => {
     // 페이지에서 입력 한 값
-    const body = {
-      nickName: nickName,
-    };
+    const body: { nickName?: string; images?: string[] } = {};
+
+    if (nickName) {
+      body.nickName = nickName;
+    }
+
     if (userImage.length > 0) {
       body.images = userImage;
+    }
+
+    console.log(nickName);
+
+    if (!body.nickName && (!body.images || body.images.length === 0)) {
+      toast.error("변경사항이 없습니다.");
+      return; // 아무 작업도 하지 않고 함수 종료
     }
 
     dispatch(porfileChange(body));
@@ -72,14 +82,14 @@ export default function page() {
     reset(); //react-hook-form으로 입력후 입력값 초기화
   };
 
+  console.log(userData);
+
   const userNickName = {
-    required: "필수 필드입니다.",
     minLength: {
-      value: 4,
-      message: "최소 4자입니다.",
+      value: 3,
+      message: "최소 3자입니다.",
     },
   };
-
   return (
     <div>
       <div>
