@@ -15,6 +15,8 @@ export default function Profile() {
 
   const userData = useSelector((state) => state.persistedReducer.user.userData);
 
+  console.log(userData.data);
+
   return (
     <div className="m-3">
       <div className=" flex mt-4 mb-10">
@@ -25,9 +27,9 @@ export default function Profile() {
           />
         </div>
         <div>
-          <div className="ml-5 font-extrabold">{`${userData.email}`}</div>
+          <div className="ml-5 font-extrabold">{`${userData.data.email}`}</div>
 
-          <div className="ml-5   ">{`${userData.nickName}`}</div>
+          <div className="ml-5   ">{`${userData.data.nickName}`}</div>
         </div>
       </div>
 
