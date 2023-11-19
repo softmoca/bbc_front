@@ -11,7 +11,8 @@ export default function Profile() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(authUser()); //thucnk 함수 이름은 authUser
+    dispatch(getUserData()); //thucnk 함수 이름은 authUser
+    console.log("dddd");
   }, []); // 권한이 바뀌거나 or url경로가 바뀌거나
 
   const userProfileData = useSelector(

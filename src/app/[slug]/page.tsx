@@ -18,6 +18,7 @@ export default function Post() {
   }, []); // 권한이 바뀌거나 or url경로가 바뀌거나
 
   const dPosts = useSelector((state) => state.persistedReducer.post.postData);
+  console.log(dPosts);
 
   const BoardTitle = dPosts[1].board.BoardTitle;
 

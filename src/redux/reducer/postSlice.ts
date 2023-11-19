@@ -7,7 +7,14 @@ import {
 } from "../thunkFunctions/psotThunk";
 
 const initialState = {
-  postData: {},
+  postData: [
+    {
+      id: "",
+      board: {
+        BoardTitle: "",
+      },
+    },
+  ],
   postDetailData: {},
 
   isLoading: false,
