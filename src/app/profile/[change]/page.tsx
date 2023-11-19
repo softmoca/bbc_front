@@ -86,7 +86,9 @@ export default function page() {
         {userData.images.length > 0 ? (
           <img
             className="min-w-[100px] h-[100px]"
-            src={`${process.env.NEXT_PUBLIC_SERVER_URL}/public/users/${userData.images[0]?.path}`}
+            src={`${process.env.NEXT_PUBLIC_SERVER_URL}/public/users/${
+              userData.images.slice(-1)[0]?.path
+            }`}
             alt="image"
           />
         ) : (
