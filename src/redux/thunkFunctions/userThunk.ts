@@ -54,8 +54,6 @@ export const authUser = createAsyncThunk(
 export const getUserData = createAsyncThunk(
   "user/getUserData",
   async (_, thunkAPI) => {
-    console.log("ㄴㄹㄴㅇㄹ");
-
     try {
       const response = await axiosInstance.get(
         "/user/userData" //백엔드 api url
