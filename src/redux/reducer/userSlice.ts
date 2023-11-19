@@ -5,6 +5,7 @@ import {
   authUser,
   getUserData,
   loginUser,
+  porfileChange,
   registerUser,
 } from "../thunkFunctions/userThunk";
 
@@ -76,6 +77,22 @@ const userSlice = createSlice({
         //console.log(action.payload);
       })
       .addCase(getUserData.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+        localStorage.removeItem("accessToken"); // 만료가 된경우
+      })
+      .addCase(porfileChange.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(porfileChange.fulfilled, (state, action) => {
+        state.isLoading = false;
+        toast.info("프로필이 변경되었습니다.");
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
+        //console.log(action.payload);
+      })
+      .addCase(porfileChange.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
         localStorage.removeItem("accessToken"); // 만료가 된경우
