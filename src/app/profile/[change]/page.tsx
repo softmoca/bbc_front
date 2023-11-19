@@ -25,7 +25,7 @@ export default function page() {
   }, []); // 권한이 바뀌거나 or url경로가 바뀌거나
 
   const userData = useSelector((state) => state.persistedReducer.user.userData);
-  //console.log(userData);
+  console.log(userData);
 
   const [userImage, setUserImage] = useState([]);
   const {
@@ -70,8 +70,6 @@ export default function page() {
       body.images = userImage;
     }
 
-    console.log(nickName);
-
     if (!body.nickName && (!body.images || body.images.length === 0)) {
       toast.error("변경사항이 없습니다.");
       return; // 아무 작업도 하지 않고 함수 종료
@@ -82,18 +80,17 @@ export default function page() {
     reset(); //react-hook-form으로 입력후 입력값 초기화
   };
 
-  console.log(userData);
-
   const userNickName = {
     minLength: {
       value: 3,
       message: "최소 3자입니다.",
     },
   };
+
   return (
     <div>
       <div>
-        {userData.images.length > 0 ? (
+        {/* {userData.images.length > 0 ? (
           <img
             className="min-w-[100px] h-[100px]"
             src={`${process.env.NEXT_PUBLIC_SERVER_URL}/public/users/${
@@ -106,7 +103,7 @@ export default function page() {
             src={gravatar.url(userData.email, { s: "100px", d: "mm" })}
             alt={userData.nickName}
           />
-        )}
+        )} */}
 
         <div className="flex">
           {" "}

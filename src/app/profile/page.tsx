@@ -10,17 +10,19 @@ import gravatar from "gravatar";
 export default function Profile() {
   const dispatch = useDispatch();
 
-  const userData = useSelector((state) => state.persistedReducer.user.userData);
-
   useEffect(() => {
     dispatch(authUser()); //thucnk 함수 이름은 authUser
   }, []); // 권한이 바뀌거나 or url경로가 바뀌거나
 
-  console.log(userData);
+  const userAuthData = useSelector(
+    (state) => state.persistedReducer.user.userAuthData
+  );
+
+  console.log(userAuthData);
 
   return (
     <div className="m-3">
-      <div className=" flex mt-4 mb-10">
+      {/* <div className=" flex mt-4 mb-10">
         <div>
           <img
             src={gravatar.url(userData.email, { s: "50px", d: "mm" })}
@@ -67,7 +69,7 @@ export default function Profile() {
         <Link href="/">
           <h1 className="mb-1"> 로그아웃</h1>
         </Link>{" "}
-      </div>
+      </div> */}
     </div>
   );
 }

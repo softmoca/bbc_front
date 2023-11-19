@@ -1,5 +1,6 @@
 import axiosInstance from "@/utils/axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { response } from "express";
 
 export const registerPost = createAsyncThunk(
   "post/registerPost",
@@ -29,8 +30,8 @@ export const getBoardPosts = createAsyncThunk(
         params: queryBoardId,
       });
 
-      //console.log(response.data.data.data);
-      return response.data;
+      //console.log(response.data.data);
+      return response.data.data;
     } catch (error) {
       console.log(error);
       return thunkAPI.rejectWithValue(error.message);

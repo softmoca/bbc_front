@@ -29,7 +29,7 @@ export const loginUser: any = createAsyncThunk(
       );
       return response.data;
     } catch (error) {
-      console.log(error.response.data.message);
+      //console.log(error.response.data.message);
       return thunkAPI.rejectWithValue(error.response.data.message);
     } //rejectWithValue에 string 을 넣어주면    action의 Payload(state에 전달하는 값)가 된다.
   }
@@ -43,7 +43,7 @@ export const authUser = createAsyncThunk(
         "/user" //백엔드 api url
       );
 
-      return response.data;
+      return response.data.data;
     } catch (error) {
       console.log(error);
       return thunkAPI.rejectWithValue(error.message);
@@ -59,7 +59,7 @@ export const getUserData = createAsyncThunk(
         "/user/userData" //백엔드 api url
       );
 
-      console.log(response.data.data);
+      //console.log(response.data.data);
       return response.data.data;
     } catch (error) {
       console.log(error);
@@ -72,13 +72,13 @@ export const porfileChange = createAsyncThunk(
   "user/porfileChange",
   async (body, thunkAPI) => {
     try {
-      console.log(body);
+      //console.log(body);
       const response = await axiosInstance.patch(
         "/user/profileChange",
         body //백엔드 api url
       );
 
-      console.log(response.data.data);
+      // console.log(response.data.data);
 
       return response.data;
     } catch (error) {

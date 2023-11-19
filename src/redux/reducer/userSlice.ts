@@ -10,7 +10,8 @@ import {
 } from "../thunkFunctions/userThunk";
 
 const initialState = {
-  userData: {},
+  userAuthData: {},
+  userProfileData: {},
   isAuth: false,
   isLoading: false,
   error: "",
@@ -39,7 +40,7 @@ const userSlice = createSlice({
       })
       .addCase(loginUser.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.userData = action.payload; // 백엔드로 api 요청 한 후 return으로 받은 json
+        state.userAuthData = action.payload; // 백엔드로 api 요청 한 후 return으로 받은 json
         state.isAuth = true; // 로그인이 되었음.
 
         localStorage.setItem("accessToken", action.payload.data.accessJwtToken);
@@ -56,14 +57,14 @@ const userSlice = createSlice({
       })
       .addCase(authUser.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.userData = action.payload; // 백엔드로 api 요청 한 후 return으로 받은 json
+        state.userAuthData = action.payload; // 백엔드로 api 요청 한 후 return으로 받은 json
         //console.log(action.payload);
         state.isAuth = true;
       })
       .addCase(authUser.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
-        state.userData = initialState.userData; // 유저 데이터 초기화
+        state.userAuthData = initialState.userAuthData; // 유저 데이터 초기화
         state.isAuth = false;
         localStorage.removeItem("accessToken"); // 만료가 된경우
       })
@@ -72,14 +73,14 @@ const userSlice = createSlice({
       })
       .addCase(getUserData.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.userData = action.payload; // 백엔드로 api 요청 한 후 return으로 받은 json
+        state.userProfileData = action.payload; // 백엔드로 api 요청 한 후 return으로 받은 json
 
         //console.log(action.payload);
       })
       .addCase(getUserData.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
-        localStorage.removeItem("accessToken"); // 만료가 된경우
+        state.userProfileData = initialState.userProfileData;
       })
       .addCase(porfileChange.pending, (state) => {
         state.isLoading = true;

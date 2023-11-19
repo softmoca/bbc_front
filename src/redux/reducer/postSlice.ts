@@ -37,8 +37,8 @@ const postSlice = createSlice({
       })
       .addCase(getBoardPosts.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.postData = action.payload.data.data; // 백엔드로 api 요청 한 후 return으로 받은 json
-        //console.log(action.payload.data.data);
+        //console.log(action.payload.data);
+        state.postData = action.payload.data; // 백엔드로 api 요청 한 후 return으로 받은 json
       })
       .addCase(getBoardPosts.rejected, (state, action) => {
         state.isLoading = false;
@@ -50,6 +50,7 @@ const postSlice = createSlice({
       })
       .addCase(getPost.fulfilled, (state, action) => {
         state.isLoading = false;
+        //console.log(action.payload);
         state.postDetailData = action.payload; // 백엔드로 api 요청 한 후 return으로 받은 json
       })
       .addCase(getPost.rejected, (state, action) => {
