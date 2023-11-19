@@ -25,6 +25,8 @@ export default function page() {
 
   const userData = useSelector((state) => state.persistedReducer.user.userData);
 
+  console.log(userData);
+
   const [userImage, setUserImage] = useState([]);
   const {
     register,
@@ -81,10 +83,18 @@ export default function page() {
   return (
     <div>
       <div>
-        <img
-          src={gravatar.url(userData.email, { s: "100px", d: "mm" })}
-          alt={userData.nickName}
-        />
+        {userData.images.length > 0 ? (
+          <img
+            className="min-w-[100px] h-[100px]"
+            src={`${process.env.NEXT_PUBLIC_SERVER_URL}/public/users/${userData.images[0]?.path}`}
+            alt="image"
+          />
+        ) : (
+          <img
+            src={gravatar.url(userData.email, { s: "100px", d: "mm" })}
+            alt={userData.nickName}
+          />
+        )}
 
         <div className="flex">
           {" "}
