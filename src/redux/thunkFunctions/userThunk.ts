@@ -67,3 +67,22 @@ export const getUserData = createAsyncThunk(
     }
   }
 );
+
+export const porfileChange = createAsyncThunk(
+  "user/porfileChange",
+  async (body, thunkAPI) => {
+    try {
+      const response = await axiosInstance.patch(
+        "/user/profileChange",
+        body //백엔드 api url
+      );
+
+      console.log(response.data.data);
+
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

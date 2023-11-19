@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
 import { authUser, getUserData } from "@/redux/thunkFunctions/userThunk";
@@ -9,13 +10,13 @@ import gravatar from "gravatar";
 export default function Profile() {
   const dispatch = useDispatch();
 
+  const userData = useSelector((state) => state.persistedReducer.user.userData);
+
   useEffect(() => {
     dispatch(authUser()); //thucnk 함수 이름은 authUser
   }, []); // 권한이 바뀌거나 or url경로가 바뀌거나
 
-  const userData = useSelector((state) => state.persistedReducer.user.userData);
-
-  console.log(userData.data);
+  console.log(userData);
 
   return (
     <div className="m-3">
@@ -28,14 +29,13 @@ export default function Profile() {
         </div>
         <div>
           <div className="ml-5 font-extrabold">{`${userData.data.email}`}</div>
-
           <div className="ml-5   ">{`${userData.data.nickName}`}</div>
         </div>
       </div>
 
       <div className=" mb-10  font-bold bg-gray-100 rounded-md shadow-md">
         <h1 className="text-2xl font-extrabold "> 계정 </h1>
-        <Link href={`/profile/${userData.id}`}>
+        <Link href={`/profile/${userData.data.id}`}>
           <h1 className="mb-1 mt-2"> 닉네임/프로필 사진 변경</h1>
         </Link>{" "}
         <Link href="/">

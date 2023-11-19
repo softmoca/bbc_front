@@ -1,6 +1,10 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 "use client";
-import { authUser, getUserData } from "@/redux/thunkFunctions/userThunk";
+import {
+  authUser,
+  getUserData,
+  porfileChange,
+} from "@/redux/thunkFunctions/userThunk";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,7 +15,7 @@ import axiosInstance from "@/utils/axios";
 
 export default function page() {
   const postNamePath = usePathname();
-  const postId = postNamePath.substring(9);
+  const userId = postNamePath.substring(9);
 
   const dispatch = useDispatch();
 
@@ -21,7 +25,6 @@ export default function page() {
 
   const userData = useSelector((state) => state.persistedReducer.user.userData);
 
-  console.log(userData);
   const [userImage, setUserImage] = useState([]);
   const {
     register,
@@ -47,29 +50,31 @@ export default function page() {
         config
       );
 
-      console.log(response).data.path;
-
       setUserImage([response.data.path]);
     } catch (error) {
       console.error(error);
     }
   };
 
-  const onSubmit = ({ password }) => {
+  const onSubmit = ({ nickName }) => {
     // 페이지에서 입력 한 값
     const body = {
-      password: password,
+      nickName: nickName,
     };
+    if (userImage.length > 0) {
+      body.images = userImage;
+    }
 
-    dispatch(registerUser(body));
+    dispatch(porfileChange(body));
+    setUserImage([]);
     reset(); //react-hook-form으로 입력후 입력값 초기화
   };
 
-  const userPassword = {
+  const userNickName = {
     required: "필수 필드입니다.",
     minLength: {
-      value: 6,
-      message: "최소 6자입니다.",
+      value: 4,
+      message: "최소 4자입니다.",
     },
   };
 
@@ -112,21 +117,21 @@ export default function page() {
         <form className="mt-6" onSubmit={handleSubmit(onSubmit)}>
           <div>
             <label
-              htmlFor="password"
+              htmlFor="nickName"
               className="text-2xl font-bold font-semibold text-gray-800 "
             >
               프로필 변경하기
             </label>
             <input
               placeholder={userData.nickName}
-              type="password"
-              id="pasword"
+              type="nickName"
+              id="nickName"
               className="w-full px-4 py-2 mt-2 border bg-white rounded-md"
-              {...register("password", userPassword)}
+              {...register("nickName", userNickName)}
             ></input>
-            {errors?.password && ( //? 는 옵셔널 체크 연산자, password 라는 속성이 없으면 undefined
+            {errors?.nickName && ( //? 는 옵셔널 체크 연산자, password 라는 속성이 없으면 undefined
               <div>
-                <span className="text-red-500">{errors.password.message}</span>
+                <span className="text-red-500">{errors.nickName.message}</span>
               </div>
             )}
           </div>
