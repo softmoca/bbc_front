@@ -10,8 +10,21 @@ import {
 } from "../thunkFunctions/userThunk";
 
 const initialState = {
-  userAuthData: {},
-  userProfileData: {},
+  userAuthData: {
+    id: "",
+    email: "",
+    university: "",
+    nickName: "",
+  },
+  userProfileData: {
+    id: "",
+    email: "",
+    university: "",
+    nickName: "",
+    images: [],
+    posts: [],
+    postComments: [],
+  },
   isAuth: false,
   isLoading: false,
   error: "",

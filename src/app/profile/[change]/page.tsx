@@ -24,8 +24,11 @@ export default function page() {
     dispatch(getUserData()); //thucnk 함수 이름은 authUser
   }, []); // 권한이 바뀌거나 or url경로가 바뀌거나
 
-  const userData = useSelector((state) => state.persistedReducer.user.userData);
-  console.log(userData);
+  const userProfileData = useSelector(
+    (state) => state.persistedReducer.user.userProfileData
+  );
+  console.log(userProfileData);
+  const userImageCheck = userProfileData.images.length;
 
   const [userImage, setUserImage] = useState([]);
   const {
@@ -90,20 +93,20 @@ export default function page() {
   return (
     <div>
       <div>
-        {/* {userData.images.length > 0 ? (
+        {userImageCheck > 0 ? (
           <img
             className="min-w-[100px] h-[100px]"
             src={`${process.env.NEXT_PUBLIC_SERVER_URL}/public/users/${
-              userData.images.slice(-1)[0]?.path
+              userProfileData.images.slice(-1)[0]?.path
             }`}
             alt="image"
           />
         ) : (
           <img
-            src={gravatar.url(userData.email, { s: "100px", d: "mm" })}
-            alt={userData.nickName}
+            src={gravatar.url(userProfileData.email, { s: "100px", d: "mm" })}
+            alt={userProfileData.nickName}
           />
-        )} */}
+        )}
 
         <div className="flex">
           {" "}
@@ -142,7 +145,7 @@ export default function page() {
               프로필 변경하기
             </label>
             <input
-              placeholder={userData.nickName}
+              placeholder={userProfileData.nickName}
               type="nickName"
               id="nickName"
               className="w-full px-4 py-2 mt-2 border bg-white rounded-md"

@@ -14,30 +14,30 @@ export default function Profile() {
     dispatch(authUser()); //thucnk 함수 이름은 authUser
   }, []); // 권한이 바뀌거나 or url경로가 바뀌거나
 
-  const userAuthData = useSelector(
-    (state) => state.persistedReducer.user.userAuthData
+  const userProfileData = useSelector(
+    (state) => state.persistedReducer.user.userProfileData
   );
 
-  console.log(userAuthData);
+  console.log(userProfileData);
 
   return (
     <div className="m-3">
-      {/* <div className=" flex mt-4 mb-10">
+      <div className=" flex mt-4 mb-10">
         <div>
           <img
-            src={gravatar.url(userData.email, { s: "50px", d: "mm" })}
-            alt={userData.nickName}
+            src={gravatar.url(userProfileData.email, { s: "50px", d: "mm" })}
+            alt={userProfileData.nickName}
           />
         </div>
         <div>
-          <div className="ml-5 font-extrabold">{`${userData.data.email}`}</div>
-          <div className="ml-5   ">{`${userData.data.nickName}`}</div>
+          <div className="ml-5 font-extrabold">{`${userProfileData.email}`}</div>
+          <div className="ml-5   ">{`${userProfileData.nickName}`}</div>
         </div>
       </div>
 
       <div className=" mb-10  font-bold bg-gray-100 rounded-md shadow-md">
         <h1 className="text-2xl font-extrabold "> 계정 </h1>
-        <Link href={`/profile/${userData.data.id}`}>
+        <Link href={`/profile/${userProfileData.id}`}>
           <h1 className="mb-1 mt-2"> 닉네임/프로필 사진 변경</h1>
         </Link>{" "}
         <Link href="/">
@@ -69,7 +69,7 @@ export default function Profile() {
         <Link href="/">
           <h1 className="mb-1"> 로그아웃</h1>
         </Link>{" "}
-      </div> */}
+      </div>
     </div>
   );
 }
