@@ -50,22 +50,32 @@ export default function RegisterPage() {
   return (
     // flex-col 자식요소 수직 , max-w-[400px] 최대 너비 제한   m-auto 좌우 여백을 자동으로 설정
 
-    <section className="flex flex-col justify-center mt-10 max-w-[400px] m-auto">
-      <div className="p-  bg-white rounded-md board">
+    <section className="flex flex-col justify-center mt-5 max-w-[400px] m-auto">
+      <div className=" bg-white rounded-md board">
         <img
-          className="mx-auto my-2 w-40 h-15 mb-20"
+          className="mx-auto my-2 w-40 h-15"
+          style={{ marginBottom: "3rem" }}
           src={`${process.env.NEXT_PUBLIC_SERVER_URL}/public/BBC_logo.png`}
           alt="BBC 로고"
         />
 
-        <h1 className="text-xs">건물별 소통 해보세요.</h1>
-        <h1 className="text-xs mb-5">중고거래와 공동 구매 더불어 친구까지</h1>
+        <div className="ml-10 mb-5">
+          <h1 className="text-lg">
+            <span className="font-bold">건물별 소통</span>해보세요.
+          </h1>
 
-        <form className="mt-6" onSubmit={handleSubmit(onSubmit)}>
-          <h1 className="text-mb-1 mb-1 font-bold ">대학교</h1>
+          <h1 className="text-lg ">
+            <span className="font-bold">중고거래</span>와{" "}
+            <span className="font-bold">공동구매</span> 더불어{" "}
+            <span className="font-bold">친구</span>까지
+          </h1>
+        </div>
+
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <h1 className="mb-1 font-semibold ">대학교</h1>
           <select
             id="university"
-            className="  border border-gray-300 rounded "
+            className="  border mb-3 border-gray-300 rounded "
             {...register("university", useruniversity)}
           >
             <option value="광운대학교">광운대학교</option>
@@ -78,18 +88,15 @@ export default function RegisterPage() {
             <option value="스텐퍼드대학교">스텐퍼드대학교</option>
           </select>
 
-          <div className="mb-2">
-            <label
-              htmlFor="name"
-              className="text-sm font-semibold text-gray-800"
-            >
+          <div className="mb-3">
+            <label htmlFor="name" className="font-semibold  text-gray-800">
               닉네임
             </label>
             <input
               placeholder="닉네임을 입력해주세요."
               type="nickName"
               id="nickName"
-              className="w-full px-4 py-2 mt-2 border bg-white rounded-md"
+              className="w-full px-4 py-2 mt-1 border bg-white rounded-md"
               {...register("nickName", usernickName)}
             ></input>
             {errors?.name && (
@@ -99,10 +106,10 @@ export default function RegisterPage() {
             )}
           </div>
 
-          <div>
+          <div className="mb-3">
             <label //입력 요소와 텍스트를 연결하는 데 사용 되는 label 태그
               htmlFor="email" //htmlFor 속성은 레이블이 연결된 입력 요소의 ID를 지정
-              className="text-sm font-semibold text-gray-800"
+              className=" font-semibold text-gray-800"
             >
               이메일
             </label>
@@ -110,7 +117,7 @@ export default function RegisterPage() {
               placeholder="이메일을 입력해주세요."
               type="email"
               id="email"
-              className="w-full px-4 py-2 mt-2 border bg-white rounded-md" //px 외부 여백 py 내부 여백 상하좌우
+              className="w-full px-4 py-2  mt-1 border bg-white rounded-md" //px 외부 여백 py 내부 여백 상하좌우
               {...register("email", userEmail)} //register() 함수의 반환값은 객체이기 때문에 ... 사용 첫번째 인자는 type
             ></input>
             {errors?.email && (
@@ -120,18 +127,15 @@ export default function RegisterPage() {
             )}
           </div>
 
-          <div>
-            <label
-              htmlFor="password"
-              className="text-sm font-semibold text-gray-800"
-            >
+          <div className="mb-3">
+            <label htmlFor="password" className="font-semibold text-gray-800">
               비밀번호
             </label>
             <input
               placeholder="비밀번호를 입력해주세요."
               type="password"
               id="pasword"
-              className="w-full px-4 py-2 mt-2 border bg-white rounded-md"
+              className="w-full px-4 py-2 mt-1 border bg-white rounded-md"
               {...register("password", userPassword)}
             ></input>
             {errors?.password && ( //? 는 옵셔널 체크 연산자, password 라는 속성이 없으면 undefined
