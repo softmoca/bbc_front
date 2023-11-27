@@ -27,10 +27,10 @@ export default function RootLayout({
           <Providers>
             <PersistGate loading={null} persistor={persistor}>
               {children}
+              <Footbar />
             </PersistGate>
           </Providers>
         </ToastProvider>
-        <Footbar />
       </body>
     </html>
   );

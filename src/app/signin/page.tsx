@@ -63,7 +63,7 @@ export default function Signin() {
   };
 
   return (
-    <section className="flex flex-col justify-center m-3 max-w-[400px] ">
+    <section className="flex flex-col justify-center m-3 max-w-[400px]  border rounded-lg">
       <div>
         <img
           className="mx-auto my-2 w-40 h-15"
@@ -133,20 +133,20 @@ export default function Signin() {
           <div className="mt-3">
             <button
               type="submit" //duration hover시 색상 애니이션 지속시간
-              className="w-full px-4 py-2 text-white duration-200 bg-black border  hover:bg-gray-700 "
+              className="w-full px-4 py-2 text-white duration-200 bg-black border  hover:bg-gray-700 rounded"
             >
               로그인
             </button>
           </div>
         </form>
-        {/* 
-        <button className=" mt-1 w-full  px-4 py-2 font-bold  bg-yellow-300  border border-gray-100  hover:bg-yellow-200 rounded">
+
+        <button className=" mt-1 w-full  px-4 py-2 font-bold  bg-yellow-300  border border-gray-300  hover:bg-yellow-200 rounded">
           3 초만에 카카오 로그인
         </button>
-        <button className="mt-1 w-full  px-4 py-2 font-bold   bg-white border border-gray-100  hover:bg-gray-100 rounded">
+        <button className="mt-1 w-full  px-4 py-2 font-bold   bg-white border border-gray-300  hover:bg-gray-100 rounded">
           Sign Up with Google
         </button>
-        <br /> */}
+        <br />
         <small className=" flex justify-center text-sm">
           <Link href="/findemail" className="text-gray-300 mr-1 ">
             아이디 찾기
@@ -159,8 +159,8 @@ export default function Signin() {
 
         <button className="mt-3 w-full  px-4 py-2  font-bold text-white bg-gray-300 border border-gray-300 rounded">
           <Link
-            href="/signup/agreement"
-            className=" t font-bold text-white  bg-gray-300 border border-gray-300 rounded"
+            href="/signup"
+            className=" t font-bold text-white  bg-gray-300 border border-gray-300 "
           >
             회원가입
           </Link>

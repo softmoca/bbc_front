@@ -147,7 +147,7 @@ export default function RegisterPage() {
   };
 
   return (
-    <section className="flex flex-col justify-center m-3  max-w-[400px]">
+    <section className="flex flex-col justify-center m-3  max-w-[400px] border rounded-lg">
       <div className=" bg-white rounded-md board">
         <img
           className="mx-auto my-2 w-40 h-15"
@@ -302,7 +302,7 @@ export default function RegisterPage() {
           <div className="mt-3">
             <button
               type="submit" //duration hover시 색상 애니이션 지속시간
-              className="w-full px-4 py-2 text-white duration-200 bg-black  hover:bg-gray-700 "
+              className="w-full px-4 py-2 text-white duration-200 bg-black  hover:bg-gray-700 rounded"
             >
               회원가입
             </button>
