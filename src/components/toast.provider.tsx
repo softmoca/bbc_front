@@ -12,7 +12,7 @@ export default function ToastProvider({ children }: ToastProviderProps) {
     <>
       {children}
       <ToastContainer
-        position="bottom-right"
+        position="bottom-center"
         theme="light"
         pauseOnHover // hover시 멈춤
         autoClose={1500} //1.5초간 지속
