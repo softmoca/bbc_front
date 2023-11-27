@@ -2,31 +2,38 @@
 
 import PostItem from "@/components/postItem";
 import { getBoardPosts } from "@/redux/thunkFunctions/psotThunk";
+import { findBoardTitle } from "@/utils/findBoardTitle";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function Post() {
+  const [boardTitle, setBoardTitle] = useState("");
   const boardNamePath = usePathname();
-  const boardId = boardNamePath.substring(1);
+  const boardId = parseInt(boardNamePath.substring(1));
 
   const dispatch = useDispatch();
+
+  const dPosts = useSelector((state) => state.persistedReducer.post.postData);
 
   useEffect(() => {
     dispatch(getBoardPosts(boardId)); //thucnk 함수 이름은 authUser
   }, []); // 권한이 바뀌거나 or url경로가 바뀌거나
 
-  const dPosts = useSelector((state) => state.persistedReducer.post.postData);
-  console.log(dPosts);
+  useEffect(() => {
+    const boardTitle = findBoardTitle(boardId);
 
-  const BoardTitle = dPosts[1].board.BoardTitle;
+    setBoardTitle(boardTitle);
+  }, [boardId]);
+
+  //const BoardTitle = dPosts[1].board.BoardTitle;
 
   return (
     <section>
       <div className=" text-xl font-bold flex  justify-between items-center">
         <Link href={"/"}>{"<"}</Link>
-        <h1 className="text-xl font-bold">{`${BoardTitle} 게시판`} </h1>
+        <h1 className="text-xl font-bold">{`${boardTitle} 게시판`} </h1>
         <button type="submit">🔍 </button>
       </div>
 
