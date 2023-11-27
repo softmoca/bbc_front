@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import PostItem from "@/components/postItem";
@@ -18,8 +19,8 @@ export default function Post() {
   const dPosts = useSelector((state) => state.persistedReducer.post.postData);
 
   useEffect(() => {
-    dispatch(getBoardPosts(boardId)); //thucnk 함수 이름은 authUser
-  }, []); // 권한이 바뀌거나 or url경로가 바뀌거나
+    dispatch(getBoardPosts(boardId));
+  }, []);
 
   useEffect(() => {
     const boardTitle = findBoardTitle(boardId);
@@ -27,17 +28,18 @@ export default function Post() {
     setBoardTitle(boardTitle);
   }, [boardId]);
 
-  //const BoardTitle = dPosts[1].board.BoardTitle;
-
   return (
     <section>
       <div className=" text-xl font-bold flex  justify-between items-center">
-        <Link href={"/"}>{"<"}</Link>
         <h1 className="text-xl font-bold">{`${boardTitle} 게시판`} </h1>
         <button type="submit">🔍 </button>
       </div>
 
-      <div className="m-5"> 광고 </div>
+      <img
+        className=" my-2 w-full mb-3"
+        src={`${process.env.NEXT_PUBLIC_SERVER_URL}/public/advertist_example.png`}
+        alt="광고 예제"
+      />
 
       <div>
         {dPosts.map((dpost) => (
