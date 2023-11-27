@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/rules-of-hooks */
 "use client";
 
@@ -25,6 +26,7 @@ export default function page() {
   const dDetailPosts = useSelector(
     (state) => state.persistedReducer.post.postDetailData
   );
+  console.log(dDetailPosts);
 
   const dComments = useSelector(
     (state) => state.persistedReducer.comment.commentData

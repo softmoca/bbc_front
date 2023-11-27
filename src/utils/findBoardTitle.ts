@@ -1,4 +1,4 @@
-export function findBoardTitle(boardId: number) {
+export function findBoardTitle(boardId: number): string {
   if (boardId === 101) {
     return "애브리타임 핫";
   } else if (boardId === 102) {
@@ -32,4 +32,6 @@ export function findBoardTitle(boardId: number) {
   } else if (boardId === 116) {
     return "옥의관";
   }
+
+  return "??";
 }

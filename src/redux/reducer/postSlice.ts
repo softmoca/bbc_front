@@ -15,7 +15,16 @@ const initialState = {
       },
     },
   ],
-  postDetailData: {},
+  postDetailData: {
+    author: {
+      email: "",
+      nickName: "",
+    },
+    images: [],
+    board: {
+      BoardTitle: "",
+    },
+  },
 
   isLoading: false,
   error: "",
@@ -57,7 +66,7 @@ const postSlice = createSlice({
       })
       .addCase(getPost.fulfilled, (state, action) => {
         state.isLoading = false;
-        //console.log(action.payload);
+        // console.log(action.payload);
         state.postDetailData = action.payload; // 백엔드로 api 요청 한 후 return으로 받은 json
       })
       .addCase(getPost.rejected, (state, action) => {
