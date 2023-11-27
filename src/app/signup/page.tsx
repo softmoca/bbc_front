@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { registerUser } from "@/redux/thunkFunctions/userThunk";
@@ -49,9 +50,14 @@ export default function RegisterPage() {
   return (
     // flex-col 자식요소 수직 , max-w-[400px] 최대 너비 제한   m-auto 좌우 여백을 자동으로 설정
 
-    <section className="flex flex-col justify-center mt-20 max-w-[400px] m-auto">
-      <div className="p-6  bg-white rounded-md shadow-md">
-        <h1 className="text-xl mb-2  ">로고</h1>
+    <section className="flex flex-col justify-center mt-10 max-w-[400px] m-auto">
+      <div className="p-  bg-white rounded-md board">
+        <img
+          className="mx-auto my-2 w-40 h-15 mb-20"
+          src={`${process.env.NEXT_PUBLIC_SERVER_URL}/public/BBC_logo.png`}
+          alt="BBC 로고"
+        />
+
         <h1 className="text-xs">건물별 소통 해보세요.</h1>
         <h1 className="text-xs mb-5">중고거래와 공동 구매 더불어 친구까지</h1>
 
