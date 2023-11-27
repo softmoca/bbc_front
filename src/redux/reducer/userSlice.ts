@@ -55,7 +55,7 @@ const userSlice = createSlice({
         state.isLoading = false;
         state.userAuthData = action.payload; // 백엔드로 api 요청 한 후 return으로 받은 json
         state.isAuth = true; // 로그인이 되었음.
-
+        toast.info("로그인 되었습니다 !");
         localStorage.setItem("accessToken", action.payload.data.accessJwtToken);
       })
       .addCase(loginUser.rejected, (state, action) => {

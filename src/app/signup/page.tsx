@@ -299,7 +299,7 @@ export default function RegisterPage() {
             )}
           </div>
 
-          <div className="mt-6">
+          <div className="mt-3">
             <button
               type="submit" //duration hover시 색상 애니이션 지속시간
               className="w-full px-4 py-2 text-white duration-200 bg-black  hover:bg-gray-700 "

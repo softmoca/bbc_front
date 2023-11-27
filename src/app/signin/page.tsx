@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { loginUser } from "@/redux/thunkFunctions/userThunk";
@@ -15,7 +16,14 @@ export default function Signin() {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm({ mode: "onChange" });
+  } = useForm({
+    mode: "onChange",
+    defaultValues: {
+      email: "",
+      password: "",
+      term: false,
+    },
+  });
 
   const dispatch = useDispatch();
 
@@ -30,8 +38,10 @@ export default function Signin() {
       // dispatch 함수 호출
       await dispatch(loginUser(body));
 
-      // dispatch에서 에러가 발생하지 않았을 때만 router.push("/") 실행
-      router.push("/");
+      setTimeout(() => {
+        router.push("/");
+      }, 500);
+
       reset(); // react-hook-form으로 입력 후 입력값 초기화
     } catch (error) {
       // dispatch 도중 에러가 발생한 경우 에러 처리 코드 작성
@@ -46,23 +56,35 @@ export default function Signin() {
 
   const userPassword = {
     required: "필수 필드입니다.",
-    minLength: {
-      value: 6,
-      message: "최소 6자입니다.",
+    pattern: {
+      value: /^(?=.*[a-zA-Z])(?=.*[0-9]).{4,}$/,
+      message: "영어와 숫자 조합으로 4글자 이상으로 입력해주세요",
     },
   };
 
   return (
-    <section className="flex flex-col justify-center mt-20 max-w-[400px] m-auto">
+    <section className="flex flex-col justify-center m-3 max-w-[400px] ">
       <div>
-        <h1 className="text-5xl mb-2  ">로고</h1>
-        <h1 className="text-xs font-bold">건물별 소통 해보세요.</h1>
-        <h1 className="text-xs font-bold">
-          중고거래와 공동 구매 더불어 친구까지
-        </h1>
+        <img
+          className="mx-auto my-2 w-40 h-15"
+          style={{ marginBottom: "3rem" }}
+          src={`${process.env.NEXT_PUBLIC_SERVER_URL}/public/BBC_logo.png`}
+          alt="BBC 로고"
+        />
+
+        <div className="ml-10 mb-5">
+          <h1 className="text-lg">
+            <span className="font-bold">건물별 소통</span>해보세요.
+          </h1>
+          <h1 className="text-lg ">
+            <span className="font-bold">중고거래</span>와{" "}
+            <span className="font-bold">공동구매</span> 더불어{" "}
+            <span className="font-bold">친구</span>까지
+          </h1>
+        </div>
 
         <form className="mt-6" onSubmit={handleSubmit(onSubmit)}>
-          <div className="flex flex-col justify-center">
+          <div className="flex flex-col justify-center mb-3">
             <label //입력 요소와 텍스트를 연결하는 데 사용 되는 label 태그
               htmlFor="email" //htmlFor 속성은 레이블이 연결된 입력 요소의 ID를 지정
               className="text-sm font-semibold text-gray-800"
@@ -78,7 +100,9 @@ export default function Signin() {
             ></input>
             {errors?.email && (
               <div>
-                <span className="text-red-500">{errors.email.message}</span>
+                <span className="text-red-500 px-2 py-2 mt-1 text-sm">
+                  {errors.email.message}
+                </span>
               </div>
             )}
           </div>
@@ -91,20 +115,22 @@ export default function Signin() {
               비밀번호
             </label>
             <input
-              placeholder="비밀번호를 입력해주세요."
+              placeholder="영어와 숫자 조합으로 4글자 이상으로 입력해주세요."
               type="password"
               id="pasword"
-              className="w-full px-4 py-2 mt-2 border bg-white rounded-md"
+              className="w-full px-4 py-2 mt-1 border bg-white rounded-md"
               {...register("password", userPassword)}
             ></input>
             {errors?.password && ( //? 는 옵셔널 체크 연산자, password 라는 속성이 없으면 undefined
               <div>
-                <span className="text-red-500">{errors.password.message}</span>
+                <span className="text-red-500 px-2 py-2 mt-1 text-sm">
+                  {errors.password.message}
+                </span>
               </div>
             )}
           </div>
 
-          <div className="mt-6">
+          <div className="mt-3">
             <button
               type="submit" //duration hover시 색상 애니이션 지속시간
               className="w-full px-4 py-2 text-white duration-200 bg-black border  hover:bg-gray-700 "
@@ -113,15 +139,15 @@ export default function Signin() {
             </button>
           </div>
         </form>
-
+        {/* 
         <button className=" mt-1 w-full  px-4 py-2 font-bold  bg-yellow-300  border border-gray-100  hover:bg-yellow-200 rounded">
           3 초만에 카카오 로그인
         </button>
         <button className="mt-1 w-full  px-4 py-2 font-bold   bg-white border border-gray-100  hover:bg-gray-100 rounded">
           Sign Up with Google
         </button>
-        <br />
-        <small className="mt-2 flex justify-center text-sm">
+        <br /> */}
+        <small className=" flex justify-center text-sm">
           <Link href="/findemail" className="text-gray-300 mr-1 ">
             아이디 찾기
           </Link>
@@ -131,7 +157,7 @@ export default function Signin() {
           </Link>
         </small>
 
-        <button className="mt-6 w-full  px-4 py-2  font-bold text-white bg-gray-300 border border-gray-300 rounded">
+        <button className="mt-3 w-full  px-4 py-2  font-bold text-white bg-gray-300 border border-gray-300 rounded">
           <Link
             href="/signup/agreement"
             className=" t font-bold text-white  bg-gray-300 border border-gray-300 rounded"
