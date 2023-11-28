@@ -4,9 +4,9 @@ import React from "react";
 
 export default function PostItem({ dpost }) {
   const dpostId = dpost.id;
-
   const boardNamePath = usePathname();
   const boardId = boardNamePath.substring(1);
+
   const createdAt = dpost.createdAt;
   const month_day = createdAt.slice(5, 10).replace("-", "/");
   const hour_minute = createdAt.slice(11, 16);
