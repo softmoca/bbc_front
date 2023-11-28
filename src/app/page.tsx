@@ -21,7 +21,7 @@ export default function Home() {
   return (
     <div className="bg-white flex flex-col ml-3 mt-3 m-b-10">
       <img
-        className=" w-full mb-3"
+        className=" w-full mb-3 rounded"
         src={`${process.env.NEXT_PUBLIC_SERVER_URL}/public/advertist_example.png`}
         alt="광고 예제"
       />

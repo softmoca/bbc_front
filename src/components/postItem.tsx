@@ -10,13 +10,25 @@ export default function PostItem({ dpost }) {
 
   return (
     <Link href={`/${boardId}/${dpostId}`}>
-      <div className="border-b p-1">
+      <div className=" mb-3 ">
         <p className="font-bold">{dpost.postTitle} </p>
-        <p>{dpost.postContent} </p>
+        <p className="text-sm">{dpost.postContent} </p>
 
-        <p>
-          👍🏻 {dpost.postLike} 💬 {dpost.commentCount} {dpost.createdAt}
+        <p className=" text-xs ">
+          {dpost.postLike !== 0 && ( // postLike이 0이 아닌 경우에만 렌더링
+            <span className="mr-3 text-red-500 font-bold">
+              👍🏻 {dpost.postLike}
+            </span>
+          )}
+          {dpost.commentCount !== 0 && ( // commentCount가 0이 아닌 경우에만 렌더링
+            <span className="mr-3 text-sky-400 font-bold">
+              💬 {dpost.commentCount}
+            </span>
+          )}
+          <span className="text-gray-300">{dpost.createdAt}</span>
         </p>
+
+        <div className="border-b mt-2"> </div>
       </div>
     </Link>
   );

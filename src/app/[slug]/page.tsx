@@ -29,14 +29,15 @@ export default function Post() {
   }, [boardId]);
 
   return (
-    <section>
+    <section className="m-3 ">
       <div className=" text-xl font-bold flex  justify-between items-center">
+        <div></div>
         <h1 className="text-xl font-bold">{`${boardTitle} 게시판`} </h1>
         <button type="submit">🔍 </button>
       </div>
 
       <img
-        className=" my-2 w-full mb-3"
+        className=" my-2 w-full mb-3 rounded"
         src={`${process.env.NEXT_PUBLIC_SERVER_URL}/public/advertist_example.png`}
         alt="광고 예제"
       />

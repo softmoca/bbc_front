@@ -37,9 +37,8 @@ export default function page() {
   const PostUserEmail = dDetailPosts.author.email;
 
   return (
-    <section>
+    <section className="m-3 border rounded-lg">
       <div className=" text-xl font-bold flex  justify-between items-center">
-        <Link href={`${BoardId}`}>{"<"}</Link>
         <h1 className="text-xl font-bold">{`${BoardTitle} 게시판`} </h1>
       </div>
 
@@ -75,7 +74,11 @@ export default function page() {
           <div>채팅방참여</div>
         </div>
 
-        <div className="m-10">광고</div>
+        <img
+          className=" w-full mb-3 rounded"
+          src={`${process.env.NEXT_PUBLIC_SERVER_URL}/public/advertist_example.png`}
+          alt="광고 예제"
+        />
 
         <div>
           <div>
