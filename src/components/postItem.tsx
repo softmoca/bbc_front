@@ -7,6 +7,9 @@ export default function PostItem({ dpost }) {
 
   const boardNamePath = usePathname();
   const boardId = boardNamePath.substring(1);
+  const createdAt = dpost.createdAt;
+  const month_day = createdAt.slice(5, 10).replace("-", "/");
+  const hour_minute = createdAt.slice(11, 16);
 
   return (
     <Link href={`/${boardId}/${dpostId}`}>
@@ -25,7 +28,9 @@ export default function PostItem({ dpost }) {
               💬 {dpost.commentCount}
             </span>
           )}
-          <span className="text-gray-300">{dpost.createdAt}</span>
+          <span className="text-gray-300">
+            {month_day} {hour_minute}
+          </span>
         </p>
 
         <div className="border-b mt-2"> </div>
