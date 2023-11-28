@@ -26,7 +26,10 @@ export default function page() {
   const dDetailPosts = useSelector(
     (state) => state.persistedReducer.post.postDetailData
   );
-  console.log(dDetailPosts);
+
+  const createdAt = dDetailPosts.createdAt;
+  const month_day = createdAt.slice(5, 10).replace("-", "/");
+  const hour_minute = createdAt.slice(11, 16);
 
   const dComments = useSelector(
     (state) => state.persistedReducer.comment.commentData
@@ -70,7 +73,10 @@ export default function page() {
           <div className="mr-3 text-xs">
             💬 {`${dDetailPosts.commentCount} `}
           </div>
-          <div className="mr-3 text-xs">{`${dDetailPosts.createdAt} `}</div>
+          <div className="mr-3 text-xs text-gray-300">
+            {" "}
+            {month_day} {hour_minute}
+          </div>
           <div>채팅방참여</div>
         </div>
 
