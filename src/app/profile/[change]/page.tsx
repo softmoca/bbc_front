@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/rules-of-hooks */
 "use client";
 import {
@@ -91,23 +92,8 @@ export default function page() {
   };
 
   return (
-    <div>
+    <div className="m-3 border rounded-lg p-1">
       <div>
-        {userImageCheck > 0 ? (
-          <img
-            className="min-w-[100px] h-[100px]"
-            src={`${process.env.NEXT_PUBLIC_SERVER_URL}/public/users/${
-              userProfileData.images.slice(-1)[0]?.path
-            }`}
-            alt="image"
-          />
-        ) : (
-          <img
-            src={gravatar.url(userProfileData.email, { s: "100px", d: "mm" })}
-            alt={userProfileData.nickName}
-          />
-        )}
-
         <div className="flex">
           {" "}
           <Dropzone onDrop={handleDrop}>
@@ -115,9 +101,35 @@ export default function page() {
               { getRootProps, getInputProps } //Dropzone 에서 가져온 인자들
             ) => (
               <section>
-                <div {...getRootProps()}>
+                <div {...getRootProps()} className="relative">
                   <input {...getInputProps()} />
-                  <p>📷</p>
+                  {userImageCheck > 0 ? (
+                    <div className="relative">
+                      <img
+                        className="min-w-[100px] h-[100px] p-3"
+                        src={`${
+                          process.env.NEXT_PUBLIC_SERVER_URL
+                        }/public/users/${
+                          userProfileData.images.slice(-1)[0]?.path
+                        }`}
+                        alt="image"
+                      />
+                      <p className="absolute top-0 left-35 right-0 bottom-18 flex items-center justify-center">
+                        📷
+                      </p>
+                    </div>
+                  ) : (
+                    <div className="relative">
+                      <img
+                        className="w-[100px] h-[70px] rounded-full p-3"
+                        src={`${process.env.NEXT_PUBLIC_SERVER_URL}/public/userProfileDefault.png`}
+                        alt="익명 사용자"
+                      />
+                      <p className="absolute top-0 left-10 right-0 bottom-15 flex items-center justify-center">
+                        📷
+                      </p>
+                    </div>
+                  )}
                 </div>
               </section>
             )}
