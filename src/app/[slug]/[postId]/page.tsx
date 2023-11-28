@@ -68,18 +68,21 @@ export default function page() {
           />
         )}
 
-        <div className="flex">
-          <div className="mr-3 text-xs"> 👍🏻 {`${dDetailPosts.postLike} `}</div>
-          <div className="mr-3 text-xs">
-            💬 {`${dDetailPosts.commentCount} `}
-          </div>
-          <div className="mr-3 text-xs text-gray-300">
-            {" "}
+        <p className=" text-xs ">
+          {dDetailPosts.postLike !== 0 && ( // postLike이 0이 아닌 경우에만 렌더링
+            <span className="mr-3 text-red-500 font-bold">
+              👍🏻 {dDetailPosts.postLike}
+            </span>
+          )}
+          {dDetailPosts.commentCount !== 0 && ( // commentCount가 0이 아닌 경우에만 렌더링
+            <span className="mr-3 text-sky-400 font-bold">
+              💬 {dDetailPosts.commentCount}
+            </span>
+          )}
+          <span className="text-gray-300">
             {month_day} {hour_minute}
-          </div>
-          <div>채팅방참여</div>
-        </div>
-
+          </span>
+        </p>
         <img
           className=" w-full mb-3 rounded"
           src={`${process.env.NEXT_PUBLIC_SERVER_URL}/public/advertist_example.png`}
