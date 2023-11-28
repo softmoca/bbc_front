@@ -34,7 +34,7 @@ export default function CommentItem({ dcomment }) {
           </div>
         </div>
       </div>
-      <div className="mt-2 font-normal "> {`${commentContent}`}</div>
+      <div className="mt-2 ml-2 font-normal "> {`${commentContent}`}</div>
     </div>
   );
 }

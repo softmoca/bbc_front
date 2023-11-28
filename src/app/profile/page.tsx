@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
@@ -23,20 +24,21 @@ export default function Profile() {
 
   return (
     <div className="m-3">
-      <div className=" flex mt-4 mb-10">
-        <div>
+      <div className=" flex mt-4 mb-5 ">
+        <div className=" border-2 rounded-xl">
           <img
-            src={gravatar.url(userProfileData.email, { s: "50px", d: "mm" })}
-            alt={userProfileData.nickName}
+            className=" w-[60px] h-[50px] rounded-full "
+            src={`${process.env.NEXT_PUBLIC_SERVER_URL}/public/userProfileDefault.png`}
+            alt="익명 사용자"
           />
         </div>
         <div>
-          <div className="ml-5 font-extrabold">{`${userProfileData.email}`}</div>
-          <div className="ml-5   ">{`${userProfileData.nickName}`}</div>
+          <div className="ml-3 text-xl font-extrabold">{`${userProfileData.email}`}</div>
+          <div className="ml-3  font-bold text-gray-800  ">{`${userProfileData.nickName}`}</div>
         </div>
       </div>
 
-      <div className=" mb-10  font-bold bg-gray-100 rounded-md shadow-md">
+      <div className=" mb-5  font-bold bg-gray-100 rounded-md shadow-md">
         <h1 className="text-2xl font-extrabold "> 계정 </h1>
         <Link href={`/profile/${userProfileData.id}`}>
           <h1 className="mb-1 mt-2"> 닉네임/프로필 사진 변경</h1>
