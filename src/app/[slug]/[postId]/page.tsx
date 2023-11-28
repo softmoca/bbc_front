@@ -40,35 +40,41 @@ export default function page() {
   const PostUserEmail = dDetailPosts.author.email;
 
   return (
-    <section className="m-3 border rounded-lg">
-      <div className=" text-xl font-bold flex  justify-between items-center">
-        <h1 className="text-xl font-bold">{`${BoardTitle} 게시판`} </h1>
+    <section className="m-3 border rounded-lg p-1">
+      <div className="  font-bold flex  justify-between items-center">
+        <div></div>
+        <h1 className="text-2xl font-bold">{`${BoardTitle} 게시판`} </h1>
+        <div></div>
       </div>
 
       <div className=" flex mt-3">
-        <div>
+        <div className=" border-2 rounded-xl">
           <img
-            src={gravatar.url(PostUserEmail, { s: "25px", d: "mm" })}
-            alt={PostNickName}
+            className=" w-[50px] h-[40px] rounded-full "
+            src={`${process.env.NEXT_PUBLIC_SERVER_URL}/public/userProfileDefault.png`}
+            alt="익명 사용자"
           />
         </div>
 
-        <div className="ml-10 font-bold">{`${PostNickName}`}</div>
+        <div className="ml-3 font-bold">{`${PostNickName}`}</div>
+        <button className="ml-auto pr-3 pl-3 mr-3 bg-red-200 rounded-2xl font-extrabold">
+          채팅방 참여
+        </button>
       </div>
-
-      <div className="mt-10">
+      <div className="border-b mt-3 mb-3"></div>
+      <div className="mt-3">
         <h1 className="text-xl font-bold">{`${dDetailPosts.postTitle} `} </h1>
-        <div className="text-m mb-20">{`${dDetailPosts.postContent} `} </div>
+        <div className="text-m mb-10">{`${dDetailPosts.postContent} `} </div>
 
         {dDetailPosts.images.length > 0 && (
           <img
-            className="min-w-[100px] h-[100px]"
+            className="min-w-[100px] h-[100px] mb-1"
             src={`${process.env.NEXT_PUBLIC_SERVER_URL}${dDetailPosts.images[0]?.path}`}
             alt="image"
           />
         )}
 
-        <p className=" text-xs ">
+        <p className=" text-sm mb-1">
           {dDetailPosts.postLike !== 0 && ( // postLike이 0이 아닌 경우에만 렌더링
             <span className="mr-3 text-red-500 font-bold">
               👍🏻 {dDetailPosts.postLike}
@@ -83,8 +89,8 @@ export default function page() {
             {month_day} {hour_minute}
           </span>
         </p>
+
         <img
-          className=" w-full mb-3 rounded"
           src={`${process.env.NEXT_PUBLIC_SERVER_URL}/public/advertist_example.png`}
           alt="광고 예제"
         />
