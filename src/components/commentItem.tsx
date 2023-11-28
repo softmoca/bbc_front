@@ -16,19 +16,20 @@ export default function CommentItem({ dcomment }) {
   const hour_minute = createdAt.slice(11, 16);
 
   return (
-    <div>
-      <div className=" flex mt-4">
-        <div>
+    <div className=" border-b rounded mb-2">
+      <div className=" flex mt-2">
+        <div className=" border-2 rounded-xl">
           <img
-            src={gravatar.url(authorEmail, { s: "25px", d: "mm" })}
-            alt={CommentNickName}
+            className=" w-[40px] h-[30px] rounded-full "
+            src={`${process.env.NEXT_PUBLIC_SERVER_URL}/public/userProfileDefault.png`}
+            alt="익명 사용자"
           />
         </div>
 
         <div>
-          <div className="ml-5 font-extrabold">{`${commnetNickName}`}</div>
+          <div className="ml-3 text-sm font-extrabold">{`${commnetNickName}`}</div>
 
-          <div className="ml-5 text-xs  text-gray-300   ">
+          <div className="ml-3 text-xs  text-gray-300   ">
             {month_day} {hour_minute}
           </div>
         </div>

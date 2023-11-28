@@ -43,14 +43,14 @@ export default function page() {
     <section className="m-3 border rounded-lg p-1">
       <div className="  font-bold flex  justify-between items-center">
         <div></div>
-        <h1 className="text-2xl font-bold">{`${BoardTitle} 게시판`} </h1>
+        <h1 className="text-xl font-bold">{`${BoardTitle} 게시판`} </h1>
         <div></div>
       </div>
 
       <div className=" flex mt-3">
         <div className=" border-2 rounded-xl">
           <img
-            className=" w-[50px] h-[40px] rounded-full "
+            className=" w-[45px] h-[40px] rounded-full "
             src={`${process.env.NEXT_PUBLIC_SERVER_URL}/public/userProfileDefault.png`}
             alt="익명 사용자"
           />
@@ -63,8 +63,8 @@ export default function page() {
       </div>
       <div className="border-b mt-3 mb-3"></div>
       <div className="mt-3">
-        <h1 className="text-xl font-bold">{`${dDetailPosts.postTitle} `} </h1>
-        <div className="text-m mb-10">{`${dDetailPosts.postContent} `} </div>
+        <h1 className="text-lg font-bold">{`${dDetailPosts.postTitle} `} </h1>
+        <div className=" mb-10">{`${dDetailPosts.postContent} `} </div>
 
         {dDetailPosts.images.length > 0 && (
           <img
@@ -91,6 +91,7 @@ export default function page() {
         </p>
 
         <img
+          className="w-[420px] h-[70px] "
           src={`${process.env.NEXT_PUBLIC_SERVER_URL}/public/advertist_example.png`}
           alt="광고 예제"
         />
