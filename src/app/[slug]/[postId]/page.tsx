@@ -34,6 +34,7 @@ export default function page() {
   const dComments = useSelector(
     (state) => state.persistedReducer.comment.commentData
   );
+  console.log(dComments);
 
   const BoardTitle = dDetailPosts.board.BoardTitle;
   const PostNickName = dDetailPosts.author.nickName;

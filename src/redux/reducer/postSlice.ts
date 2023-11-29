@@ -9,6 +9,7 @@ import {
 const initialState = {
   postData: [
     {
+      createdAt: "",
       id: "",
       board: {
         BoardTitle: "",
@@ -16,6 +17,7 @@ const initialState = {
     },
   ],
   postDetailData: {
+    createdAt: "",
     author: {
       email: "",
       nickName: "",

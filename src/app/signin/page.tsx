@@ -37,16 +37,18 @@ export default function Signin() {
 
       // dispatch 함수 호출
       await dispatch(loginUser(body));
+      const storedLocalStorageJWT = localStorage.getItem("accessToken");
 
-      setTimeout(() => {
-        router.push("/");
-      }, 500);
+      if (storedLocalStorageJWT) {
+        setTimeout(() => {
+          router.push("/");
+        }, 1000);
+      }
 
       reset(); // react-hook-form으로 입력 후 입력값 초기화
     } catch (error) {
-      // dispatch 도중 에러가 발생한 경우 에러 처리 코드 작성
+      console.log("dddddddd");
       console.error("에러 발생: ", error);
-      // 에러 처리 로직 추가 (예: 사용자에게 에러 메시지 표시)
     }
   };
 
