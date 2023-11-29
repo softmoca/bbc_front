@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { registerPost } from "@/redux/thunkFunctions/psotThunk";
@@ -158,17 +159,6 @@ export default function Newpost() {
                     </section>
                   )}
                 </Dropzone>
-              </div>
-
-              <div className="flex items-center space-x-2">
-                <input
-                  type="checkbox"
-                  id="checkbox"
-                  className="h-4 w-4 text-indigo-600"
-                />
-                <label htmlFor="checkbox" className="text-gray-700">
-                  익명
-                </label>
               </div>
             </div>
             <div>

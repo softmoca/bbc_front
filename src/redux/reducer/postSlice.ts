@@ -43,7 +43,7 @@ const postSlice = createSlice({
       })
       .addCase(registerPost.fulfilled, (state) => {
         state.isLoading = false;
-        toast.info("글작성에 성공하였습니다.");
+        toast.info("게시글을 작성 하였습니다 !");
       })
       .addCase(registerPost.rejected, (state, action) => {
         state.isLoading = false;
