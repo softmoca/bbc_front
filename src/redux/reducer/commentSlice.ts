@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { getComments } from "../thunkFunctions/commentThunk";
 
 const initialState = {
-  commentData: {},
+  commentData: [{}],
   postDetailData: {},
   isLoading: false,
   error: "",

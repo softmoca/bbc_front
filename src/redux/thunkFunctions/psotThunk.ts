@@ -11,8 +11,8 @@ export const registerPost = createAsyncThunk(
         "/post/",
         body //백엔드 api url
       );
-
-      return response.data;
+      console.log(response);
+      return response;
     } catch (error) {
       console.log(error);
       return thunkAPI.rejectWithValue(error.message);

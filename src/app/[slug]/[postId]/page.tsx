@@ -34,11 +34,9 @@ export default function page() {
   const dComments = useSelector(
     (state) => state.persistedReducer.comment.commentData
   );
-  console.log(dComments);
 
   const BoardTitle = dDetailPosts.board.BoardTitle;
   const PostNickName = dDetailPosts.author.nickName;
-  const PostUserEmail = dDetailPosts.author.email;
 
   return (
     <section className="m-3 border rounded-lg p-1">
@@ -105,6 +103,8 @@ export default function page() {
           </div>
         </div>
       </div>
+
+      <div>ddddd</div>
     </section>
   );
 }
