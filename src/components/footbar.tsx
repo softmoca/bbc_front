@@ -8,7 +8,7 @@ export default function Footbar() {
   return (
     <div>
       {isAuth ? (
-        <div className=" w-1/3 text-xl font-bold flex  justify-between items-center fixed bottom-0  p-4 m-1 border rounded-lg ">
+        <div className=" w-1/3 bg-white text-xl font-bold flex  justify-between items-center fixed bottom-0  p-4 m-1 border rounded-lg ">
           <Link href={"/"}>홈</Link>
 
           <Link href={"/chats"}>채팅</Link>
