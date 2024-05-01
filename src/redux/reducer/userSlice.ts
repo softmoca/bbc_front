@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import {
   authUser,
   getUserData,
+  loginOutUser,
   loginUser,
   porfileChange,
   registerUser,
@@ -65,6 +66,23 @@ const userSlice = createSlice({
         toast.info("로그인 되었습니다 !");
       })
       .addCase(loginUser.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+        toast.error(action.payload);
+      })
+      .addCase(loginOutUser.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(loginOutUser.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isAuth = false; // 로그아웃이 되었음.
+
+        localStorage.removeItem("refreshToken");
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("persist:root");
+        toast.info("로그아웃 되었습니다 !");
+      })
+      .addCase(loginOutUser.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
         toast.error(action.payload);

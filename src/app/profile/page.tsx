@@ -2,15 +2,20 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
-import { authUser, getUserData } from "@/redux/thunkFunctions/userThunk";
+import {
+  authUser,
+  getUserData,
+  loginOutUser,
+} from "@/redux/thunkFunctions/userThunk";
 import Link from "next/link";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import gravatar from "gravatar";
+import { useRouter } from "next/navigation";
 
 export default function Profile() {
   const dispatch = useDispatch();
-
+  let router = useRouter();
   useEffect(() => {
     dispatch(getUserData()); //thucnk 함수 이름은 authUser
     console.log("dddd");
@@ -19,6 +24,12 @@ export default function Profile() {
   const userProfileData = useSelector(
     (state) => state.persistedReducer.user.userProfileData
   );
+
+  const logout = () => {
+    dispatch(loginOutUser());
+
+    // router.push("/");
+  };
 
   console.log(userProfileData);
 
@@ -70,7 +81,10 @@ export default function Profile() {
           <h1 className="mb- mt-2"> 회원탈퇴</h1>
         </Link>{" "}
         <Link href="/">
-          <h1 className="mb-1"> 로그아웃</h1>
+          <h1 className="mb- mt-2" onClick={logout}>
+            {" "}
+            로그아웃
+          </h1>
         </Link>{" "}
       </div>
     </div>

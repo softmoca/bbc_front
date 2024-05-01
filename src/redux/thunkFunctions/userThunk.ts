@@ -33,7 +33,6 @@ export const loginUser: any = createAsyncThunk(
         }
       );
 
-      console.log(response);
       return response.data;
     } catch (error) {
       //console.log(error.response.data.message);
@@ -66,8 +65,24 @@ export const getUserData = createAsyncThunk(
         "/user/userData" //백엔드 api url
       );
 
-      //console.log(response.data.data);
-      return response.data.data;
+      console.log(response.data);
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const loginOutUser = createAsyncThunk(
+  "user/loginOutUser",
+  async (_, thunkAPI) => {
+    try {
+      const response = await axiosInstance.get(
+        "/user/userData" //백엔드 api url
+      );
+
+      return response.data;
     } catch (error) {
       console.log(error);
       return thunkAPI.rejectWithValue(error.message);
