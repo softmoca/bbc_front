@@ -34,9 +34,10 @@ export default function Signin() {
         email: email,
         password: password,
       };
+      const encoded = btoa(email + ":" + password);
 
       // dispatch 함수 호출
-      await dispatch(loginUser(body));
+      await dispatch(loginUser(encoded));
       const storedLocalStorageJWT = localStorage.getItem("accessToken");
 
       if (storedLocalStorageJWT) {

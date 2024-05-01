@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 
 export default function Footbar() {
   const isAuth = useSelector((state) => state.persistedReducer.user.isAuth);
+  console.log(isAuth);
 
   return (
     <div>

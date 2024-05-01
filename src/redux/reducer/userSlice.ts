@@ -39,8 +39,12 @@ const userSlice = createSlice({
       .addCase(registerUser.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(registerUser.fulfilled, (state) => {
+      .addCase(registerUser.fulfilled, (state, action) => {
         state.isLoading = false;
+        state.userAuthData = action.payload;
+        state.isAuth = true;
+        localStorage.setItem("refreshToken", action.payload.refreshToken);
+        localStorage.setItem("accessToken", action.payload.accessToken);
         toast.info("회원가입을 성공했습니다락다락");
       })
       .addCase(registerUser.rejected, (state, action) => {
@@ -55,14 +59,14 @@ const userSlice = createSlice({
         state.isLoading = false;
         state.userAuthData = action.payload; // 백엔드로 api 요청 한 후 return으로 받은 json
         state.isAuth = true; // 로그인이 되었음.
+
+        localStorage.setItem("refreshToken", action.payload.refreshToken);
+        localStorage.setItem("accessToken", action.payload.accessToken);
         toast.info("로그인 되었습니다 !");
-        localStorage.setItem("accessToken", action.payload.data.accessJwtToken);
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
-        // console.log(action);
-        // console.log(state);
         toast.error(action.payload);
       })
       .addCase(authUser.pending, (state) => {
@@ -87,8 +91,8 @@ const userSlice = createSlice({
       .addCase(getUserData.fulfilled, (state, action) => {
         state.isLoading = false;
         state.userProfileData = action.payload; // 백엔드로 api 요청 한 후 return으로 받은 json
-
-        //console.log(action.payload);
+        // console.log("dd");
+        // console.log(action.payload);
       })
       .addCase(getUserData.rejected, (state, action) => {
         state.isLoading = false;

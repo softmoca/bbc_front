@@ -65,13 +65,10 @@ export default function RegisterPage() {
     if (emailPass && nickNamePass) {
       dispatch(registerUser(body));
       // reset(); //react-hook-form으로 입력후 입력값 초기화
-      console.log("dddd");
+
       setTimeout(() => {
-        console.log("aaaaaaaa");
-        router.push("/signin");
+        router.push("/");
       }, 500);
-      console.log("dddd");
-      console.log("dddsdfdsd");
     } else {
       toast.error(" 중복 체크들를 먼저 해주세요 !");
     }
@@ -84,11 +81,11 @@ export default function RegisterPage() {
     console.log(emailValue);
     try {
       const response = await axios.post(
-        "http://localhost:3030/user/checkEmail", //백엔드 api url
+        "http://localhost:3333/user/checkEmail", //백엔드 api url
         { email: emailValue }
       );
 
-      if (response.data.success) {
+      if (response) {
         setEmailPass(true);
         toast.info("이메일 사용 가능합니다 ! !");
       }
@@ -103,11 +100,11 @@ export default function RegisterPage() {
     console.log(nickNameValue);
     try {
       const response = await axios.post(
-        "http://localhost:3030/user/checkNickName", //백엔드 api url
+        "http://localhost:3333/user/checkNickName", //백엔드 api url
         { nickName: nickNameValue }
       );
 
-      if (response.data.success) {
+      if (response) {
         setNickNamePass(true);
         toast.info("닉네임 사용 가능합니다 ! !");
       }

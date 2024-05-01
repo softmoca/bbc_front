@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:3030", // 서버 포트
+  baseURL: "http://localhost:3333", // 서버 포트
 });
 
 axiosInstance.interceptors.request.use(

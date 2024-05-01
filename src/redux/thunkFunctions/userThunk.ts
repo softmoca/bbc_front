@@ -1,18 +1,18 @@
 import axiosInstance from "@/utils/axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 
 export const registerUser: any = createAsyncThunk(
   "user/registerUser",
   async (body, thunkAPI) => {
     try {
       const response = await axiosInstance.post(
-        `/user/signup`, //백엔드 api url
+        `/auth/register/email`, //백엔드 api url
         body
       );
 
       return response.data;
     } catch (error) {
-      console.log(error.message);
       // console.log(response);
       return thunkAPI.rejectWithValue(error.message);
     } //rejectWithValue에 string 을 넣어주면    action의 Payload(state에 전달하는 값)가 된다.
@@ -21,12 +21,19 @@ export const registerUser: any = createAsyncThunk(
 
 export const loginUser: any = createAsyncThunk(
   "user/loginUser",
-  async (body, thunkAPI) => {
+  async (encoded, thunkAPI) => {
     try {
-      const response = await axiosInstance.post(
-        "/user/localSignIn", //백엔드 api url
-        body
+      const response = await axios.post(
+        "http://localhost:3333/auth/login/email", //백엔드 api url
+        {},
+        {
+          headers: {
+            authorization: "Basic " + encoded,
+          },
+        }
       );
+
+      console.log(response);
       return response.data;
     } catch (error) {
       //console.log(error.response.data.message);

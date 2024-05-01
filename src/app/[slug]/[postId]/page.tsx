@@ -51,7 +51,7 @@ export default function page() {
   const handleButtonClick = async () => {
     try {
       const response = await axiosInstance.post(
-        `http://localhost:3030/post/${postId}/comment`, //백엔드 api url
+        `http://localhost:3333/post/${postId}/comment`, //백엔드 api url
         { commentContent: inputValue }
       );
       toast.info("댓글이 작성되었습니다.");

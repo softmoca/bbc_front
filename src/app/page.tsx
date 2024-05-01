@@ -8,16 +8,6 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function Home() {
-  const dispatch = useDispatch();
-  const isAuth = useSelector((state) => state.persistedReducer.user.isAuth); // 전체 state 를 가져오기
-  const { pathname } = usePathname();
-
-  useEffect(() => {
-    if (isAuth) {
-      dispatch(authUser()); //thucnk 함수 이름은 authUser
-    }
-  }, []); // 권한이 바뀌거나 or url경로가 바뀌거나
-
   return (
     <div className="bg-white flex flex-col ml-3 mt-3 m-b-10">
       <img
