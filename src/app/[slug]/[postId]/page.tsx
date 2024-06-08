@@ -13,16 +13,16 @@ import axiosInstance from "@/utils/axios";
 
 export default function Page() {
   const postNamePath = usePathname();
-  console.log("postNamePath:", postNamePath); // 디버깅 로그 추가
+  // console.log("postNamePath:", postNamePath); // 디버깅 로그 추가
   const postId = postNamePath.substring(5);
   const BoardId = postNamePath.slice(1, 4);
-  console.log("postId:", postId); // 디버깅 로그 추가
-  console.log("BoardId:", BoardId); // 디버깅 로그 추가
+  // console.log("postId:", postId); // 디버깅 로그 추가
+  // console.log("BoardId:", BoardId); // 디버깅 로그 추가
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log("useEffect called with postId:", postId); // 디버깅 로그 추가
+    //console.log("useEffect called with postId:", postId); // 디버깅 로그 추가
     if (postId) {
       dispatch(getPost(postId));
       dispatch(getComments(postId));
@@ -32,7 +32,7 @@ export default function Page() {
   const dDetailPosts = useSelector(
     (state) => state.persistedReducer.post.postDetailData
   );
-  console.log("dDetailPosts:", dDetailPosts); // 디버깅 로그 추가
+  // console.log("dDetailPosts:", dDetailPosts); // 디버깅 로그 추가
 
   const dComments = useSelector(
     (state) => state.persistedReducer.comment.commentData
@@ -51,7 +51,7 @@ export default function Page() {
   // }
 
   const createdAt = dDetailPosts.createdAt || "";
-  console.log("createdAt:", createdAt); // 디버깅 로그 추가
+  // console.log("createdAt:", createdAt); // 디버깅 로그 추가
 
   const month_day = createdAt.slice(5, 10).replace("-", "/");
   const hour_minute = createdAt.slice(11, 16);

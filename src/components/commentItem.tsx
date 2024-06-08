@@ -4,11 +4,10 @@ import gravatar from "gravatar";
 
 export default function CommentItem({ dcomment }) {
   const dcommentId = dcomment.id;
-  const CommentNickName = dcomment?.author?.nickName;
+
   const commnetNickName = dcomment?.author?.nickName;
 
-  const commentContent = dcomment?.commentContent;
-  const authorEmail = dcomment?.author?.email;
+  const commentContent = dcomment?.comment;
 
   const createdAt = dcomment?.createdAt;
   const month_day = createdAt?.slice(5, 10).replace("-", "/");
