@@ -16,10 +16,13 @@ export default function Home() {
         alt="광고 예제"
       />
       <div className="  mb-5 bg-gray-100 rounded-md shadow-md">
-        <Link href="/101" className="text-xl mb-1 font-bold ">
-          <h1 className="mb-1"> 🔥주간 애브리타임 인기글🔥</h1>
+        <Link href="/d/e/m/o" className="text-xl mb-1bold font- ">
+          <h1 className="text-xl mb-1 font-bold">
+            {" "}
+            🔥주간 애브리타임 인기글🔥
+          </h1>
         </Link>{" "}
-        <Link href="/102" className="text-xl mb-1 font-bold ">
+        <Link href="/d/e/m/o" className="text-xl mb-1 font-bold ">
           <h1> 🔥주간 유튜브 인기영상🔥</h1>
         </Link>
       </div>

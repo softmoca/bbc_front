@@ -12,8 +12,8 @@ export default function Footbar() {
         <div className=" w-1/3 bg-white text-xl font-bold flex  justify-between items-center fixed bottom-0  p-4 m-1 border rounded-lg ">
           <Link href={"/"}>홈</Link>
 
-          <Link href={"/chats"}>채팅</Link>
-          <Link href={"/alarm"}>알림</Link>
+          <Link href={"/d/e/m/o"}>채팅</Link>
+          <Link href={"/d/e/m/o"}>알림</Link>
           <Link href={"/profile"}>프로필</Link>
         </div>
       ) : (

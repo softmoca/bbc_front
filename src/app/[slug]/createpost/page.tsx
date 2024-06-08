@@ -17,6 +17,7 @@ export default function Newpost() {
   const parts: string[] = newPostPath.split("/");
   const boardId = parts[1];
   let router = useRouter();
+  console.log(newPostPath);
 
   const {
     register,
