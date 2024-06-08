@@ -13,16 +13,12 @@ import axiosInstance from "@/utils/axios";
 
 export default function Page() {
   const postNamePath = usePathname();
-  // console.log("postNamePath:", postNamePath); // 디버깅 로그 추가
   const postId = postNamePath.substring(5);
   const BoardId = postNamePath.slice(1, 4);
-  // console.log("postId:", postId); // 디버깅 로그 추가
-  // console.log("BoardId:", BoardId); // 디버깅 로그 추가
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    //console.log("useEffect called with postId:", postId); // 디버깅 로그 추가
     if (postId) {
       dispatch(getPost(postId));
       dispatch(getComments(postId));
@@ -32,27 +28,12 @@ export default function Page() {
   const dDetailPosts = useSelector(
     (state) => state.persistedReducer.post.postDetailData
   );
-  // console.log("dDetailPosts:", dDetailPosts); // 디버깅 로그 추가
 
   const dComments = useSelector(
     (state) => state.persistedReducer.comment.commentData
   );
-  console.log("dComments:", dComments); // 디버깅 로그 추가
-
-  // 데이터가 로드되지 않았을 때 로딩 표시
-  // if (
-  //   !dDetailPosts ||
-  //   !dDetailPosts.createdAt ||
-  //   !dDetailPosts.board ||
-  //   !dDetailPosts.author
-  // ) {
-  //   console.log("Loading condition met."); // 디버깅 로그 추가
-  //   return <div>Loading...</div>; // 로딩 중인 상태를 표시
-  // }
 
   const createdAt = dDetailPosts.createdAt || "";
-  // console.log("createdAt:", createdAt); // 디버깅 로그 추가
-
   const month_day = createdAt.slice(5, 10).replace("-", "/");
   const hour_minute = createdAt.slice(11, 16);
 
@@ -66,6 +47,11 @@ export default function Page() {
   };
 
   const handleButtonClick = async () => {
+    if (!inputValue.trim()) {
+      toast.error("댓글을 작성해주세요!");
+      return;
+    }
+
     try {
       const response = await axiosInstance.post(
         `http://localhost:3333/post/${postId}/comment`, //백엔드 api url
@@ -76,26 +62,8 @@ export default function Page() {
         window.location.reload();
       }, 500);
     } catch (error) {
-      console.log("www");
       console.error("에러 발생:", error);
-      toast.error("댓글이 작성되지 않았습니다 ! ");
-    }
-
-    try {
-      // 여기에서 실제로 백엔드로 데이터를 보내는 API 호출을 수행합니다.
-      const response = await fetch("YOUR_BACKEND_API_ENDPOINT", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ inputValue }),
-      });
-
-      // 서버 응답을 처리하고 필요한 경우 상태를 업데이트합니다.
-      const data = await response.json();
-      setResponseFromBackend(data);
-    } catch (error) {
-      console.error("에러 발생:", error);
+      toast.error("댓글이 작성되지 않았습니다!");
     }
   };
 
@@ -117,9 +85,6 @@ export default function Page() {
         </div>
 
         <div className="ml-3 font-bold">{`${PostNickName}`}</div>
-        <button className="ml-auto pr-3 pl-3 mr-3 bg-red-200 rounded-2xl font-extrabold">
-          채팅방 참여
-        </button>
       </div>
       <div className="border-b mt-3 mb-3"></div>
       <div className="mt-3">
