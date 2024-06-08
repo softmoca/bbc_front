@@ -13,7 +13,6 @@ export default function Post() {
   const [boardTitle, setBoardTitle] = useState("");
   const boardNamePath = usePathname();
   const boardId = parseInt(boardNamePath.substring(1));
-  console.log(boardNamePath);
 
   const dispatch = useDispatch();
 
