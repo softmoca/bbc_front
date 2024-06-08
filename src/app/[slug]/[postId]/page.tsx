@@ -69,7 +69,7 @@ export default function Page() {
     try {
       const response = await axiosInstance.post(
         `http://localhost:3333/post/${postId}/comment`, //백엔드 api url
-        { commentContent: inputValue }
+        { comment: inputValue }
       );
       toast.info("댓글이 작성되었습니다.");
       setTimeout(() => {
