@@ -17,7 +17,7 @@ export default function Post() {
   const dispatch = useDispatch();
 
   const dPosts = useSelector((state) => state.persistedReducer.post.postData);
-  console.log(dPosts);
+  // console.log(dPosts);
 
   useEffect(() => {
     dispatch(getBoardPosts(boardId));

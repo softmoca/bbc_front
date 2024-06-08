@@ -17,7 +17,6 @@ export default function Newpost() {
   const parts: string[] = newPostPath.split("/");
   const boardId = parts[1];
   let router = useRouter();
-  console.log(newPostPath);
 
   const {
     register,
@@ -35,16 +34,9 @@ export default function Newpost() {
   const newPostTitle = {
     required: "게시글 제목은  필수 요소입니다.",
   };
-  const newPostChatRoomTitle = {
-    required: " 채팅방 이름필수 요소입니다.",
-  };
 
   const newPostContent = {
     required: "게시글 내용은 필수 요소입니다.",
-  };
-
-  const newbuildingName = {
-    required: "필수 입니다",
   };
 
   const handleDrop = async (files) => {
@@ -70,12 +62,11 @@ export default function Newpost() {
     }
   };
 
-  const onSubmit = ({ postTitle, chatRoomTitle, postContent }) => {
+  const onSubmit = ({ postTitle, postContent }) => {
     // 페이지에서 입력 한 값
     const body = {
       postTitle: postTitle,
       postContent: postContent,
-      chatRoomTitle: chatRoomTitle,
       boardId: boardId,
     };
 
@@ -108,22 +99,13 @@ export default function Newpost() {
               </button>
             </div>
 
-            <div className=" flex   mb-2 mt-10">
+            <div className="    mb-2 mt-10">
               <input
                 placeholder="제목"
                 type="postTitle"
                 id="postTitle"
-                className="w-1/3 px-4 py-2 mt-2 border-b bg-white rounded-md"
+                className=" px-4 py-2 mt-2 border-b bg-white rounded-md"
                 {...register("postTitle", newPostTitle)}
-              ></input>
-
-              <div className="w-1/3"></div>
-              <input
-                placeholder="채팅방 이름"
-                type="chatRoomTitle"
-                id="chatRoomTitle"
-                className="w-1/3 px-4 py-2 mt-2 border bg-red-100 rounded-md"
-                {...register("chatRoomTitle", newPostChatRoomTitle)}
               ></input>
             </div>
 
