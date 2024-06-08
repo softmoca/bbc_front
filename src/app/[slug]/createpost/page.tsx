@@ -55,8 +55,9 @@ export default function Newpost() {
         formData,
         config
       );
+      //console.log(response.data);
 
-      setPostImage([response.data.path]);
+      setPostImage([response.data.fileName]);
     } catch (error) {
       console.error(error);
     }
@@ -114,14 +115,6 @@ export default function Newpost() {
                 <div className="w-1/3">
                   <span className="text-red-500">
                     {errors.postTitle.message}
-                  </span>
-                </div>
-              )}
-              <div className="w-1/3"></div>
-              {errors?.chatRoomTitle && (
-                <div className="w-1/3">
-                  <span className="text-red-500">
-                    {errors.chatRoomTitle.message}
                   </span>
                 </div>
               )}
