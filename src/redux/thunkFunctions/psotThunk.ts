@@ -39,13 +39,13 @@ export const getBoardPosts = createAsyncThunk(
   "post/getBoardPosts",
   async (boardId: string, thunkAPI) => {
     const queryBoardId = { where__board__i_like: boardId };
-
+    // console.log(queryBoardId);
     try {
       const response = await axiosInstance.get("post/getBoardPost", {
         params: queryBoardId,
       });
 
-      console.log(response.data);
+      // console.log(response.data);
       return response.data;
     } catch (error) {
       console.log(error);
@@ -58,10 +58,11 @@ export const getPost = createAsyncThunk(
   "post/getPost",
   async (postId: string, thunkAPI) => {
     try {
-      const response = await axiosInstance.get(`post/${postId}`);
-
-      //console.log(response.data.data);
-      return response.data.data;
+      const response = await axiosInstance.get(`post/${postId}/one`);
+      // console.log("ddd");
+      // console.log(response.data);
+      // console.log("ddd");
+      return response.data;
     } catch (error) {
       console.log(error);
       return thunkAPI.rejectWithValue(error.message);

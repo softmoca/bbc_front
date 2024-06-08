@@ -5,42 +5,59 @@
 import CommentItem from "@/components/commentItem";
 import { getComments } from "@/redux/thunkFunctions/commentThunk";
 import { getPost } from "@/redux/thunkFunctions/psotThunk";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import gravatar from "gravatar";
-import { useForm } from "react-hook-form";
-import axios from "axios";
 import { toast } from "react-toastify";
 import axiosInstance from "@/utils/axios";
 
-export default function page() {
+export default function Page() {
   const postNamePath = usePathname();
+  console.log("postNamePath:", postNamePath); // 디버깅 로그 추가
   const postId = postNamePath.substring(5);
   const BoardId = postNamePath.slice(1, 4);
+  console.log("postId:", postId); // 디버깅 로그 추가
+  console.log("BoardId:", BoardId); // 디버깅 로그 추가
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getPost(postId)); //thucnk 함수 이름은 authUser
-    dispatch(getComments(postId));
-  }, []); // 권한이 바뀌거나 or url경로가 바뀌거나
+    console.log("useEffect called with postId:", postId); // 디버깅 로그 추가
+    if (postId) {
+      dispatch(getPost(postId));
+      dispatch(getComments(postId));
+    }
+  }, [dispatch, postId]);
 
   const dDetailPosts = useSelector(
     (state) => state.persistedReducer.post.postDetailData
   );
-
-  const createdAt = dDetailPosts.createdAt;
-  const month_day = createdAt.slice(5, 10).replace("-", "/");
-  const hour_minute = createdAt.slice(11, 16);
+  console.log("dDetailPosts:", dDetailPosts); // 디버깅 로그 추가
 
   const dComments = useSelector(
     (state) => state.persistedReducer.comment.commentData
   );
+  console.log("dComments:", dComments); // 디버깅 로그 추가
 
-  const BoardTitle = dDetailPosts.board.BoardTitle;
-  const PostNickName = dDetailPosts.author.nickName;
+  // 데이터가 로드되지 않았을 때 로딩 표시
+  // if (
+  //   !dDetailPosts ||
+  //   !dDetailPosts.createdAt ||
+  //   !dDetailPosts.board ||
+  //   !dDetailPosts.author
+  // ) {
+  //   console.log("Loading condition met."); // 디버깅 로그 추가
+  //   return <div>Loading...</div>; // 로딩 중인 상태를 표시
+  // }
+
+  const createdAt = dDetailPosts.createdAt || "";
+  console.log("createdAt:", createdAt); // 디버깅 로그 추가
+
+  const month_day = createdAt.slice(5, 10).replace("-", "/");
+  const hour_minute = createdAt.slice(11, 16);
+
+  const BoardTitle = dDetailPosts.board?.BoardTitle || "게시판 제목";
+  const PostNickName = dDetailPosts.author?.nickName || "익명 사용자";
   const [inputValue, setInputValue] = useState("");
   const [responseFromBackend, setResponseFromBackend] = useState(null);
 
@@ -83,17 +100,17 @@ export default function page() {
   };
 
   return (
-    <section className="m-3  rounded-lg p-1">
-      <div className="  font-bold flex  justify-between items-center">
+    <section className="m-3 rounded-lg p-1">
+      <div className="font-bold flex justify-between items-center">
         <div></div>
         <h1 className="text-xl font-bold">{`${BoardTitle} 게시판`} </h1>
         <div></div>
       </div>
 
-      <div className=" flex mt-3">
-        <div className=" border-2 rounded-xl">
+      <div className="flex mt-3">
+        <div className="border-2 rounded-xl">
           <img
-            className=" w-[45px] h-[40px] rounded-full "
+            className="w-[45px] h-[40px] rounded-full"
             src={`${process.env.NEXT_PUBLIC_SERVER_URL}/public/userProfileDefault.png`}
             alt="익명 사용자"
           />
@@ -107,7 +124,7 @@ export default function page() {
       <div className="border-b mt-3 mb-3"></div>
       <div className="mt-3">
         <h1 className="text-lg font-bold">{`${dDetailPosts.postTitle} `} </h1>
-        <div className=" mb-10">{`${dDetailPosts.postContent} `} </div>
+        <div className="mb-10">{`${dDetailPosts.postContent} `} </div>
 
         {dDetailPosts.images.length > 0 && (
           <img
@@ -117,13 +134,13 @@ export default function page() {
           />
         )}
 
-        <p className=" text-sm mb-1">
-          {dDetailPosts.postLike !== 0 && ( // postLike이 0이 아닌 경우에만 렌더링
+        <p className="text-sm mb-1">
+          {dDetailPosts.postLike !== 0 && (
             <span className="mr-3 text-red-500 font-bold">
               👍🏻 {dDetailPosts.postLike}
             </span>
           )}
-          {dDetailPosts.commentCount !== 0 && ( // commentCount가 0이 아닌 경우에만 렌더링
+          {dDetailPosts.commentCount !== 0 && (
             <span className="mr-3 text-sky-400 font-bold">
               💬 {dDetailPosts.commentCount}
             </span>
@@ -134,7 +151,7 @@ export default function page() {
         </p>
 
         <img
-          className="w-[420px] h-[70px] "
+          className="w-[420px] h-[70px]"
           src={`${process.env.NEXT_PUBLIC_SERVER_URL}/public/advertist_example.png`}
           alt="광고 예제"
         />
@@ -148,15 +165,15 @@ export default function page() {
         </div>
       </div>
 
-      <div className="flex border rounded-lg ">
+      <div className="flex border rounded-lg">
         <img
-          className=" w-[45px] h-[40px] rounded-full p-1"
+          className="w-[45px] h-[40px] rounded-full p-1"
           src={`${process.env.NEXT_PUBLIC_SERVER_URL}/public/userProfileDefault.png`}
           alt="익명 사용자"
         />
         <div className="flex flex-grow">
           <input
-            className=" p-1  flex-grow w -full text-sm  border bg-white rounded-md"
+            className="p-1 flex-grow w-full text-sm border bg-white rounded-md"
             placeholder="댓글 추가..."
             type="comment"
             id="comment"
@@ -166,7 +183,7 @@ export default function page() {
 
           <button
             onClick={handleButtonClick}
-            className="ml-2  text-white duration-200 bg-black   hover:bg-gray-700 rounded"
+            className="ml-2 text-white duration-200 bg-black hover:bg-gray-700 rounded"
           >
             댓글 입력
           </button>
