@@ -1,21 +1,20 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/rules-of-hooks */
 "use client";
-
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { usePathname, useRouter } from "next/navigation";
+import { toast } from "react-toastify";
+import axiosInstance from "@/utils/axios";
 import CommentItem from "@/components/commentItem";
 import { getComments } from "@/redux/thunkFunctions/commentThunk";
 import { getPost } from "@/redux/thunkFunctions/psotThunk";
-import { usePathname } from "next/navigation";
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { toast } from "react-toastify";
-import axiosInstance from "@/utils/axios";
 
 export default function Page() {
   const postNamePath = usePathname();
   const postId = postNamePath.substring(5);
   const BoardId = postNamePath.slice(1, 4);
-
+  let router = useRouter();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -67,6 +66,22 @@ export default function Page() {
     }
   };
 
+  const handleButtonDeleteClick = async () => {
+    try {
+      const response = await axiosInstance.delete(
+        `http://localhost:3333/post/${postId}/` //백엔드 api url
+      );
+      toast.info("게시글이 성공적으로 삭제되었습니다 !");
+      router.push(`/${BoardId}`);
+      // setTimeout(() => {
+      //   window.location.reload();
+      // }, 500);
+    } catch (error) {
+      console.error("에러 발생:", error);
+      toast.error("본인이 작성한 게시글만 삭제할 수 있습니다!");
+    }
+  };
+
   return (
     <section className="m-3 rounded-lg p-1">
       <div className="font-bold flex justify-between items-center">
@@ -84,7 +99,15 @@ export default function Page() {
           />
         </div>
 
-        <div className="ml-3 font-bold">{`${PostNickName}`}</div>
+        <div className="flex justify-between items-center mt-3 w-full">
+          <div className="font-bold">{PostNickName}</div>
+          <button
+            onClick={handleButtonDeleteClick}
+            className="text-white duration-200 bg-black hover:bg-gray-700 rounded"
+          >
+            삭제하기
+          </button>
+        </div>
       </div>
       <div className="border-b mt-3 mb-3"></div>
       <div className="mt-3">
@@ -93,7 +116,7 @@ export default function Page() {
 
         {dDetailPosts.images.length > 0 && (
           <img
-            className="min-w-[100px] h-[100px] mb-1"
+            className="min-w-[100px] h-[100px] mb-1 w-full object-contain"
             src={`${process.env.NEXT_PUBLIC_SERVER_URL}${dDetailPosts.images[0]?.path}`}
             alt="image"
           />
@@ -115,14 +138,16 @@ export default function Page() {
           </span>
         </p>
 
-        <img
-          className="w-[420px] h-[70px]"
-          src={`${process.env.NEXT_PUBLIC_SERVER_URL}/public/advertist_example.png`}
-          alt="광고 예제"
-        />
+        <div className="w-full h-[70px]">
+          <img
+            className="w-full h-full object-contain"
+            src={`${process.env.NEXT_PUBLIC_SERVER_URL}/public/advertist_example.png`}
+            alt="광고 예제"
+          />
+        </div>
 
         <div>
-          <div>
+          <div className="w-full">
             {dComments.map((dcomment) => (
               <CommentItem dcomment={dcomment} key={dcomment.id} />
             ))}
@@ -130,7 +155,7 @@ export default function Page() {
         </div>
       </div>
 
-      <div className="flex border rounded-lg">
+      <div className="flex border rounded-lg mt-3">
         <img
           className="w-[45px] h-[40px] rounded-full p-1"
           src={`${process.env.NEXT_PUBLIC_SERVER_URL}/public/userProfileDefault.png`}
@@ -138,7 +163,7 @@ export default function Page() {
         />
         <div className="flex flex-grow">
           <input
-            className="p-1 flex-grow w-full text-sm border bg-white rounded-md"
+            className="p-1 flex-grow text-sm border bg-white rounded-md"
             placeholder="댓글 추가..."
             type="comment"
             id="comment"
