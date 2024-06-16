@@ -62,9 +62,6 @@ export default function Profile() {
       <div className=" mb-10  font-bold bg-gray-100 rounded-md shadow-md">
         <h1 className="text-2xl font-extrabold mt-1"> 커뮤니티 </h1>
         <Link href="/">
-          <h1 className="mb-1 mt-2"> 좋아요 게시물</h1>
-        </Link>{" "}
-        <Link href="/">
           <h1 className="mb-1"> 나의 게시물</h1>
         </Link>{" "}
         <Link href="/">
