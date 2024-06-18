@@ -24,7 +24,7 @@ export const loginUser: any = createAsyncThunk(
   async (encoded, thunkAPI) => {
     try {
       const response = await axios.post(
-        "http://15.164.65.232:3333/auth/login/email", //백엔드 api url
+        "http://52.78.34.195:3333/auth/login/email", //백엔드 api url
         {},
         {
           headers: {

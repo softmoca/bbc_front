@@ -53,7 +53,7 @@ export default function Page() {
 
     try {
       const response = await axiosInstance.post(
-        `http://15.164.65.232:3333/post/${postId}/comment`, //백엔드 api url
+        `http://52.78.34.195:3333/post/${postId}/comment`, //백엔드 api url
         { comment: inputValue }
       );
       toast.info("댓글이 작성되었습니다.");
@@ -69,7 +69,7 @@ export default function Page() {
   const handleButtonDeleteClick = async () => {
     try {
       const response = await axiosInstance.delete(
-        `http://15.164.65.232:3333/post/${postId}/` //백엔드 api url
+        `http://52.78.34.195:3333/post/${postId}/` //백엔드 api url
       );
       toast.info("게시글이 성공적으로 삭제되었습니다 !");
       router.push(`/${BoardId}`);
