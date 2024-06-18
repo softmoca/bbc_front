@@ -149,7 +149,7 @@ export default function Page() {
 
         <div>
           <div className="w-full">
-            {dComments.map((dcomment) => (
+            {dComments.map((dcomment: any) => (
               <CommentItem dcomment={dcomment} key={dcomment.id} />
             ))}
           </div>
