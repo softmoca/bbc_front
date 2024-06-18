@@ -42,7 +42,7 @@ export default function Page() {
   const [inputValue, setInputValue] = useState("");
   const [responseFromBackend, setResponseFromBackend] = useState(null);
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: any) => {
     setInputValue(e.target.value);
   };
 
