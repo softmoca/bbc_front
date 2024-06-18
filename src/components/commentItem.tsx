@@ -4,7 +4,7 @@ import axiosInstance from "@/utils/axios";
 import { toast } from "react-toastify";
 import { usePathname } from "next/navigation";
 
-export default function CommentItem({ dcomment }) {
+export default function CommentItem({ dcomment }: any) {
   const commentId = dcomment.id;
   const postNamePath = usePathname();
 
