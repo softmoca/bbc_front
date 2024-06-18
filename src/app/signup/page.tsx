@@ -81,7 +81,7 @@ export default function RegisterPage() {
     console.log(emailValue);
     try {
       const response = await axios.post(
-        "http://3.35.86.241:3333/user/checkEmail", //백엔드 api url
+        "http://15.164.65.232:3333/user/checkEmail", //백엔드 api url
         { email: emailValue }
       );
 
@@ -100,7 +100,7 @@ export default function RegisterPage() {
     console.log(nickNameValue);
     try {
       const response = await axios.post(
-        "http://3.35.86.241:3333/user/checkNickName", //백엔드 api url
+        "http://15.164.65.232:3333/user/checkNickName", //백엔드 api url
         { nickName: nickNameValue }
       );
 

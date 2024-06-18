@@ -23,7 +23,7 @@ export default function CommentItem({ dcomment }) {
   const handleButtonDeleteClick = async () => {
     try {
       const response = await axiosInstance.delete(
-        `http://3.35.86.241:3333/post/${postId}/comment/${commentId}/` //백엔드 api url
+        `http://15.164.65.232:3333/post/${postId}/comment/${commentId}/` //백엔드 api url
       );
       toast.info("댓글이 성공적으로 삭제되었습니다 !");
 
