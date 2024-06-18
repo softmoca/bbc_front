@@ -81,7 +81,7 @@ export default function RegisterPage() {
     console.log(emailValue);
     try {
       const response = await axios.post(
-        "http://localhost:3333/user/checkEmail", //백엔드 api url
+        "http://3.35.86.241:3333/user/checkEmail", //백엔드 api url
         { email: emailValue }
       );
 
@@ -100,7 +100,7 @@ export default function RegisterPage() {
     console.log(nickNameValue);
     try {
       const response = await axios.post(
-        "http://localhost:3333/user/checkNickName", //백엔드 api url
+        "http://3.35.86.241:3333/user/checkNickName", //백엔드 api url
         { nickName: nickNameValue }
       );
 
@@ -149,7 +149,7 @@ export default function RegisterPage() {
         <img
           className="mx-auto my-2 w-40 h-15"
           style={{ marginBottom: "3rem" }}
-          src={`${process.env.NEXT_PUBLIC_SERVER_URL}/public/BBC_logo.png`}
+          src={`${process.env.NEXT_PUBLIC_SERVER_URL}/public/BBC_LOGO.png`}
           alt="BBC 로고"
         />
 

@@ -14,7 +14,7 @@ export default function MyPost() {
     const fetchPosts = async () => {
       try {
         const response = await axiosInstance.get(
-          `http://localhost:3333/post/getMyPost` //백엔드 api url
+          `http://3.35.86.241:3333/post/getMyPost` //백엔드 api url
         );
         setPosts(response.data);
         console.log(response);

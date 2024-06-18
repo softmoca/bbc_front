@@ -71,7 +71,7 @@ export default function Signin() {
         <img
           className="mx-auto my-2 w-40 h-15"
           style={{ marginBottom: "3rem" }}
-          src={`${process.env.NEXT_PUBLIC_SERVER_URL}/public/BBC_logo.png`}
+          src={`${process.env.NEXT_PUBLIC_SERVER_URL}/public/BBC_LOGO.png`}
           alt="BBC 로고"
         />
 
