@@ -9,13 +9,14 @@ import axiosInstance from "@/utils/axios";
 import CommentItem from "@/components/commentItem";
 import { getComments } from "@/redux/thunkFunctions/commentThunk";
 import { getPost } from "@/redux/thunkFunctions/psotThunk";
+import { AppDispatch } from "@/redux/store/store";
 
 export default function Page() {
   const postNamePath = usePathname();
   const postId = postNamePath.substring(5);
   const BoardId = postNamePath.slice(1, 4);
   let router = useRouter();
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
 
   useEffect(() => {
     if (postId) {
@@ -25,11 +26,11 @@ export default function Page() {
   }, [dispatch, postId]);
 
   const dDetailPosts = useSelector(
-    (state) => state.persistedReducer.post.postDetailData
+    (state: any) => state.persistedReducer.post.postDetailData
   );
 
   const dComments = useSelector(
-    (state) => state.persistedReducer.comment.commentData
+    (state: any) => state.persistedReducer.comment.commentData
   );
 
   const createdAt = dDetailPosts.createdAt || "";

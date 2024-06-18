@@ -3,7 +3,9 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 export default function Footbar() {
-  const isAuth = useSelector((state) => state.persistedReducer.user.isAuth);
+  const isAuth = useSelector(
+    (state: any) => state.persistedReducer.user.isAuth
+  );
   console.log(isAuth);
 
   return (

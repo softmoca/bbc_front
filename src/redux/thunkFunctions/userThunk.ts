@@ -50,7 +50,7 @@ export const authUser = createAsyncThunk(
       );
 
       return response.data.data;
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -67,7 +67,7 @@ export const getUserData = createAsyncThunk(
 
       console.log(response.data);
       return response.data;
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -83,7 +83,7 @@ export const loginOutUser = createAsyncThunk(
       );
 
       return response.data;
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -103,7 +103,7 @@ export const porfileChange = createAsyncThunk(
       console.log(response.data.data);
 
       return response.data;
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
       return thunkAPI.rejectWithValue(error.message);
     }

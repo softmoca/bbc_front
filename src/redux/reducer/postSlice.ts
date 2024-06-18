@@ -71,7 +71,7 @@ const postSlice = createSlice({
         // console.log(action.payload);
         state.postDetailData = action.payload; // 백엔드로 api 요청 한 후 return으로 받은 json
       })
-      .addCase(getPost.rejected, (state, action) => {
+      .addCase(getPost.rejected, (state: any, action) => {
         state.isLoading = false;
         state.error = action.payload;
         state.postData = initialState.postData; // 유저 데이터 초기화

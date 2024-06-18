@@ -27,7 +27,13 @@ export default function Signin() {
 
   const dispatch = useDispatch();
 
-  const onSubmit = async ({ email, password }) => {
+  const onSubmit: any = async ({
+    email,
+    password,
+  }: {
+    email: any;
+    password: any;
+  }) => {
     try {
       // 페이지에서 입력한 값
       const body = {

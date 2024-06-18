@@ -1,14 +1,14 @@
 import axiosInstance from "@/utils/axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-export const registerPost = createAsyncThunk(
+export const registerPost: any = createAsyncThunk(
   "post/registerPost",
   async (body, thunkAPI) => {
     try {
       const response = await axiosInstance.post("/post/", body);
 
       // headers를 일반 객체로 변환
-      const headers = {};
+      const headers: any = {};
       for (const [key, value] of Object.entries(response.headers)) {
         headers[key] = value;
       }
@@ -28,14 +28,14 @@ export const registerPost = createAsyncThunk(
           responseURL: response.request.responseURL,
         },
       };
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
-export const getBoardPosts = createAsyncThunk(
+export const getBoardPosts: any = createAsyncThunk(
   "post/getBoardPosts",
   async (boardId: string, thunkAPI) => {
     const queryBoardId = { where__board__i_like: boardId };
@@ -47,7 +47,7 @@ export const getBoardPosts = createAsyncThunk(
 
       // console.log(response.data);
       return response.data;
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -63,7 +63,7 @@ export const getPost = createAsyncThunk(
       // console.log(response.data);
       // console.log("ddd");
       return response.data;
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
       return thunkAPI.rejectWithValue(error.message);
     }

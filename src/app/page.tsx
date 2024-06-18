@@ -1,11 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { authUser } from "@/redux/thunkFunctions/userThunk";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 
 export default function Home() {
   return (

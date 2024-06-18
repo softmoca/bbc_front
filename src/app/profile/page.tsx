@@ -2,19 +2,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
-import {
-  authUser,
-  getUserData,
-  loginOutUser,
-} from "@/redux/thunkFunctions/userThunk";
+import { getUserData, loginOutUser } from "@/redux/thunkFunctions/userThunk";
 import Link from "next/link";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import gravatar from "gravatar";
 import { useRouter } from "next/navigation";
+import { AppDispatch } from "@/redux/store/store";
 
 export default function Profile() {
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
   let router = useRouter();
   useEffect(() => {
     dispatch(getUserData()); //thucnk 함수 이름은 authUser
@@ -22,7 +18,7 @@ export default function Profile() {
   }, []); // 권한이 바뀌거나 or url경로가 바뀌거나
 
   const userProfileData = useSelector(
-    (state) => state.persistedReducer.user.userProfileData
+    (state: any) => state.persistedReducer.user.userProfileData
   );
 
   const logout = () => {

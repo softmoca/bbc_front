@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Dropzone from "react-dropzone";
 import axiosInstance from "@/utils/axios";
 import { usePathname, useRouter } from "next/navigation";
+import { AppDispatch } from "@/redux/store/store";
 
 //  TODO <과 완료 부르면 바로 뒤 페이지로 이동하게
 export default function Newpost() {
@@ -25,11 +26,11 @@ export default function Newpost() {
     reset,
   } = useForm({ mode: "onChange" });
 
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
 
   const isAuth = true;
 
-  const [postImage, setPostImage] = useState([]);
+  const [postImage, setPostImage] = useState<any[]>([]);
 
   const newPostTitle = {
     required: "게시글 제목은  필수 요소입니다.",
@@ -39,10 +40,10 @@ export default function Newpost() {
     required: "게시글 내용은 필수 요소입니다.",
   };
 
-  const handleDrop = async (files) => {
+  const handleDrop = async (files: any) => {
     let formData = new FormData();
 
-    const config = {
+    const config: any = {
       header: { "content-type": "multipart/form-data" }, // 헤더에 타입 명시
     };
 
@@ -62,10 +63,20 @@ export default function Newpost() {
       console.error(error);
     }
   };
-
-  const onSubmit = ({ postTitle, postContent }) => {
+  const onSubmit: any = ({
+    postTitle,
+    postContent,
+  }: {
+    postTitle: string;
+    postContent: string;
+  }) => {
     // 페이지에서 입력 한 값
-    const body = {
+    const body: {
+      postTitle?: any;
+      postContent?: any;
+      boardId?: any;
+      images?: any;
+    } = {
       postTitle: postTitle,
       postContent: postContent,
       boardId: boardId,
@@ -81,6 +92,10 @@ export default function Newpost() {
     setPostImage([]);
     reset(); //react-hook-form으로 입력후 입력값 초기화
     router.push(`/${boardId}`);
+  };
+
+  const isString = (value: any): value is string => {
+    return typeof value === "string";
   };
 
   return (
@@ -113,9 +128,11 @@ export default function Newpost() {
             <div className="flex mb-10">
               {errors?.postTitle && (
                 <div className="w-1/3">
-                  <span className="text-red-500">
-                    {errors.postTitle.message}
-                  </span>
+                  {isString(errors.postTitle.message) && (
+                    <span className="text-red-500">
+                      {errors.postTitle.message}
+                    </span>
+                  )}
                 </div>
               )}
             </div>
@@ -155,9 +172,11 @@ export default function Newpost() {
             ></input>
             {errors?.postContent && (
               <div>
-                <span className="text-red-500">
-                  {errors.postContent.message}
-                </span>
+                {isString(errors.postContent.message) && (
+                  <span className="text-red-500">
+                    {errors.postContent.message}
+                  </span>
+                )}
               </div>
             )}
           </form>

@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
-import gravatar from "gravatar";
 import axiosInstance from "@/utils/axios";
 import { toast } from "react-toastify";
 import { usePathname } from "next/navigation";

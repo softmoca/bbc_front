@@ -10,7 +10,7 @@ export const getComments = createAsyncThunk(
 
       // console.log(response.data.data);
       return response.data.data;
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
       return thunkAPI.rejectWithValue(error.message);
     }

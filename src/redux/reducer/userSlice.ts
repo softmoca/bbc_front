@@ -82,7 +82,7 @@ const userSlice = createSlice({
         localStorage.removeItem("persist:root");
         toast.info("로그아웃 되었습니다 !");
       })
-      .addCase(loginOutUser.rejected, (state, action) => {
+      .addCase(loginOutUser.rejected, (state: any, action: any) => {
         state.isLoading = false;
         state.error = action.payload;
         toast.error(action.payload);
@@ -96,7 +96,7 @@ const userSlice = createSlice({
         //console.log(action.payload);
         state.isAuth = true;
       })
-      .addCase(authUser.rejected, (state, action) => {
+      .addCase(authUser.rejected, (state: any, action) => {
         state.isLoading = false;
         state.error = action.payload;
         state.userAuthData = initialState.userAuthData; // 유저 데이터 초기화
@@ -112,7 +112,7 @@ const userSlice = createSlice({
         // console.log("dd");
         // console.log(action.payload);
       })
-      .addCase(getUserData.rejected, (state, action) => {
+      .addCase(getUserData.rejected, (state: any, action) => {
         state.isLoading = false;
         state.error = action.payload;
         state.userProfileData = initialState.userProfileData;
@@ -128,7 +128,7 @@ const userSlice = createSlice({
         }, 1000);
         //console.log(action.payload);
       })
-      .addCase(porfileChange.rejected, (state, action) => {
+      .addCase(porfileChange.rejected, (state: any, action) => {
         state.isLoading = false;
         state.error = action.payload;
         localStorage.removeItem("accessToken"); // 만료가 된경우

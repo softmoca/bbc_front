@@ -2,6 +2,7 @@
 "use client";
 
 import PostItem from "@/components/postItem";
+import { AppDispatch } from "@/redux/store/store";
 import { getBoardPosts } from "@/redux/thunkFunctions/psotThunk";
 import { findBoardTitle } from "@/utils/findBoardTitle";
 import Link from "next/link";
@@ -14,9 +15,11 @@ export default function Post() {
   const boardNamePath = usePathname();
   const boardId = parseInt(boardNamePath.substring(1));
 
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
 
-  const dPosts = useSelector((state) => state.persistedReducer.post.postData);
+  const dPosts = useSelector(
+    (state: any) => state.persistedReducer.post.postData
+  );
   // console.log(dPosts);
 
   useEffect(() => {
@@ -44,7 +47,7 @@ export default function Post() {
       />
 
       <div>
-        {dPosts.map((dpost) => (
+        {dPosts.map((dpost: any) => (
           <PostItem dpost={dpost} key={dpost.id} />
         ))}
       </div>

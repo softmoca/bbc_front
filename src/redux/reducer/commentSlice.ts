@@ -22,7 +22,7 @@ const commentSlice = createSlice({
         state.commentData = action.payload; // 백엔드로 api 요청 한 후 return으로 받은 json
         //console.log(action.payload);
       })
-      .addCase(getComments.rejected, (state, action) => {
+      .addCase(getComments.rejected, (state: any, action) => {
         state.isLoading = false;
         state.error = action.payload;
         state.commentData = initialState.commentData; // 유저 데이터 초기화

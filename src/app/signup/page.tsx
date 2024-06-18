@@ -3,7 +3,6 @@
 "use client";
 
 import { registerUser } from "@/redux/thunkFunctions/userThunk";
-import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
@@ -33,6 +32,7 @@ export default function RegisterPage() {
       nickName: "",
       password: "",
       passwordCheck: "",
+      university: "",
 
       term: false,
     },
@@ -53,7 +53,17 @@ export default function RegisterPage() {
     }
   }, [watch("password"), watch("passwordCheck")]);
 
-  const onSubmit = ({ email, password, nickName, university }) => {
+  const onSubmit: any = ({
+    email,
+    password,
+    nickName,
+    university,
+  }: {
+    email: any;
+    password: any;
+    nickName: any;
+    university: any;
+  }) => {
     // 페이지에서 입력 한 값
     const body = {
       email: email,
@@ -89,7 +99,7 @@ export default function RegisterPage() {
         setEmailPass(true);
         toast.info("이메일 사용 가능합니다 ! !");
       }
-    } catch (error) {
+    } catch (error: any) {
       setEmailPass(false);
       toast.error(error.response.data.message[0]);
     }
@@ -108,7 +118,7 @@ export default function RegisterPage() {
         setNickNamePass(true);
         toast.info("닉네임 사용 가능합니다 ! !");
       }
-    } catch (error) {
+    } catch (error: any) {
       setNickNamePass(false);
       toast.error(error.response.data.message[0]);
     }
@@ -132,7 +142,7 @@ export default function RegisterPage() {
   const userPasswordCheck = {
     required: "필수 필드입니다.",
     validate: {
-      matchPassword: (value) => {
+      matchPassword: (value: any) => {
         const { password } = getValues();
         return password === value || "비밀번호가 일치하지 않습니다";
       },
@@ -172,6 +182,7 @@ export default function RegisterPage() {
             className="  border mb-3 border-gray-300 rounded "
             {...register("university", useruniversity)}
           >
+            <option value="">대학교를 선택해주세요</option>
             <option value="광운대학교">광운대학교</option>
             <option value="영철대학교">영철대학교</option>
             <option value="호그와트">호그와트</option>

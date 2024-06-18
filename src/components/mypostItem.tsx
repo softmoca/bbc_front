@@ -2,7 +2,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 
-export default function MyPostItem({ dpost }) {
+export default function MyPostItem({ dpost }: any) {
   const dpostId = dpost.id;
 
   const boardId = dpost.board.id;
