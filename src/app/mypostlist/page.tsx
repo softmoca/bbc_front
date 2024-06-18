@@ -37,7 +37,7 @@ export default function MyPost() {
 
       <img
         className=" my-2 w-full mb-3 rounded"
-        src={`${process.env.NEXT_PUBLIC_SERVER_URL}/public/advertist_example.png`}
+        src={"http://52.78.34.195:3333/public/advertist_example.png"}
         alt="광고 예제"
       />
 

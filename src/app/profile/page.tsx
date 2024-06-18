@@ -35,7 +35,7 @@ export default function Profile() {
         <div className=" border-2 rounded-xl">
           <img
             className=" w-[60px] h-[50px] rounded-full "
-            src={`${process.env.NEXT_PUBLIC_SERVER_URL}/public/userProfileDefault.png`}
+            src={"http://52.78.34.195:3333/public/userProfileDefault.png"}
             alt="익명 사용자"
           />
         </div>

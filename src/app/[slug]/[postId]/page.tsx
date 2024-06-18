@@ -95,7 +95,7 @@ export default function Page() {
         <div className="border-2 rounded-xl">
           <img
             className="w-[45px] h-[40px] rounded-full"
-            src={`${process.env.NEXT_PUBLIC_SERVER_URL}/public/userProfileDefault.png`}
+            src={"http://52.78.34.195:3333/public/userProfileDefault.png"}
             alt="익명 사용자"
           />
         </div>
@@ -118,7 +118,7 @@ export default function Page() {
         {dDetailPosts.images.length > 0 && (
           <img
             className="min-w-[100px] h-[100px] mb-1 w-full object-contain"
-            src={`${process.env.NEXT_PUBLIC_SERVER_URL}${dDetailPosts.images[0]?.path}`}
+            src={`http://52.78.34.195:3333${dDetailPosts.images[0]?.path}`}
             alt="image"
           />
         )}
@@ -142,7 +142,7 @@ export default function Page() {
         <div className="w-full h-[70px]">
           <img
             className="w-full h-full object-contain"
-            src={`${process.env.NEXT_PUBLIC_SERVER_URL}/public/advertist_example.png`}
+            src={"http://52.78.34.195:3333/public/advertist_example.png"}
             alt="광고 예제"
           />
         </div>
@@ -159,7 +159,7 @@ export default function Page() {
       <div className="flex border rounded-lg mt-3">
         <img
           className="w-[45px] h-[40px] rounded-full p-1"
-          src={`${process.env.NEXT_PUBLIC_SERVER_URL}/public/userProfileDefault.png`}
+          src={"http://52.78.34.195:3333/public/userProfileDefault.png"}
           alt="익명 사용자"
         />
         <div className="flex flex-grow">

@@ -158,7 +158,7 @@ export default function Newpost() {
               {postImage.length > 0 && (
                 <img
                   className="min-w-[100px] h-[100px]"
-                  src={`${process.env.NEXT_PUBLIC_SERVER_URL}/public/temp/${postImage}`}
+                  src={`http://52.78.34.195:3333/public/temp/${postImage}`}
                   alt="image"
                 />
               )}

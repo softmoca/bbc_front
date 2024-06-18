@@ -8,7 +8,7 @@ export default function Home() {
     <div className="bg-white flex flex-col ml-3 mt-3 m-b-10">
       <img
         className=" w-full mb-3 rounded"
-        src={`${process.env.NEXT_PUBLIC_SERVER_URL}/public/advertist_example.png`}
+        src="http://52.78.34.195:3333/public/advertist_example.png"
         alt="광고 예제"
       />
       <div className="  mb-5 bg-gray-100 rounded-md shadow-md">
